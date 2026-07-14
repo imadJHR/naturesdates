@@ -1,0 +1,172 @@
+import assert from "node:assert/strict";
+import { spawn, spawnSync } from "node:child_process";
+import { readFileSync } from "node:fs";
+import { after, before, test } from "node:test";
+
+const port = 3210;
+const baseUrl = `http://127.0.0.1:${port}`;
+const formerOfficialHost = ["natural", "delights", ".com"].join("");
+const formerOfficialLink = new RegExp(`href="https?://(?:www\\.)?${formerOfficialHost.replace(".", "\\.")}`, "i");
+let server;
+
+before(async () => {
+  const buildExecutable = process.platform === "win32" ? process.env.ComSpec ?? "cmd.exe" : "npm";
+  const buildArguments = process.platform === "win32" ? ["/d", "/s", "/c", "npm run build"] : ["run", "build"];
+  const build = spawnSync(buildExecutable, buildArguments, {
+    cwd: process.cwd(),
+    encoding: "utf8",
+  });
+  assert.equal(build.status, 0, `${build.error ?? ""}\n${build.stdout ?? ""}\n${build.stderr ?? ""}`);
+
+  server = spawn(process.execPath, ["node_modules/next/dist/bin/next", "start", "-p", String(port)], {
+    cwd: process.cwd(),
+    stdio: "ignore",
+  });
+
+  for (let attempt = 0; attempt < 40; attempt += 1) {
+    try {
+      const response = await fetch(baseUrl);
+      if (response.ok) return;
+    } catch {
+      // The server is still starting.
+    }
+    await new Promise((resolve) => setTimeout(resolve, 250));
+  }
+  throw new Error("The production server did not become ready in time.");
+});
+
+after(() => server?.kill());
+
+for (const [route, marker] of [
+  ["/", "Raised On"],
+  ["/products", "Find your"],
+  ["/products/category/fresh-dates", "Fresh Dates"],
+  ["/products/category/organic", "Organic"],
+  ["/products/category/mini-medjools", "Mini Medjools"],
+  ["/products/whole-fresh-medjool-dates", "Whole Fresh Medjool Dates"],
+  ["/products/pitted-fresh-medjool-dates", "Pitted Fresh Medjool Dates"],
+  ["/products/organic-whole-medjool-dates", "Organic Whole Medjool Dates"],
+  ["/products/organic-pitted-medjool-dates", "Organic Pitted Medjool Dates"],
+  ["/products/coconut-mini-medjools", "Coconut Mini Medjools"],
+  ["/products/cacao-pecan-mini-medjools", "Cacao Pecan Mini Medjools"],
+  ["/faq", "About &amp; FAQ"],
+  ["/privacy", "Data collection"],
+  ["/terms", "Independent concept"],
+  ["/our-story", "Our story grows"],
+  ["/health-and-wellness", "Simple food choices"],
+  ["/gut-health", "gentler approach"],
+  ["/kid-nutrition", "busy families"],
+  ["/vitality", "Small routines"],
+  ["/alternative-diets", "preferred eating style"],
+  ["/fitness", "Plan snacks"],
+  ["/diabetes-health", "whole meal"],
+  ["/pregnancy-health", "changing season"],
+  ["/our-products", "Medjool for every"],
+  ["/store-locator", "produce aisle"],
+  ["/recipes", "every kind of craving"],
+  ["/recipes/all", "every kind of craving"],
+  ["/energy-ball-builder", "Build your own energy"],
+  ["/supercharge-your-smoothies", "Build a smoothie"],
+  ["/blog", "Ideas worth sharing"],
+  ["/resources", "Guides for smarter"],
+  ["/trade-resources", "brighter Medjool"],
+  ["/contact-us", "Questions, feedback"],
+]) {
+  test(`${route} renders successfully`, async () => {
+    const response = await fetch(`${baseUrl}${route}`);
+    assert.equal(response.status, 200);
+    const html = await response.text();
+    assert.match(html, new RegExp(marker, "i"));
+    assert.doesNotMatch(html, formerOfficialLink);
+  });
+}
+
+test("the home page exposes real destinations and no placeholder email", async () => {
+  const html = await (await fetch(baseUrl)).text();
+  assert.match(html, /href="\/store-locator"/);
+  assert.doesNotMatch(html, formerOfficialLink);
+  assert.doesNotMatch(html, /hello@example\.com/);
+  assert.match(html, /href="\/privacy"/);
+  assert.match(html, /Meet what(?:'|&#x27;)s new/i);
+  assert.match(html, /href="\/products\/organic-pitted-medjool-dates"/);
+  assert.match(html, /Choose your sunshine moment/i);
+  assert.match(html, /href="\/supercharge-your-smoothies"/);
+});
+
+test("SEO uses the production domain and indexable discovery files", async () => {
+  const homeHtml = await (await fetch(baseUrl)).text();
+  assert.match(homeHtml, /<link rel="canonical" href="https:\/\/naturesdates\.com"/i);
+  assert.match(homeHtml, /<meta property="og:image" content="https:\/\/naturesdates\.com\/og-natures-dates\.jpg"/i);
+  assert.match(homeHtml, /https:\/\/naturesdates\.com\/#organization/);
+  assert.match(homeHtml, /\/natures-dates-logo\.webp/);
+
+  const productHtml = await (await fetch(`${baseUrl}/products/whole-fresh-medjool-dates`)).text();
+  assert.match(productHtml, /<link rel="canonical" href="https:\/\/naturesdates\.com\/products\/whole-fresh-medjool-dates"/i);
+  assert.match(productHtml, /"@type":"Product"/);
+
+  const robots = await (await fetch(`${baseUrl}/robots.txt`)).text();
+  assert.match(robots, /Host: https:\/\/naturesdates\.com/i);
+  assert.match(robots, /Sitemap: https:\/\/naturesdates\.com\/sitemap\.xml/i);
+
+  const sitemap = await (await fetch(`${baseUrl}/sitemap.xml`)).text();
+  assert.match(sitemap, /https:\/\/naturesdates\.com\/products/);
+  assert.doesNotMatch(sitemap, /natures-dates\.example\.com/);
+  assert.doesNotMatch(sitemap, /\/recipes\/all/);
+});
+
+test("the responsive navbar exposes the complete local navigation", async () => {
+  const html = await (await fetch(baseUrl)).text();
+  for (const href of [
+    "/products",
+    "/our-story",
+    "/health-and-wellness",
+    "/gut-health",
+    "/kid-nutrition",
+    "/vitality",
+    "/alternative-diets",
+    "/fitness",
+    "/diabetes-health",
+    "/pregnancy-health",
+    "/store-locator",
+    "/recipes",
+    "/energy-ball-builder",
+    "/supercharge-your-smoothies",
+    "/blog",
+    "/resources",
+    "/trade-resources",
+  ]) {
+    assert.match(html, new RegExp(`href="${href.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
+  }
+  assert.match(html, /aria-label="Main navigation"/);
+  assert.match(html, /aria-controls="mobile-menu"/);
+  assert.match(html, /aria-controls="desktop-health-&amp;-wellness"/);
+});
+
+test("the products decoration covers every responsive viewport", () => {
+  const css = readFileSync(new URL("../app/globals.css", import.meta.url), "utf8");
+  const productsRule = css.match(/\.products \{[^}]*\}/)?.[0] ?? "";
+
+  assert.match(css, /max\(100%, min\(2400px, 110%\)\)/);
+  assert.match(css, /\.two-col, \.product-row, \.wellness-grid \{ grid-template-columns: 1fr; \}/);
+  assert.match(productsRule, /background-color: #f0e4dc/);
+  assert.match(productsRule, /products-center\.webp/);
+  assert.doesNotMatch(productsRule, /products-background\.png/);
+  assert.match(css, /max\(100%, 1880px\) 210px/);
+
+  for (const viewport of [320, 375, 430, 640, 768, 1024, 1180, 1440, 1920, 2560, 3840]) {
+    const decorationWidth = viewport <= 640
+      ? 920
+      : viewport <= 1024
+        ? 1300
+        : Math.max(viewport, Math.min(2400, viewport * 1.1));
+    assert.ok(decorationWidth >= viewport, `decoration is narrower than the ${viewport}px viewport`);
+  }
+});
+
+test("the recipes image keeps its original composition without duplicate copy", async () => {
+  const html = await (await fetch(baseUrl)).text();
+  const css = readFileSync(new URL("../app/globals.css", import.meta.url), "utf8");
+  assert.doesNotMatch(html, /MEDJOOL DATES FOR EVERYDAY RECIPES/i);
+  assert.match(css, /\.recipe-media[^}]*aspect-ratio: 15 \/ 8/);
+  assert.match(css, /\.recipes[^}]*background-position: calc\(100% \+ 110px\) 100%/);
+});

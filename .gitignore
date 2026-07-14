@@ -1,0 +1,19 @@
+# dependencies
+/node_modules
+
+# Next.js output
+/.next
+/out
+
+# tests and local artifacts
+/test-results
+/mobile-hero-check*.png
+
+# TypeScript and environment files
+*.tsbuildinfo
+.env*
+!.env.example
+
+# OS and editor files
+.DS_Store
+Thumbs.db
