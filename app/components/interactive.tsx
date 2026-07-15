@@ -241,61 +241,46 @@ export function Header() {
 export function OfficialHero() {
   const reduceMotion = useReducedMotion();
 
-  const zoomReveal = (delay: number) => ({
-    initial: reduceMotion ? false : { opacity: 0, scale: 0.6 },
-    whileInView: { opacity: 1, scale: 1 },
-    viewport: { once: true, amount: 0.25 },
-    transition: { delay, duration: 1, ease: "easeOut" as const },
-  });
-
   return (
     <section id="top" className="hero official-hero section-orange" aria-labelledby="hero-title">
-      <h1 id="hero-title" className="sr-only">Raised on Sunshine</h1>
-      <motion.div
-        className="official-hero-title"
-        initial={reduceMotion ? false : { opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true, amount: 0.25 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-      >
-        <Image
-          src="/hero-official/raised-on-sunshine.png"
-          alt=""
-          aria-hidden="true"
-          width={1978}
-          height={582}
-          sizes="(max-width: 640px) 88vw, 620px"
-          priority
-        />
-      </motion.div>
+      <div className="official-hero-shell">
+        <article className="hero-field-letter">
+          <p className="official-hero-eyebrow">A note from Bard Valley <span aria-hidden="true">— 2026</span></p>
+          <h1 id="hero-title"><span>Raised by hand.</span><strong>Ripened by sunshine.</strong></h1>
+          <p className="official-hero-lead">Every Medjool begins with patient hands, warm desert days and people who know these palms by heart.</p>
+          <div className="hero-person-note">
+            <Image src="/assets/employee.jpg" alt="A member of the Bard Valley date-growing team" width={96} height={96} />
+            <blockquote>
+              <p>Care for the fruit—from the palm all the way to the package.</p>
+              <cite>The work behind the harvest</cite>
+            </blockquote>
+          </div>
+          <div className="official-hero-actions">
+            <Link className="btn hero-primary" href="/our-story">Meet the growers <ArrowUpRight size={18} /></Link>
+            <Link className="hero-story-link" href="/products">Explore the dates <span aria-hidden="true">→</span></Link>
+          </div>
+          <p className="hero-letter-signoff">With care, from our palms to yours.</p>
+        </article>
 
-      <div className="official-hero-group official-hero-left">
-        <motion.div className="official-hero-loose" {...zoomReveal(1)}>
-          <Image src="/hero-official/loose-dates.png" alt="" width={622} height={569} sizes="(max-width: 640px) 58vw, 36vw" />
-        </motion.div>
-        <div className="official-hero-pack">
-          <Image src="/hero-official/whole-pack.png" alt="Natural Delights Organic Whole Medjool Dates" width={622} height={569} sizes="(max-width: 640px) 58vw, 36vw" />
-        </div>
+        <figure className="hero-field-photo">
+          <div className="hero-field-photo-image">
+            <Image src="/assets/harvest.jpg" alt="A worker carefully harvesting dates in Bard Valley" fill priority sizes="(max-width: 800px) 88vw, 590px" />
+          </div>
+          <figcaption><span>Harvest morning, Bard Valley</span><strong>Real people. Real care.</strong></figcaption>
+          <motion.div
+            className="hero-product hero-product-whole"
+            animate={reduceMotion ? undefined : { y: [0, -7, 0], rotate: [-5, -3, -5] }}
+            transition={reduceMotion ? undefined : { duration: 5.5, ease: "easeInOut", repeat: Infinity }}
+          >
+            <Image src="/hero-official/whole-pack.png" alt="Natural Delights Organic Whole Medjool Dates" width={622} height={569} priority sizes="(max-width: 720px) 48vw, 250px" />
+          </motion.div>
+          <div className="hero-field-stamp" aria-hidden="true"><span>Grown with</span><strong>♥</strong><span>in the valley</span></div>
+        </figure>
       </div>
 
-      <div className="official-hero-group official-hero-right">
-        <motion.div className="official-hero-loose" {...zoomReveal(1.5)}>
-          <Image src="/hero-official/coconut-dates.png" alt="" width={622} height={569} sizes="(max-width: 640px) 58vw, 36vw" />
-        </motion.div>
-        <div className="official-hero-pack">
-          <Image src="/hero-official/coconut-pack.png" alt="Natural Delights Organic Coconut Mini Medjools" width={622} height={569} sizes="(max-width: 640px) 58vw, 36vw" />
-        </div>
-      </div>
-
-      <div className="official-hero-badge">
-        <Image className="official-hero-badge-back" src="/hero-official/welcome-back.png" alt="" width={408} height={408} sizes="140px" />
-        <motion.div
-          className="official-hero-badge-front"
-          animate={reduceMotion ? undefined : { rotate: [360, 0] }}
-          transition={reduceMotion ? undefined : { duration: 11, ease: "linear", repeat: Infinity }}
-        >
-          <Image src="/hero-official/welcome-front.png" alt="Welcome to Natural Delights" width={408} height={408} sizes="140px" />
-        </motion.div>
+      <div className="official-hero-marquee" aria-hidden="true">
+        <span>People first</span><i>✦</i><span>Hand harvested</span><i>✦</i><span>Desert grown</span><i>✦</i>
+        <span>People first</span><i>✦</i><span>Hand harvested</span><i>✦</i><span>Desert grown</span>
       </div>
     </section>
   );

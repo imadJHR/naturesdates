@@ -10,6 +10,7 @@ type PageMetadata = {
   description: string;
   path: string;
   image?: string;
+  keywords?: string[];
 };
 
 export function createPageMetadata({
@@ -17,10 +18,12 @@ export function createPageMetadata({
   description,
   path,
   image = "/og-natures-dates.jpg",
+  keywords,
 }: PageMetadata): Metadata {
   return {
     title,
     description,
+    keywords,
     alternates: { canonical: path },
     openGraph: {
       title,

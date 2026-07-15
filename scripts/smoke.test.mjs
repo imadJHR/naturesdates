@@ -52,15 +52,15 @@ for (const [route, marker] of [
   ["/faq", "About &amp; FAQ"],
   ["/privacy", "Data collection"],
   ["/terms", "Independent concept"],
-  ["/our-story", "Our story grows"],
-  ["/health-and-wellness", "Simple food choices"],
-  ["/gut-health", "gentler approach"],
-  ["/kid-nutrition", "busy families"],
-  ["/vitality", "Small routines"],
-  ["/alternative-diets", "preferred eating style"],
-  ["/fitness", "Plan snacks"],
-  ["/diabetes-health", "whole meal"],
-  ["/pregnancy-health", "changing season"],
+  ["/our-story", "A Medjool story"],
+  ["/health-and-wellness", "practical way to think"],
+  ["/gut-health", "fiber routine"],
+  ["/kid-nutrition", "Small bites"],
+  ["/vitality", "steadier days"],
+  ["/alternative-diets", "lifestyle halo"],
+  ["/fitness", "fueling plan"],
+  ["/diabetes-health", "Read the carbs"],
+  ["/pregnancy-health", "miracle claims"],
   ["/our-products", "Medjool for every"],
   ["/store-locator", "produce aisle"],
   ["/recipes", "every kind of craving"],
@@ -96,6 +96,9 @@ test("the home page exposes real destinations and no placeholder email", async (
 test("SEO uses the production domain and indexable discovery files", async () => {
   const homeHtml = await (await fetch(baseUrl)).text();
   assert.match(homeHtml, /<link rel="canonical" href="https:\/\/naturesdates\.com"/i);
+  assert.match(homeHtml, /<link rel="icon" href="\/icon\.png" type="image\/png" sizes="512x512"/i);
+  assert.match(homeHtml, /<link rel="icon" href="\/favicon-48\.png" type="image\/png" sizes="48x48"/i);
+  assert.match(homeHtml, /<link rel="shortcut icon" href="\/favicon\.ico" type="image\/x-icon"/i);
   assert.match(homeHtml, /<meta property="og:image" content="https:\/\/naturesdates\.com\/og-natures-dates\.jpg"/i);
   assert.match(homeHtml, /https:\/\/naturesdates\.com\/#organization/);
   assert.match(homeHtml, /\/natures-dates-logo\.webp/);
@@ -104,9 +107,83 @@ test("SEO uses the production domain and indexable discovery files", async () =>
   assert.match(productHtml, /<link rel="canonical" href="https:\/\/naturesdates\.com\/products\/whole-fresh-medjool-dates"/i);
   assert.match(productHtml, /"@type":"Product"/);
 
+  const storyHtml = await (await fetch(`${baseUrl}/our-story`)).text();
+  assert.match(storyHtml, /<meta name="keywords" content="Bard Valley Medjool dates,/i);
+  assert.match(storyHtml, /"@type":"AboutPage"/);
+  assert.match(storyHtml, /"@type":"BreadcrumbList"/);
+  assert.match(storyHtml, /University of California ANR/);
+  assert.match(storyHtml, /USDA \/ National Institute of Food and Agriculture/);
+
+  const wellnessHtml = await (await fetch(`${baseUrl}/health-and-wellness`)).text();
+  assert.match(wellnessHtml, /<meta name="keywords" content="Medjool date nutrition,/i);
+  assert.match(wellnessHtml, /"@type":"WebPage"/);
+  assert.match(wellnessHtml, /"@type":"BreadcrumbList"/);
+  assert.match(wellnessHtml, /U\.S\. Food &amp; Drug Administration/);
+  assert.match(wellnessHtml, /NIH Office of Dietary Supplements/);
+
+  const gutHealthHtml = await (await fetch(`${baseUrl}/gut-health`)).text();
+  assert.match(gutHealthHtml, /<meta name="keywords" content="Medjool dates and fiber,/i);
+  assert.match(gutHealthHtml, /"@type":"WebPage"/);
+  assert.match(gutHealthHtml, /"@type":"BreadcrumbList"/);
+  assert.match(gutHealthHtml, /National Institute of Diabetes and Digestive and Kidney Diseases/);
+  assert.match(gutHealthHtml, /Current Dietary Guidelines for Americans, 2025/i);
+
+  const kidNutritionHtml = await (await fetch(`${baseUrl}/kid-nutrition`)).text();
+  assert.match(kidNutritionHtml, /<meta name="keywords" content="Medjool dates for kids,/i);
+  assert.match(kidNutritionHtml, /"@type":"WebPage"/);
+  assert.match(kidNutritionHtml, /"@type":"BreadcrumbList"/);
+  assert.match(kidNutritionHtml, /Choking hazards and safer food preparation/i);
+  assert.match(kidNutritionHtml, /USDA MyPlate/);
+
+  const vitalityHtml = await (await fetch(`${baseUrl}/vitality`)).text();
+  assert.match(vitalityHtml, /<meta name="keywords" content="everyday vitality habits,/i);
+  assert.match(vitalityHtml, /"@type":"WebPage"/);
+  assert.match(vitalityHtml, /"@type":"BreadcrumbList"/);
+  assert.match(vitalityHtml, /Physical Activity Guidelines: ten key points/i);
+  assert.match(vitalityHtml, /Fatigue, possible causes/i);
+
+  const alternativeDietsHtml = await (await fetch(`${baseUrl}/alternative-diets`)).text();
+  assert.match(alternativeDietsHtml, /<meta name="keywords" content="Medjool dates vegan,/i);
+  assert.match(alternativeDietsHtml, /"@type":"WebPage"/);
+  assert.match(alternativeDietsHtml, /"@type":"BreadcrumbList"/);
+  assert.match(alternativeDietsHtml, /Gluten and food-labeling requirements/i);
+  assert.match(alternativeDietsHtml, /Vitamin B12 fact sheet/i);
+
+  const fitnessHtml = await (await fetch(`${baseUrl}/fitness`)).text();
+  assert.match(fitnessHtml, /<meta name="keywords" content="Medjool dates for fitness,/i);
+  assert.match(fitnessHtml, /"@type":"WebPage"/);
+  assert.match(fitnessHtml, /"@type":"BreadcrumbList"/);
+  assert.match(fitnessHtml, /Nutrition and athletic performance/i);
+  assert.match(fitnessHtml, /Heat safety guidance for athletes/i);
+
+  const diabetesHtml = await (await fetch(`${baseUrl}/diabetes-health`)).text();
+  assert.match(diabetesHtml, /<meta name="keywords" content="Medjool dates and diabetes,/i);
+  assert.match(diabetesHtml, /"@type":"WebPage"/);
+  assert.match(diabetesHtml, /"@type":"BreadcrumbList"/);
+  assert.match(diabetesHtml, /Diabetes meal planning, carbohydrate counting/i);
+  assert.match(diabetesHtml, /Low blood glucose signs/i);
+
+  const pregnancyHtml = await (await fetch(`${baseUrl}/pregnancy-health`)).text();
+  assert.match(pregnancyHtml, /<meta name="keywords" content="Medjool dates pregnancy,/i);
+  assert.match(pregnancyHtml, /"@type":"WebPage"/);
+  assert.match(pregnancyHtml, /"@type":"BreadcrumbList"/);
+  assert.match(pregnancyHtml, /Safer food choices and handling during pregnancy/i);
+  assert.match(pregnancyHtml, /Gestational diabetes screening/i);
+
   const robots = await (await fetch(`${baseUrl}/robots.txt`)).text();
   assert.match(robots, /Host: https:\/\/naturesdates\.com/i);
   assert.match(robots, /Sitemap: https:\/\/naturesdates\.com\/sitemap\.xml/i);
+
+  for (const [path, type] of [
+    ["/icon.png", "image/png"],
+    ["/favicon-192.png", "image/png"],
+    ["/favicon-48.png", "image/png"],
+    ["/favicon.ico", "image/x-icon"],
+  ]) {
+    const response = await fetch(`${baseUrl}${path}`);
+    assert.equal(response.status, 200, `${path} must be crawlable`);
+    assert.match(response.headers.get("content-type") ?? "", new RegExp(type.replace("/", "\\/"), "i"));
+  }
 
   const sitemap = await (await fetch(`${baseUrl}/sitemap.xml`)).text();
   assert.match(sitemap, /https:\/\/naturesdates\.com\/products/);
