@@ -5,7 +5,15 @@ import Link from "next/link";
 import type { CSSProperties, FormEvent } from "react";
 import { useEffect, useMemo, useState } from "react";
 import { ArrowRight, CheckCircle2, Minus, Plus, ShoppingBasket, Trash2 } from "lucide-react";
-import { CartItem, clearCart, getCartCount, readCart, removeFromCart, updateCartQuantity } from "./cart-actions";
+import {
+  clearCart,
+  getCartCount,
+  readCart,
+  removeFromCart,
+  saveCheckoutOrder,
+  updateCartQuantity,
+  type CartItem,
+} from "@/app/lib/cart";
 import { Button } from "./ui/button";
 
 function CartLine({ item, onChange }: { item: CartItem; onChange: () => void }) {
@@ -111,15 +119,7 @@ export function CheckoutPageClient() {
   const submitOrder = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const order = {
-      id: `ND-${Date.now()}`,
-      createdAt: new Date().toISOString(),
-      customer: Object.fromEntries(formData.entries()),
-      items,
-    };
-    const previous = JSON.parse(window.localStorage.getItem("naturesdates-orders") || "[]");
-    const orders = Array.isArray(previous) ? previous : [];
-    window.localStorage.setItem("naturesdates-orders", JSON.stringify([order, ...orders]));
+    saveCheckoutOrder(Object.fromEntries(formData.entries()), items);
     clearCart();
     setItems([]);
     setSubmitted(true);

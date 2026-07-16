@@ -3,7 +3,7 @@
 import type { CSSProperties, ElementType } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Coffee, Dumbbell, ShoppingBag, Sparkles } from "lucide-react";
+import { ArrowRight, User, UserCheck, UserRound, Users } from "lucide-react";
 import { Button } from "./ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 
@@ -35,7 +35,7 @@ const moments: Moment[] = [
     href: "/supercharge-your-smoothies",
     action: "Build a smoothie",
     notes: ["Smoothie-ready", "Breakfast ideas"],
-    icon: Coffee,
+    icon: User,
   },
   {
     id: "movement",
@@ -49,7 +49,7 @@ const moments: Moment[] = [
     href: "/fitness",
     action: "Explore fitness ideas",
     notes: ["Pitted format", "Easy to carry"],
-    icon: Dumbbell,
+    icon: UserCheck,
   },
   {
     id: "on-the-go",
@@ -63,7 +63,7 @@ const moments: Moment[] = [
     href: "/products/coconut-mini-medjools",
     action: "Meet Coconut Minis",
     notes: ["Bite-size", "Coconut finish"],
-    icon: ShoppingBag,
+    icon: Users,
   },
   {
     id: "sweet-break",
@@ -77,7 +77,7 @@ const moments: Moment[] = [
     href: "/products/cacao-pecan-mini-medjools",
     action: "Meet Cacao Pecan",
     notes: ["Cacao notes", "Pecan finish"],
-    icon: Sparkles,
+    icon: UserRound,
   },
 ];
 

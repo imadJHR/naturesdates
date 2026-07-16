@@ -11,12 +11,7 @@ import {
 import { SiteFooter } from "./components/site-footer";
 import { NewProductsSection } from "./components/new-products-section";
 import { SunshineMoment } from "./components/sunshine-moment";
-
-const products = [
-  { name: "Cacao Pecan", src: "/assets/mini_pecan.webp", color: "#004c5a" },
-  { name: "Coconut", src: "/assets/mini_coconut.webp", color: "#008b93" },
-  { name: "Whole Dates", src: "/assets/whole_dates.webp", color: "#c10230" },
-];
+import { products as catalogProducts } from "./data/products";
 
 const photos = [
   { src: "/assets/palm.jpg", label: "Bard Valley oasis", alt: "Rows of date palms in Bard Valley" },
@@ -54,10 +49,14 @@ function Products() {
       <div className="section-inner">
         <div className="section-title">
           <p className="script small tan">Find Your Favorite</p>
-          <h2>Medjool snacks for every mood.</h2>
+          <h2>Shop the full Medjool family.</h2>
+          <p className="section-intro">From classic whole dates to flavor-forward Mini Medjools, every product on the catalog now has a sunshine-ready place on the home page.</p>
         </div>
         <div className="product-row">
-          {products.map((product) => <ProductCard key={product.name} {...product} />)}
+          {catalogProducts.map((product) => <ProductCard key={product.slug} product={product} />)}
+        </div>
+        <div className="products-footer-cta">
+          <Link className="btn red" href="/products">See all product details <ArrowRight size={18} /></Link>
         </div>
       </div>
     </section>

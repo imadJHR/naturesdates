@@ -3,10 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowUpRight, ChevronDown, Menu, Play, X } from "lucide-react";
-import { CartStatus } from "./cart-actions";
+import { ArrowRight, ArrowUpRight, ChevronDown, Menu, Play, X } from "lucide-react";
+import type { Product } from "@/app/data/products";
+import { productCategories } from "@/app/data/products";
+import { AddToCartButton, CartStatus } from "./cart-actions";
 
 type NavigationItem = {
   href: string;
@@ -386,18 +388,30 @@ export function AnimatedBowl() {
   );
 }
 
-export function ProductCard({ name, src, color }: { name: string; src: string; color: string }) {
+export function ProductCard({ product }: { product: Product }) {
   const reduceMotion = useReducedMotion();
+  const category = productCategories.find((item) => item.slug === product.category);
+
   return (
     <motion.article
       className="product-card"
+      style={{ "--product-accent": product.accent } as CSSProperties}
       whileHover={reduceMotion ? undefined : { y: -16, scale: 1.03 }}
       transition={{ type: "spring", stiffness: 120, damping: 14 }}
     >
-      <Image src={src} alt={`${name} Medjool date package`} width={600} height={600} sizes="(max-width: 1024px) 70vw, 30vw" />
-      <h3 style={{ color }}>{name}</h3>
-      <p>Medjool sweetness in a bright, portable snack format. Check the package for complete ingredients and nutrition information.</p>
-      <Link className="btn green small-btn" href="/products">View products</Link>
+      <Link className="product-card-media" href={`/products/${product.slug}`} aria-label={`View ${product.name}`}>
+        {product.isNew && <span className="product-card-badge">New</span>}
+        <Image src={product.image} alt={`${product.name} package`} width={600} height={600} sizes="(max-width: 760px) 82vw, (max-width: 1180px) 42vw, 28vw" />
+      </Link>
+      <div className="product-card-copy">
+        <p className="product-card-category">{category?.name}</p>
+        <h3>{product.shortName}</h3>
+        <p>{product.description}</p>
+      </div>
+      <div className="product-card-actions">
+        <AddToCartButton product={product} className="product-card-cart" />
+        <Link className="product-card-link" href={`/products/${product.slug}`}>View product <ArrowRight size={15} /></Link>
+      </div>
     </motion.article>
   );
 }
