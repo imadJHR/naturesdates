@@ -32,7 +32,7 @@ export default function FaqPage() {
       <LegalPage title="About & FAQ">
         <p className="legal-note">This website is an independent creative portfolio concept. It is not an online store and is not affiliated with, sponsored by or endorsed by Natural Delights.</p>
         <h2>Can I buy products here?</h2>
-        <p>No. Use the <Link href="/store-locator">local store guide</Link> to plan where to look and verify current retail availability.</p>
+        <p>No. Browse the <Link href="/products">product catalog</Link> to explore our Medjool date range.</p>
         <h2>Where can I find product information?</h2>
         <p>Ingredients, allergens, serving sizes and nutrition information can vary. Always consult the current package and the information in this local FAQ.</p>
         <h2>Who should I contact?</h2>

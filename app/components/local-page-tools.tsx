@@ -87,6 +87,7 @@ export function LocalContactForm() {
         <div>
           <p className="info-kicker">Local contact form</p>
           <h2 id="contact-form-title">Send your message.</h2>
+          <p>Email us directly: <a href="mailto:contact@naturesdates.com" className="contact-email-link">contact@naturesdates.com</a></p>
           <p>This demo keeps you on this site. Connect it to your preferred inbox or CRM before publishing if you need live delivery.</p>
         </div>
         <form className="local-contact-form" onSubmit={submit}>

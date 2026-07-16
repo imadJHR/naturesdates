@@ -18,7 +18,6 @@ const wellnessPages = new Set([
 ]);
 
 export function ContentPageView({ page }: { page: ContentPage }) {
-  const isStoryPage = page.slug === "our-story";
   const isWellnessOverview = page.slug === "health-and-wellness";
   const isGutHealth = page.slug === "gut-health";
   const isKidNutrition = page.slug === "kid-nutrition";
@@ -81,9 +80,8 @@ export function ContentPageView({ page }: { page: ContentPage }) {
         <section className="info-content-section">
           <div className="info-shell">
             <div className="info-section-heading">
-              <p className="info-kicker">{isStoryPage ? "From palm to package" : isWellnessOverview ? "Everyday framework" : isGutHealth ? "A step-by-step approach" : isKidNutrition ? "For real family life" : isVitality ? "Habits that work together" : isAlternativeDiets ? "A clearer decision process" : isFitness ? "Before, during and after" : isDiabetesHealth ? "From label to care plan" : isPregnancyHealth ? "Safety, nutrition and support" : "Explore the guide"}</p>
-              <h2>{isStoryPage ? "The work behind every harvest." : isWellnessOverview ? "Wellness without the hype." : isGutHealth ? "Support the routine, not the hype." : isKidNutrition ? "A snack routine built around the child." : isVitality ? "Build the day, not a miracle claim." : isAlternativeDiets ? "Choose what fits—with evidence." : isFitness ? "Train the plan—not the marketing claim." : isDiabetesHealth ? "Context matters more than a yes-or-no food list." : isPregnancyHealth ? "Keep the snack simple and the care individualized." : "Useful ideas, kept simple."}</h2>
-              {isStoryPage && <p className="info-section-intro">Growing Medjool dates is a sequence of skilled decisions made across the season—not a single moment at harvest.</p>}
+              <p className="info-kicker">{isWellnessOverview ? "Everyday framework" : isGutHealth ? "A step-by-step approach" : isKidNutrition ? "For real family life" : isVitality ? "Habits that work together" : isAlternativeDiets ? "A clearer decision process" : isFitness ? "Before, during and after" : isDiabetesHealth ? "From label to care plan" : isPregnancyHealth ? "Safety, nutrition and support" : "Explore the guide"}</p>
+              <h2>{isWellnessOverview ? "Wellness without the hype." : isGutHealth ? "Support the routine, not the hype." : isKidNutrition ? "A snack routine built around the child." : isVitality ? "Build the day, not a miracle claim." : isAlternativeDiets ? "Choose what fits—with evidence." : isFitness ? "Train the plan—not the marketing claim." : isDiabetesHealth ? "Context matters more than a yes-or-no food list." : isPregnancyHealth ? "Keep the snack simple and the care individualized." : "Useful ideas, kept simple."}</h2>
               {isWellnessOverview && <p className="info-section-intro">Good nutrition information should help you interpret a food in context, not turn it into a cure-all.</p>}
               {isGutHealth && <p className="info-section-intro">Digestive comfort is personal. These steps make fiber easier to understand without pretending one food works the same way for everyone.</p>}
               {isKidNutrition && <p className="info-section-intro">Good feeding guidance combines food variety with developmentally appropriate preparation, supervision and less pressure at the table.</p>}

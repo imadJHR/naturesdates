@@ -37,7 +37,7 @@ function Story() {
             <span>Hand harvested</span>
             <span>Whole-fruit roots</span>
           </div>
-          <Link className="btn green" href="/our-story">Meet the growers <ArrowRight size={18} /></Link>
+          <Link className="btn green" href="/products">Explore the dates <ArrowRight size={18} /></Link>
         </div>
         <div className="photo-stack">
           {photos.map((photo, index) => <AnimatedPhoto key={photo.src} {...photo} className={["one", "two", "three"][index]} />)}

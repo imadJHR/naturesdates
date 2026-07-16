@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, MapPin, ShoppingBasket } from "lucide-react";
+import { ArrowLeft, ShoppingBasket } from "lucide-react";
 import { Header } from "@/app/components/interactive";
 import { SiteFooter } from "@/app/components/site-footer";
 
@@ -24,7 +24,6 @@ export default function NotFound() {
             <div className="not-found-actions">
               <Link className="btn red" href="/"><ArrowLeft size={18} /> Back home</Link>
               <Link className="btn green" href="/products"><ShoppingBasket size={18} /> Browse products</Link>
-              <Link className="not-found-text-link" href="/store-locator"><MapPin size={18} /> Store locator</Link>
             </div>
           </div>
 

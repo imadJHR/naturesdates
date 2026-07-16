@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Check, MapPin } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { notFound } from "next/navigation";
+import { AddToCartButton } from "@/app/components/cart-actions";
 import { Header } from "@/app/components/interactive";
 import { ProductGrid } from "@/app/components/product-tile";
 import { SiteFooter } from "@/app/components/site-footer";
@@ -60,7 +61,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 {product.highlights.map((highlight) => <li key={highlight}><Check size={17} /> {highlight}</li>)}
               </ul>
               <div className="product-detail-actions">
-                <Button asChild size="lg"><Link href="/store-locator"><MapPin size={17} /> Find a retailer</Link></Button>
+                <AddToCartButton product={product} size="lg" />
                 <Button asChild variant="outline" size="lg"><Link href="/our-products">Product guide <ArrowRight size={17} /></Link></Button>
               </div>
             </div>

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight, ChevronDown, Menu, Play, X } from "lucide-react";
+import { CartStatus } from "./cart-actions";
 
 type NavigationItem = {
   href: string;
@@ -14,7 +15,6 @@ type NavigationItem = {
 };
 
 const navigation: NavigationItem[] = [
-  { href: "/our-story", label: "Our Story" },
   {
     href: "/health-and-wellness",
     label: "Health & Wellness",
@@ -29,7 +29,6 @@ const navigation: NavigationItem[] = [
     ],
   },
   { href: "/products", label: "Products" },
-  { href: "/store-locator", label: "Find Us" },
   {
     href: "/recipes",
     label: "Recipes",
@@ -39,8 +38,6 @@ const navigation: NavigationItem[] = [
       { href: "/supercharge-your-smoothies", label: "Smoothie Builder" },
     ],
   },
-  { href: "/blog", label: "Blog" },
-  { href: "/resources", label: "Resources" },
 ];
 
 function NavigationLink({
@@ -177,7 +174,10 @@ export function Header() {
           })}
         </ul>
       </nav>
-      <Link className={`trade${pathname === "/trade-resources" ? " is-active" : ""}`} href="/trade-resources" aria-current={pathname === "/trade-resources" ? "page" : undefined}>Trade <ArrowUpRight size={16} /></Link>
+      <CartStatus />
+      <a href="mailto:contact@naturesdates.com" className="email-link" aria-label="Email contact@naturesdates.com">
+        contact@naturesdates.com
+      </a>
       <button
         ref={triggerRef}
         className="mobile-menu-btn"
@@ -228,7 +228,8 @@ export function Header() {
                   </div>
                 );
               })}
-              <Link className={`mobile-trade-link${pathname === "/trade-resources" ? " is-active" : ""}`} href="/trade-resources" aria-current={pathname === "/trade-resources" ? "page" : undefined} onClick={() => setOpen(false)}>Trade resources <ArrowUpRight size={18} /></Link>
+              <CartStatus />
+              <a href="mailto:contact@naturesdates.com" className="mobile-nav-link" style={{background:'var(--green)',color:'white',justifyContent:'center'}}>contact@naturesdates.com</a>
             </nav>
           </div>
           <button className="mobile-menu-backdrop" type="button" aria-label="Close navigation overlay" onClick={() => setOpen(false)} />
@@ -256,7 +257,7 @@ export function OfficialHero() {
             </blockquote>
           </div>
           <div className="official-hero-actions">
-            <Link className="btn hero-primary" href="/our-story">Meet the growers <ArrowUpRight size={18} /></Link>
+            <Link className="btn hero-primary" href="/products">Explore the dates <ArrowUpRight size={18} /></Link>
             <Link className="hero-story-link" href="/products">Explore the dates <span aria-hidden="true">→</span></Link>
           </div>
           <p className="hero-letter-signoff">With care, from our palms to yours.</p>
@@ -287,7 +288,6 @@ export function OfficialHero() {
 }
 
 export function GoodnessShowcase() {
-  const reduceMotion = useReducedMotion();
   const benefits = [
     { id: "potassium", label: "Excellent Source of Potassium", image: "/goodness-official/potassium.png" },
     { id: "glycemic", label: "Low on the Glycemic Index", image: "/goodness-official/glycemic-index.png" },
@@ -322,7 +322,7 @@ export function GoodnessShowcase() {
               <motion.div
                 className={`goodness-benefit benefit-${benefit.id}`}
                 key={benefit.id}
-                initial={reduceMotion ? false : { opacity: 0, scale: 0.6 }}
+                initial={false}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.4 }}
                 transition={{ delay: index * 0.35, duration: 0.7, ease: "easeOut" }}
@@ -364,16 +364,8 @@ export function HeroVideo() {
 }
 
 export function AnimatedPhoto({ src, alt, label, className }: { src: string; alt: string; label: string; className: string }) {
-  const reduceMotion = useReducedMotion();
-  const ref = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const xForward = useTransform(scrollYProgress, [0, 1], [-70, 70]);
-  const xReverse = useTransform(scrollYProgress, [0, 1], [80, -80]);
-  const y = useTransform(scrollYProgress, [0, 1], [80, -120]);
-  const style = reduceMotion ? undefined : className === "one" ? { x: xForward } : className === "two" ? { x: xReverse, y } : { y };
-
   return (
-    <motion.figure ref={ref} className={`photo-card ${className}`} style={style}>
+    <motion.figure className={`photo-card ${className}`}>
       <Image src={src} alt={alt} fill sizes="(max-width: 640px) 78vw, 30vw" />
       <figcaption>{label}</figcaption>
     </motion.figure>
@@ -405,7 +397,7 @@ export function ProductCard({ name, src, color }: { name: string; src: string; c
       <Image src={src} alt={`${name} Medjool date package`} width={600} height={600} sizes="(max-width: 1024px) 70vw, 30vw" />
       <h3 style={{ color }}>{name}</h3>
       <p>Medjool sweetness in a bright, portable snack format. Check the package for complete ingredients and nutrition information.</p>
-      <Link className="btn green small-btn" href="/store-locator">Find a retailer</Link>
+      <Link className="btn green small-btn" href="/products">View products</Link>
     </motion.article>
   );
 }

@@ -52,7 +52,6 @@ for (const [route, marker] of [
   ["/faq", "About &amp; FAQ"],
   ["/privacy", "Data collection"],
   ["/terms", "Independent concept"],
-  ["/our-story", "A Medjool story"],
   ["/health-and-wellness", "practical way to think"],
   ["/gut-health", "fiber routine"],
   ["/kid-nutrition", "Small bites"],
@@ -62,15 +61,13 @@ for (const [route, marker] of [
   ["/diabetes-health", "Read the carbs"],
   ["/pregnancy-health", "miracle claims"],
   ["/our-products", "Medjool for every"],
-  ["/store-locator", "produce aisle"],
   ["/recipes", "every kind of craving"],
   ["/recipes/all", "every kind of craving"],
   ["/energy-ball-builder", "Build your own energy"],
   ["/supercharge-your-smoothies", "Build a smoothie"],
-  ["/blog", "Ideas worth sharing"],
-  ["/resources", "Guides for smarter"],
-  ["/trade-resources", "brighter Medjool"],
   ["/contact-us", "Questions, feedback"],
+  ["/cart", "Review your cart"],
+  ["/checkout", "Request your order"],
 ]) {
   test(`${route} renders successfully`, async () => {
     const response = await fetch(`${baseUrl}${route}`);
@@ -83,7 +80,14 @@ for (const [route, marker] of [
 
 test("the home page exposes real destinations and no placeholder email", async () => {
   const html = await (await fetch(baseUrl)).text();
-  assert.match(html, /href="\/store-locator"/);
+  assert.match(html, /href="\/products"/);
+  assert.match(html, /href="\/cart"/);
+  assert.match(html, /contact@naturesdates\.com/);
+  assert.doesNotMatch(html, /href="\/store-locator"/);
+  assert.doesNotMatch(html, /href="\/our-story"/);
+  assert.doesNotMatch(html, /href="\/blog"/);
+  assert.doesNotMatch(html, /href="\/resources"/);
+  assert.doesNotMatch(html, /href="\/trade-resources"/);
   assert.doesNotMatch(html, formerOfficialLink);
   assert.doesNotMatch(html, /hello@example\.com/);
   assert.match(html, /href="\/privacy"/);
@@ -106,13 +110,6 @@ test("SEO uses the production domain and indexable discovery files", async () =>
   const productHtml = await (await fetch(`${baseUrl}/products/whole-fresh-medjool-dates`)).text();
   assert.match(productHtml, /<link rel="canonical" href="https:\/\/naturesdates\.com\/products\/whole-fresh-medjool-dates"/i);
   assert.match(productHtml, /"@type":"Product"/);
-
-  const storyHtml = await (await fetch(`${baseUrl}/our-story`)).text();
-  assert.match(storyHtml, /<meta name="keywords" content="Bard Valley Medjool dates,/i);
-  assert.match(storyHtml, /"@type":"AboutPage"/);
-  assert.match(storyHtml, /"@type":"BreadcrumbList"/);
-  assert.match(storyHtml, /University of California ANR/);
-  assert.match(storyHtml, /USDA \/ National Institute of Food and Agriculture/);
 
   const wellnessHtml = await (await fetch(`${baseUrl}/health-and-wellness`)).text();
   assert.match(wellnessHtml, /<meta name="keywords" content="Medjool date nutrition,/i);
@@ -195,7 +192,6 @@ test("the responsive navbar exposes the complete local navigation", async () => 
   const html = await (await fetch(baseUrl)).text();
   for (const href of [
     "/products",
-    "/our-story",
     "/health-and-wellness",
     "/gut-health",
     "/kid-nutrition",
@@ -204,15 +200,16 @@ test("the responsive navbar exposes the complete local navigation", async () => 
     "/fitness",
     "/diabetes-health",
     "/pregnancy-health",
-    "/store-locator",
     "/recipes",
     "/energy-ball-builder",
     "/supercharge-your-smoothies",
-    "/blog",
-    "/resources",
-    "/trade-resources",
+    "/cart",
+    "/checkout",
   ]) {
     assert.match(html, new RegExp(`href="${href.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
+  }
+  for (const deletedHref of ["/our-story", "/store-locator", "/blog", "/resources", "/trade-resources"]) {
+    assert.doesNotMatch(html, new RegExp(`href="${deletedHref.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
   }
   assert.match(html, /aria-label="Main navigation"/);
   assert.match(html, /aria-controls="mobile-menu"/);
