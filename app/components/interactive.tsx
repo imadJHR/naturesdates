@@ -242,8 +242,6 @@ export function Header() {
 }
 
 export function OfficialHero() {
-  const reduceMotion = useReducedMotion();
-
   return (
     <section id="top" className="hero official-hero section-orange" aria-labelledby="hero-title">
       <div className="official-hero-shell">
@@ -270,13 +268,6 @@ export function OfficialHero() {
             <Image src="/assets/harvest.jpg" alt="A worker carefully harvesting dates in Bard Valley" fill priority sizes="(max-width: 800px) 88vw, 590px" />
           </div>
           <figcaption><span>Harvest morning, Bard Valley</span><strong>Real people. Real care.</strong></figcaption>
-          <motion.div
-            className="hero-product hero-product-whole"
-            animate={reduceMotion ? undefined : { y: [0, -7, 0], rotate: [-5, -3, -5] }}
-            transition={reduceMotion ? undefined : { duration: 5.5, ease: "easeInOut", repeat: Infinity }}
-          >
-            <Image src="/hero-official/whole-pack.png" alt="Natural Delights Organic Whole Medjool Dates" width={622} height={569} priority sizes="(max-width: 720px) 48vw, 250px" />
-          </motion.div>
           <div className="hero-field-stamp" aria-hidden="true"><span>Grown with</span><strong>♥</strong><span>in the valley</span></div>
         </figure>
       </div>
