@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const SITE_NAME = "Natures Dates";
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://naturesdates.com").replace(/\/$/, "");
 export const SITE_DESCRIPTION =
-  "Discover Natures Dates Medjool date products, wholesome snack ideas, recipes and practical wellness inspiration.";
+  "Discover Natures Dates premium Medjool products, boutique snack ideas, recipes and warm editorial wellness inspiration.";
 
 type PageMetadata = {
   title: string;

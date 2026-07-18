@@ -38,7 +38,7 @@ before(async () => {
 after(() => server?.kill());
 
 for (const [route, marker] of [
-  ["/", "Raised On"],
+  ["/", "Raised by hand"],
   ["/products", "Find your"],
   ["/products/category/fresh-dates", "Fresh Dates"],
   ["/products/category/organic", "Organic"],

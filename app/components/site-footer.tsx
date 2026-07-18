@@ -8,8 +8,8 @@ export function SiteFooter() {
       <div className="footer-inner">
         <div className="footer-top">
           <div className="footer-cta">
-            <p className="footer-eyebrow">Stay on the sunny side</p>
-            <h2>GOOD DAYS<br />GROW HERE.</h2>
+            <p className="footer-eyebrow">Natures Dates studio</p>
+            <h2>PREMIUM<br />MEDJOOL<br />HOUSE.</h2>
           </div>
           <div className="footer-contact-card">
             <Image src="/natures-dates-logo.webp" alt="Natures Dates" width={112} height={112} />
@@ -23,7 +23,7 @@ export function SiteFooter() {
             <Link href="/#wellness">Goodness</Link><Link href="/products">All Products</Link><Link href="/#recipes">Recipes</Link>
           </div>
           <div>
-            <h3>Official resources</h3>
+            <h3>Store tools</h3>
             <a href="mailto:contact@naturesdates.com">contact@naturesdates.com</a>
             <Link href="/cart">Cart</Link>
             <Link href="/checkout">Checkout</Link>
@@ -31,14 +31,14 @@ export function SiteFooter() {
             <Link href="/faq">Product FAQ</Link>
           </div>
           <div>
-            <h3>Follow the sun</h3>
+            <h3>Brand notes</h3>
             <Link href="/faq">About &amp; FAQ</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link>
           </div>
         </div>
-        <div className="footer-wordmark" aria-hidden="true">NATURES DATES</div>
+        <div className="footer-wordmark" aria-hidden="true">DATE HOUSE</div>
         <div className="footer-bottom">
-          <span>© 2026 Bard Valley inspired creative concept.</span>
-          <span>Not affiliated with or endorsed by Natural Delights.</span>
+          <span>© 2026 Natures Dates independent design direction.</span>
+          <span>Warm editorial commerce for premium Medjool products.</span>
         </div>
       </div>
     </footer>

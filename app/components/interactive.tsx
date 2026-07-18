@@ -291,56 +291,65 @@ export function OfficialHero() {
 
 export function GoodnessShowcase() {
   const benefits = [
-    { id: "potassium", label: "Excellent Source of Potassium", image: "/goodness-official/potassium.png" },
-    { id: "glycemic", label: "Low on the Glycemic Index", image: "/goodness-official/glycemic-index.png" },
-    { id: "vitamins", label: "16 Essential Vitamins & Minerals", image: "/goodness-official/vitamins-minerals.png" },
-    { id: "heart", label: "Certified Heart-Healthy", image: "/goodness-official/heart-healthy.png" },
+    { id: "potassium", label: "Potassium support", detail: "A whole-fruit snack with naturally occurring minerals.", image: "/goodness-official/potassium.png" },
+    { id: "glycemic", label: "Steady sweetness", detail: "Caramel-like flavor with a naturally low glycemic index.", image: "/goodness-official/glycemic-index.png" },
+    { id: "vitamins", label: "Daily essentials", detail: "A simple source of vitamins, minerals and real fruit energy.", image: "/goodness-official/vitamins-minerals.png" },
+    { id: "heart", label: "Heart-smart choice", detail: "A better pantry staple for snacks, smoothies and recipes.", image: "/goodness-official/heart-healthy.png" },
   ];
 
   return (
-    <section id="wellness" className="wellness section-cream" aria-labelledby="goodness-title">
-      <div className="section-inner center goodness-inner">
-        <h2 className="sr-only" id="goodness-title">Natural Goodness the Natural Delights Way</h2>
-        <Image
-          className="goodness-title-art"
-          src="/goodness-official/natural-goodness-title.png"
-          alt=""
-          width={1292}
-          height={262}
-          sizes="(max-width: 640px) 90vw, 646px"
-        />
+    <section id="wellness" className="wellness wellness-redesign section-cream" aria-labelledby="goodness-title">
+      <div className="wellness-redesign-bg" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+      </div>
+      <div className="section-inner wellness-redesign-inner">
+        <div className="wellness-redesign-copy">
+          <p className="goodness-kicker">Nutrition desk</p>
+          <h2 className="goodness-headline" id="goodness-title">Medjool energy, redesigned as a bold benefit dashboard.</h2>
+          <p className="wellness-redesign-lead">No more empty bowl layout. This section now works like a premium nutrition panel with strong cards, numbered highlights and a product-led visual block.</p>
+          <div className="wellness-redesign-actions">
+            <Link className="btn red goodness-cta" href="/health-and-wellness">Explore Medjool nutrition <ArrowUpRight size={18} /></Link>
+            <span>4 key benefits</span>
+          </div>
+        </div>
 
-        <div className="goodness-stage">
-          <Image
-            className="goodness-bowl"
-            src="/goodness-official/bowl-of-dates.png"
-            alt="A bowl of Medjool dates"
-            width={770}
-            height={519}
-            sizes="(max-width: 900px) 86vw, 770px"
-          />
-          <div className="goodness-benefits" aria-label="Medjool date highlights">
+        <div className="wellness-dashboard" aria-label="Medjool date nutrition highlights">
+          <div className="wellness-product-panel">
+            <div className="wellness-product-card" aria-hidden="true">
+              <Image src="/goodness-official/bowl-of-dates.png" alt="" width={770} height={519} sizes="(max-width: 900px) 76vw, 430px" />
+              <div>
+                <span>Natural</span>
+                <strong>Medjool fuel</strong>
+              </div>
+            </div>
+            <div className="wellness-score-card">
+              <strong>16+</strong>
+              <span>vitamins & minerals</span>
+            </div>
+          </div>
+
+          <div className="wellness-benefit-grid">
             {benefits.map((benefit, index) => (
-              <motion.div
-                className={`goodness-benefit benefit-${benefit.id}`}
+              <motion.article
+                className={`wellness-benefit-card benefit-${benefit.id}`}
                 key={benefit.id}
                 initial={false}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ delay: index * 0.35, duration: 0.7, ease: "easeOut" }}
+                whileInView={{ y: [18, 0], opacity: [0.75, 1] }}
+                viewport={{ once: true, amount: 0.35 }}
+                transition={{ delay: index * 0.08, duration: 0.45, ease: "easeOut" }}
               >
-                <Link className="goodness-icon" href="/health-and-wellness" aria-describedby={`goodness-label-${benefit.id}`}>
-                  <Image src={benefit.image} alt="" width={170} height={170} sizes="90px" />
-                  <span className="sr-only">Learn about {benefit.label}</span>
-                </Link>
-                <span className="goodness-label" id={`goodness-label-${benefit.id}`} role="tooltip">{benefit.label}</span>
-              </motion.div>
+                <span className="wellness-benefit-number">0{index + 1}</span>
+                <Image src={benefit.image} alt="" width={170} height={170} sizes="74px" />
+                <h3>{benefit.label}</h3>
+                <p>{benefit.detail}</p>
+              </motion.article>
             ))}
           </div>
         </div>
 
-        <p className="goodness-disclaimer">Nutrition and certifications vary by product. Check the current package; certification does not extend to recipes or suggested uses.</p>
-        <Link className="btn red goodness-cta" href="/health-and-wellness">Explore Medjool nutrition <ArrowUpRight size={18} /></Link>
+        <p className="goodness-disclaimer wellness-redesign-disclaimer">Nutrition and certifications vary by product. Check the current package; certification does not extend to recipes or suggested uses.</p>
       </div>
     </section>
   );
