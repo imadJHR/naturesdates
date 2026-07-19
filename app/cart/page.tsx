@@ -5,8 +5,8 @@ import { SiteFooter } from "@/app/components/site-footer";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Cart",
-  description: "Review the Natures Dates products added to your cart.",
+  title: "Wholesale Date Orders",
+  description: "Natures Dates handles bulk and wholesale date requests by email instead of online cart checkout.",
   path: "/cart",
 });
 

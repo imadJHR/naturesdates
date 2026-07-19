@@ -1,79 +1,68 @@
-"use client";
-
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
-import { Check, ShoppingBasket, ShoppingCart } from "lucide-react";
-import {
-  addToCart,
-  CART_EVENT,
-  getCartCount,
-  readCart,
-  type CartItem,
-  type CartProduct,
-} from "@/app/lib/cart";
+import { Mail, PackageCheck } from "lucide-react";
+import type { Product } from "@/app/data/products";
 import { Button } from "./ui/button";
 
-export type { CartItem, CartProduct } from "@/app/lib/cart";
-export {
-  addToCart,
-  CART_EVENT,
-  CART_KEY,
-  clearCart,
-  getCartCount,
-  readCart,
-  removeFromCart,
-  updateCartQuantity,
-  writeCart,
-} from "@/app/lib/cart";
+export type WholesaleProduct = Product;
+export type WholesaleItem = Product;
 
-export function AddToCartButton({
+const CONTACT_EMAIL = "contact@naturesdates.com";
+
+function buildWholesaleMailto(product?: Pick<Product, "name" | "shortName">) {
+  const subject = product ? `Wholesale inquiry: ${product.name}` : "Wholesale dates inquiry";
+  const body = product
+    ? [
+        "Hello Natures Dates,",
+        "",
+        `I am interested in wholesale availability for: ${product.name}.`,
+        "Please send me bulk pricing, minimum order quantity, packaging options and delivery details.",
+        "",
+        "Name:",
+        "Company:",
+        "Phone / WhatsApp:",
+        "City / Country:",
+        "Estimated quantity:",
+      ].join("\n")
+    : [
+        "Hello Natures Dates,",
+        "",
+        "I am interested in buying dates in bulk.",
+        "Please send me wholesale pricing, minimum order quantity, packaging options and delivery details.",
+        "",
+        "Name:",
+        "Company:",
+        "Phone / WhatsApp:",
+        "City / Country:",
+        "Estimated quantity:",
+      ].join("\n");
+
+  return `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+export function WholesaleQuoteButton({
   product,
   size = "default",
   className,
 }: {
-  product: CartProduct;
+  product: Product;
   size?: "default" | "sm" | "lg";
   className?: string;
 }) {
-  const [justAdded, setJustAdded] = useState(false);
-
-  const handleAddToCart = () => {
-    addToCart(product);
-    setJustAdded(true);
-    window.setTimeout(() => setJustAdded(false), 1400);
-  };
-
   return (
-    <Button type="button" size={size} className={className} onClick={handleAddToCart} aria-label={`Add ${product.name} to cart`}>
-      {justAdded ? <Check size={17} /> : <ShoppingBasket size={17} />}
-      {justAdded ? "Added" : "Add to cart"}
+    <Button asChild size={size} className={className} aria-label={`Request wholesale quote for ${product.name}`}>
+      <a href={buildWholesaleMailto(product)}>
+        <Mail size={17} />
+        Request wholesale quote
+      </a>
     </Button>
   );
 }
 
-export function CartStatus() {
-  const [cart, setCart] = useState<CartItem[]>([]);
-
-  useEffect(() => {
-    const syncCart = () => setCart(readCart());
-    syncCart();
-    window.addEventListener(CART_EVENT, syncCart);
-    window.addEventListener("storage", syncCart);
-    window.addEventListener("pageshow", syncCart);
-    return () => {
-      window.removeEventListener(CART_EVENT, syncCart);
-      window.removeEventListener("storage", syncCart);
-      window.removeEventListener("pageshow", syncCart);
-    };
-  }, []);
-
-  const count = useMemo(() => getCartCount(cart), [cart]);
-
+export function WholesaleStatus() {
   return (
-    <Link className="cart-status" href="/cart" aria-label={`${count} items in cart`}>
-      <ShoppingCart size={17} />
-      Cart
-      <span>{count}</span>
+    <Link className="cart-status" href="/contact-us" aria-label="Contact Natures Dates for wholesale orders">
+      <PackageCheck size={17} />
+      Wholesale
     </Link>
   );
 }

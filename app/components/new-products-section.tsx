@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { getCategory, getProductsByCategory } from "@/app/data/products";
-import { AddToCartButton } from "./cart-actions";
+import { WholesaleQuoteButton } from "./cart-actions";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
@@ -75,7 +75,7 @@ export function NewProductsSection() {
                   <p>{product.description}</p>
                 </div>
                 <div className="fresh-product-actions">
-                  <AddToCartButton product={product} className="fresh-cart-button" />
+                  <WholesaleQuoteButton product={product} className="fresh-cart-button" />
                   <Button asChild variant="outline" size="sm">
                     <Link href={`/products/${product.slug}`}>View <ArrowRight size={14} /></Link>
                   </Button>

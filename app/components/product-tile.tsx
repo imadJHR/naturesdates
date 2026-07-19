@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { Product } from "@/app/data/products";
 import { productCategories } from "@/app/data/products";
-import { AddToCartButton } from "./cart-actions";
+import { WholesaleQuoteButton } from "./cart-actions";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./ui/card";
@@ -25,7 +25,7 @@ export function ProductTile({ product }: { product: Product }) {
         <span className="catalog-accent" style={{ backgroundColor: product.accent }} aria-hidden="true" />
       </CardContent>
       <CardFooter>
-        <AddToCartButton product={product} className="catalog-add-cart" />
+        <WholesaleQuoteButton product={product} className="catalog-add-cart" />
         <Button asChild variant="outline">
           <Link href={`/products/${product.slug}`}>View product <ArrowRight size={16} /></Link>
         </Button>

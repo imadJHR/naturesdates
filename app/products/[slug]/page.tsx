@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { notFound } from "next/navigation";
-import { AddToCartButton } from "@/app/components/cart-actions";
+import { WholesaleQuoteButton } from "@/app/components/cart-actions";
 import { Header } from "@/app/components/interactive";
 import { ProductGrid } from "@/app/components/product-tile";
 import { SiteFooter } from "@/app/components/site-footer";
@@ -61,8 +61,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 {product.highlights.map((highlight) => <li key={highlight}><Check size={17} /> {highlight}</li>)}
               </ul>
               <div className="product-detail-actions">
-                <AddToCartButton product={product} size="lg" />
-                <Button asChild variant="outline" size="lg"><Link href="/our-products">Product guide <ArrowRight size={17} /></Link></Button>
+                <WholesaleQuoteButton product={product} size="lg" />
+                <Button asChild variant="outline" size="lg"><Link href="/our-products">Wholesale guide <ArrowRight size={17} /></Link></Button>
               </div>
             </div>
           </div>
@@ -70,12 +70,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
         <section className="product-notes">
           <div className="catalog-shell">
             <Card>
-              <CardHeader><CardTitle>A sunshine-ready pantry favorite</CardTitle></CardHeader>
-              <CardContent><p>Keep the package sealed and follow the storage and handling guidance printed on the current label. Ingredients and nutrition information should always be verified on the product package.</p></CardContent>
+              <CardHeader><CardTitle>Bulk-ready Medjool date supply</CardTitle></CardHeader>
+              <CardContent><p>For wholesale orders, contact us by email with your desired quantity, packaging needs and delivery destination. Pricing and availability are confirmed after your request.</p></CardContent>
             </Card>
           </div>
         </section>
-        {related.length > 0 && <section className="related-products"><div className="catalog-shell"><div className="related-heading"><p>More in {category?.name}</p><h2>You may also like</h2></div><ProductGrid products={related} /></div></section>}
+        {related.length > 0 && <section className="related-products"><div className="catalog-shell"><div className="related-heading"><p>More in {category?.name}</p><h2>More wholesale options</h2></div><ProductGrid products={related} /></div></section>}
       </main>
       <SiteFooter />
     </>

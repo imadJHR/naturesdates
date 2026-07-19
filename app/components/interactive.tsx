@@ -8,7 +8,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { ArrowRight, ArrowUpRight, ChevronDown, Menu, Play, X } from "lucide-react";
 import type { Product } from "@/app/data/products";
 import { productCategories } from "@/app/data/products";
-import { AddToCartButton, CartStatus } from "./cart-actions";
+import { WholesaleQuoteButton, WholesaleStatus } from "./cart-actions";
 
 type NavigationItem = {
   href: string;
@@ -176,7 +176,7 @@ export function Header() {
           })}
         </ul>
       </nav>
-      <CartStatus />
+      <WholesaleStatus />
       <a href="mailto:contact@naturesdates.com" className="email-link" aria-label="Email contact@naturesdates.com">
         contact@naturesdates.com
       </a>
@@ -230,7 +230,7 @@ export function Header() {
                   </div>
                 );
               })}
-              <CartStatus />
+              <WholesaleStatus />
               <a href="mailto:contact@naturesdates.com" className="mobile-nav-link" style={{background:'var(--green)',color:'white',justifyContent:'center'}}>contact@naturesdates.com</a>
             </nav>
           </div>
@@ -257,10 +257,10 @@ export function OfficialHero() {
             </blockquote>
           </div>
           <div className="official-hero-actions">
-            <Link className="btn hero-primary" href="/products">Explore the dates <ArrowUpRight size={18} /></Link>
-            <Link className="hero-story-link" href="/products">Explore the dates <span aria-hidden="true">→</span></Link>
+            <Link className="btn hero-primary" href="/products">Browse wholesale catalog <ArrowUpRight size={18} /></Link>
+            <Link className="hero-story-link" href="/products">Request bulk dates <span aria-hidden="true">→</span></Link>
           </div>
-          <p className="hero-letter-signoff">With care, from our palms to yours.</p>
+          <p className="hero-letter-signoff">Bulk Medjool dates supplied by email request.</p>
         </article>
 
         <figure className="hero-field-photo">
@@ -409,7 +409,7 @@ export function ProductCard({ product }: { product: Product }) {
         <p>{product.description}</p>
       </div>
       <div className="product-card-actions">
-        <AddToCartButton product={product} className="product-card-cart" />
+        <WholesaleQuoteButton product={product} className="product-card-cart" />
         <Link className="product-card-link" href={`/products/${product.slug}`}>View product <ArrowRight size={15} /></Link>
       </div>
     </motion.article>

@@ -13,8 +13,8 @@ export function SiteFooter() {
           </div>
           <div className="footer-contact-card">
             <Image src="/natures-dates-logo.webp" alt="Natures Dates" width={112} height={112} />
-            <p>Questions about products, recipes or where to find your next pack?</p>
-            <Link className="btn btn-primary" href="/contact-us">Start a conversation <ArrowRight size={18} /></Link>
+            <p>Need dates in bulk? Contact us by email for wholesale pricing, packaging and delivery details.</p>
+            <Link className="btn btn-primary" href="/contact-us">Request wholesale pricing <ArrowRight size={18} /></Link>
           </div>
         </div>
         <div className="footer-columns">
@@ -23,11 +23,10 @@ export function SiteFooter() {
             <Link href="/#wellness">Goodness</Link><Link href="/products">All Products</Link><Link href="/#recipes">Recipes</Link>
           </div>
           <div>
-            <h3>Store tools</h3>
+            <h3>Wholesale contact</h3>
             <a href="mailto:contact@naturesdates.com">contact@naturesdates.com</a>
-            <Link href="/cart">Cart</Link>
-            <Link href="/checkout">Checkout</Link>
             <Link href="/contact-us">Contact Natures Dates</Link>
+            <Link href="/products">Wholesale catalog</Link>
             <Link href="/faq">Product FAQ</Link>
           </div>
           <div>
@@ -38,7 +37,7 @@ export function SiteFooter() {
         <div className="footer-wordmark" aria-hidden="true">DATE HOUSE</div>
         <div className="footer-bottom">
           <span>© 2026 Natures Dates independent design direction.</span>
-          <span>Warm editorial commerce for premium Medjool products.</span>
+          <span>Wholesale-focused catalog for premium Medjool date requests.</span>
         </div>
       </div>
     </footer>

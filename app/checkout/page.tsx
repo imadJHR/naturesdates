@@ -5,8 +5,8 @@ import { SiteFooter } from "@/app/components/site-footer";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Checkout",
-  description: "Submit a Natures Dates checkout request with your selected products.",
+  title: "Bulk Date Order Request",
+  description: "Contact Natures Dates by email for wholesale Medjool date pricing, packaging and delivery details.",
   path: "/checkout",
 });
 

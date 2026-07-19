@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ShoppingBasket } from "lucide-react";
+import { ArrowLeft, PackageCheck } from "lucide-react";
 import { Header } from "@/app/components/interactive";
 import { SiteFooter } from "@/app/components/site-footer";
 
@@ -23,7 +23,7 @@ export default function NotFound() {
             </p>
             <div className="not-found-actions">
               <Link className="btn red" href="/"><ArrowLeft size={18} /> Back home</Link>
-              <Link className="btn green" href="/products"><ShoppingBasket size={18} /> Browse products</Link>
+              <Link className="btn green" href="/products"><PackageCheck size={18} /> Browse products</Link>
             </div>
           </div>
 

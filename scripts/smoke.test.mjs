@@ -66,8 +66,8 @@ for (const [route, marker] of [
   ["/energy-ball-builder", "Build your own energy"],
   ["/supercharge-your-smoothies", "Build a smoothie"],
   ["/contact-us", "Questions, feedback"],
-  ["/cart", "Review your cart"],
-  ["/checkout", "Request your order"],
+  ["/cart", "Cart removed"],
+  ["/checkout", "Checkout removed"],
 ]) {
   test(`${route} renders successfully`, async () => {
     const response = await fetch(`${baseUrl}${route}`);
@@ -81,7 +81,7 @@ for (const [route, marker] of [
 test("the home page exposes real destinations and no placeholder email", async () => {
   const html = await (await fetch(baseUrl)).text();
   assert.match(html, /href="\/products"/);
-  assert.match(html, /href="\/cart"/);
+  assert.doesNotMatch(html, /href="\/cart"/);
   assert.match(html, /contact@naturesdates\.com/);
   assert.doesNotMatch(html, /href="\/store-locator"/);
   assert.doesNotMatch(html, /href="\/our-story"/);
@@ -93,6 +93,8 @@ test("the home page exposes real destinations and no placeholder email", async (
   assert.match(html, /href="\/privacy"/);
   assert.match(html, /Meet what(?:'|&#x27;)s new/i);
   assert.match(html, /href="\/products\/organic-pitted-medjool-dates"/);
+  assert.match(html, /Wholesale/i);
+  assert.doesNotMatch(html, /Add to cart/i);
   assert.match(html, /Choose your sunshine moment/i);
   assert.match(html, /href="\/supercharge-your-smoothies"/);
 });
@@ -203,8 +205,6 @@ test("the responsive navbar exposes the complete local navigation", async () => 
     "/recipes",
     "/energy-ball-builder",
     "/supercharge-your-smoothies",
-    "/cart",
-    "/checkout",
   ]) {
     assert.match(html, new RegExp(`href="${href.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`));
   }
