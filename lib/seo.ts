@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
-export const SITE_NAME = "Natures Dates";
+export const SITE_NAME = "Nature's Dates";
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://naturesdates.com").replace(/\/$/, "");
 export const SITE_DESCRIPTION =
-  "Discover Natures Dates premium Medjool products, boutique snack ideas, recipes and warm editorial wellness inspiration.";
+  "Discover premium Medjool dates, original recipes and responsible everyday wellness guidance from Nature's Dates.";
 
 type PageMetadata = {
   title: string;
@@ -17,7 +17,7 @@ export function createPageMetadata({
   title,
   description,
   path,
-  image = "/og-natures-dates.jpg",
+  image = "/og.png",
   keywords,
 }: PageMetadata): Metadata {
   return {

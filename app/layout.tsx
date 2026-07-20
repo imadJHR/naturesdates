@@ -19,7 +19,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: {
-    default: "Natures Dates | Premium Medjool Date House",
+    default: "Nature's Dates | Premium Medjool Dates",
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -48,19 +48,19 @@ export const metadata: Metadata = {
     googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
   },
   openGraph: {
-    title: "Natures Dates | Premium Medjool Date House",
+    title: "Nature's Dates | Premium Medjool Dates",
     description: SITE_DESCRIPTION,
     type: "website",
     locale: "en_US",
     url: "/",
     siteName: SITE_NAME,
-    images: [{ url: "/og-natures-dates.jpg", width: 1200, height: 630, alt: "Natures Dates — premium Medjool date house" }],
+    images: [{ url: "/og.png", width: 1800, height: 900, alt: "Nature's Dates — Raised by sunshine" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Natures Dates | Premium Medjool Date House",
+    title: "Nature's Dates | Premium Medjool Dates",
     description: SITE_DESCRIPTION,
-    images: ["/og-natures-dates.jpg"],
+    images: ["/og.png"],
   },
 };
 

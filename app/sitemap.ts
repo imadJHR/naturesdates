@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { contentPages } from "@/app/data/content-pages";
 import { productCategories, products } from "@/app/data/products";
+import { recipes } from "@/app/data/recipes";
 import { SITE_URL } from "@/lib/seo";
 
 function absoluteUrl(pathname: string) {
@@ -12,9 +13,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const contentRoutes = contentPages.map((page) => `/${page.slug}`);
   const productRoutes = products.map((product) => `/products/${product.slug}`);
   const categoryRoutes = productCategories.map((category) => `/products/category/${category.slug}`);
+  const recipeRoutes = recipes.map((recipe) => `/recipes/${recipe.slug}`);
   const now = new Date();
 
-  return [...staticRoutes, ...contentRoutes, ...productRoutes, ...categoryRoutes].map((route) => ({
+  return [...staticRoutes, ...contentRoutes, ...productRoutes, ...categoryRoutes, ...recipeRoutes].map((route) => ({
     url: absoluteUrl(route),
     lastModified: now,
     changeFrequency: route === "/" ? "weekly" : "monthly",

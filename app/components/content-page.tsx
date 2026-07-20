@@ -4,6 +4,7 @@ import { ArrowRight, BookOpen, CheckCircle2, ExternalLink } from "lucide-react";
 import type { ContentPage } from "@/app/data/content-pages";
 import { Header } from "./interactive";
 import { LocalBuilder, LocalContactForm } from "./local-page-tools";
+import { RecipeHub } from "./recipe-hub";
 import { SiteFooter } from "./site-footer";
 
 const wellnessPages = new Set([
@@ -117,7 +118,7 @@ export function ContentPageView({ page }: { page: ContentPage }) {
   return (
     <>
       <Header />
-      <main className={`info-page info-tone-${page.tone}`}>
+      <main className={`info-page info-tone-${page.tone} info-page-${page.slug}`}>
         <section className="info-hero">
           <div className="info-shell info-hero-grid">
             <div className="info-hero-copy">
@@ -125,8 +126,8 @@ export function ContentPageView({ page }: { page: ContentPage }) {
               <h1>{page.title}</h1>
               <p>{page.intro}</p>
               <div className="info-hero-actions">
-                <Link className="info-primary-link" href={page.related[0]?.href ?? "/products"}>{page.related[0]?.label ?? "Explore products"} <ArrowRight size={17} /></Link>
-                <Link className="info-secondary-link" href="/">Back to home</Link>
+                <Link className="info-primary-link" href={page.slug === "recipes" ? "#recipe-collection" : page.kind === "contact" ? "#contact-form" : (page.related[0]?.href ?? "/products")}>{page.slug === "recipes" ? "Browse the recipes" : page.kind === "contact" ? "Start your inquiry" : (page.related[0]?.label ?? "Explore products")} <ArrowRight size={17} /></Link>
+                <Link className="info-secondary-link" href={page.slug === "recipes" ? "/products" : page.kind === "contact" ? "/faq" : "/"}>{page.slug === "recipes" ? "Shop the dates" : page.kind === "contact" ? "Browse the FAQ" : "Back to home"}</Link>
               </div>
             </div>
             <div className={`info-hero-media${page.imageFit === "contain" ? " is-contain" : ""}`}>
@@ -142,6 +143,8 @@ export function ContentPageView({ page }: { page: ContentPage }) {
             ))}
           </div>
         </section>
+
+        {page.slug === "recipes" && <RecipeHub />}
 
         {page.facts && (
           <section className="story-facts-section" aria-labelledby="story-facts-title">
@@ -164,7 +167,7 @@ export function ContentPageView({ page }: { page: ContentPage }) {
           </section>
         )}
 
-        <section className="info-content-section">
+        {page.slug !== "recipes" && <section className="info-content-section">
           <div className="info-shell">
             <div className="info-section-heading">
               <p className="info-kicker">{pageMessaging.sectionKicker}</p>
@@ -185,7 +188,7 @@ export function ContentPageView({ page }: { page: ContentPage }) {
               <p className="info-disclaimer">General educational information only. It is not medical advice and is not intended to diagnose, treat, cure or prevent any condition. Product information should be verified on the current package.</p>
             )}
           </div>
-        </section>
+        </section>}
 
         {page.sources && (
           <section className="story-sources-section" aria-labelledby="story-sources-title">
@@ -211,7 +214,6 @@ export function ContentPageView({ page }: { page: ContentPage }) {
         {page.kind === "energy-builder" && <LocalBuilder kind="energy-builder" />}
         {page.kind === "smoothie-builder" && <LocalBuilder kind="smoothie-builder" />}
         {page.kind === "contact" && <LocalContactForm />}
-
         <section className="info-related-section">
           <div className="info-shell info-related-inner">
             <div><p className="info-kicker">Keep exploring</p><h2>More sunshine this way.</h2></div>

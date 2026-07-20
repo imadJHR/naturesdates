@@ -34,6 +34,6 @@ export function ProductTile({ product }: { product: Product }) {
   );
 }
 
-export function ProductGrid({ products }: { products: Product[] }) {
-  return <div className="catalog-grid">{products.map((product) => <ProductTile product={product} key={product.slug} />)}</div>;
+export function ProductGrid({ products, className }: { products: Product[]; className?: string }) {
+  return <div className={["catalog-grid", className].filter(Boolean).join(" ")}>{products.map((product) => <ProductTile product={product} key={product.slug} />)}</div>;
 }

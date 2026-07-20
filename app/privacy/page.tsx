@@ -2,24 +2,8 @@ import type { Metadata } from "next";
 import { LegalPage } from "../components/legal-page";
 import { createPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = createPageMetadata({
-  title: "Privacy",
-  description: "Learn how the Natures Dates website handles visitor data, local media, fonts and external links.",
-  path: "/privacy",
-});
+export const metadata: Metadata = createPageMetadata({ title: "Privacy", description: "How the Nature's Dates website handles contact information, technical data, cookies and external services.", path: "/privacy" });
 
 export default function PrivacyPage() {
-  return (
-    <LegalPage title="Privacy">
-      <p className="legal-note">Last updated: July 13, 2026. This page describes the current behavior of this demonstration website.</p>
-      <h2>Data collection</h2>
-      <p>This site does not provide accounts, forms, checkout, analytics or advertising trackers. It does not intentionally collect or store personal information.</p>
-      <h2>External links</h2>
-      <p>Links to Natural Delights and Instagram open third-party websites. Those services operate under their own privacy policies and may collect technical or account information.</p>
-      <h2>Local media and fonts</h2>
-      <p>Images and video are served by this website. Fonts are optimized at build time by Next.js, so the page does not need to contact Google Fonts from the visitor’s browser.</p>
-      <h2>Changes</h2>
-      <p>This notice should be reviewed if analytics, contact forms, hosting telemetry or other data-processing features are added later.</p>
-    </LegalPage>
-  );
+  return <LegalPage title="Privacy"><p className="legal-note">Last updated: July 20, 2026. This notice is an editable draft and should be reviewed by qualified counsel before launch.</p><h2>Who is responsible for this website</h2><p>TODO: Confirm company legal name, business address, jurisdiction and data-controller details. Privacy questions can currently be directed to contact@naturesdates.com.</p><h2>Information you choose to provide</h2><p>The contact form prepares an email in the visitor&apos;s email application; it does not submit data to a website database. If a CRM, form processor or newsletter provider is connected later, this notice must identify the provider, purpose, retention period and legal basis.</p><h2>Technical data and cookies</h2><p>TODO: Confirm hosting logs, analytics tools and cookie provider before launch. Do not enable non-essential analytics or advertising cookies without updating this notice and implementing the required consent controls.</p><h2>External links</h2><p>External services operate under their own privacy policies. Review those policies before sharing personal information with a third party.</p><h2>Your choices and rights</h2><p>TODO: Add verified regional privacy-rights procedures, identity-verification steps and response channels for each market served.</p><h2>Changes</h2><p>This notice should be reviewed whenever forms, commerce, analytics, advertising, hosting or other data processing changes.</p></LegalPage>;
 }

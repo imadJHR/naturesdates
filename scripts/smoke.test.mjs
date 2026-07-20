@@ -50,8 +50,8 @@ for (const [route, marker] of [
   ["/products/coconut-mini-medjools", "Coconut Mini Medjools"],
   ["/products/cacao-pecan-mini-medjools", "Cacao Pecan Mini Medjools"],
   ["/faq", "About &amp; FAQ"],
-  ["/privacy", "Data collection"],
-  ["/terms", "Independent concept"],
+  ["/privacy", "Information you choose to provide"],
+  ["/terms", "Business identity and jurisdiction"],
   ["/health-and-wellness", "practical way to think"],
   ["/gut-health", "fiber routine"],
   ["/kid-nutrition", "Small bites"],
@@ -105,7 +105,7 @@ test("SEO uses the production domain and indexable discovery files", async () =>
   assert.match(homeHtml, /<link rel="icon" href="\/icon\.png" type="image\/png" sizes="512x512"/i);
   assert.match(homeHtml, /<link rel="icon" href="\/favicon-48\.png" type="image\/png" sizes="48x48"/i);
   assert.match(homeHtml, /<link rel="shortcut icon" href="\/favicon\.ico" type="image\/x-icon"/i);
-  assert.match(homeHtml, /<meta property="og:image" content="https:\/\/naturesdates\.com\/og-natures-dates\.jpg"/i);
+  assert.match(homeHtml, /<meta property="og:image" content="https:\/\/naturesdates\.com\/og\.png"/i);
   assert.match(homeHtml, /https:\/\/naturesdates\.com\/#organization/);
   assert.match(homeHtml, /\/natures-dates-logo\.webp/);
 

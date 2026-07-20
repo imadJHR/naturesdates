@@ -8,6 +8,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { ArrowRight, ArrowUpRight, ChevronDown, Menu, Play, X } from "lucide-react";
 import type { Product } from "@/app/data/products";
 import { productCategories } from "@/app/data/products";
+import { siteConfig } from "@/app/data/site-config";
 import { WholesaleQuoteButton, WholesaleStatus } from "./cart-actions";
 
 type NavigationItem = {
@@ -17,6 +18,15 @@ type NavigationItem = {
 };
 
 const navigation: NavigationItem[] = [
+  { href: "/", label: "Home" },
+  {
+    href: "/products",
+    label: "Shop",
+    children: [
+      { href: "/products", label: "All Products" },
+      ...productCategories.map((category) => ({ href: `/products/category/${category.slug}`, label: category.name })),
+    ],
+  },
   {
     href: "/health-and-wellness",
     label: "Health & Wellness",
@@ -30,7 +40,6 @@ const navigation: NavigationItem[] = [
       { href: "/pregnancy-health", label: "Pregnancy" },
     ],
   },
-  { href: "/products", label: "Products" },
   {
     href: "/recipes",
     label: "Recipes",
@@ -40,6 +49,8 @@ const navigation: NavigationItem[] = [
       { href: "/supercharge-your-smoothies", label: "Smoothie Builder" },
     ],
   },
+  { href: "/faq", label: "FAQ" },
+  { href: "/contact-us", label: "Contact" },
 ];
 
 function NavigationLink({
@@ -121,6 +132,8 @@ export function Header() {
   }, [open]);
 
   return (
+    <>
+    <div className="announcement-bar"><span>{siteConfig.announcement}</span><Link href="/recipes">Find a recipe <ArrowRight size={14} /></Link></div>
     <header className="site-header" onKeyDown={(event) => {
       if (event.key === "Escape") {
         setDesktopMenu(null);
@@ -177,9 +190,6 @@ export function Header() {
         </ul>
       </nav>
       <WholesaleStatus />
-      <a href="mailto:contact@naturesdates.com" className="email-link" aria-label="Email contact@naturesdates.com">
-        contact@naturesdates.com
-      </a>
       <button
         ref={triggerRef}
         className="mobile-menu-btn"
@@ -238,6 +248,7 @@ export function Header() {
         </div>
       )}
     </header>
+    </>
   );
 }
 
@@ -246,35 +257,35 @@ export function OfficialHero() {
     <section id="top" className="hero official-hero section-orange" aria-labelledby="hero-title">
       <div className="official-hero-shell">
         <article className="hero-field-letter">
-          <p className="official-hero-eyebrow">A note from Bard Valley <span aria-hidden="true">— 2026</span></p>
+          <p className="official-hero-eyebrow">Premium Medjool dates <span aria-hidden="true">— naturally versatile</span></p>
           <h1 id="hero-title"><span>Raised by hand.</span><strong>Ripened by sunshine.</strong></h1>
-          <p className="official-hero-lead">Every Medjool begins with patient hands, warm desert days and people who know these palms by heart.</p>
+          <p className="official-hero-lead">Soft, caramel-like and naturally sweet, Medjool dates make everyday snacking and recipe time feel a little more generous.</p>
           <div className="hero-person-note">
-            <Image src="/assets/employee.jpg" alt="A member of the Bard Valley date-growing team" width={96} height={96} />
+            <Image src="/images/ingredients/date-harvest.webp" alt="Fresh dates at harvest" width={96} height={96} />
             <blockquote>
-              <p>Care for the fruit—from the palm all the way to the package.</p>
-              <cite>The work behind the harvest</cite>
+              <p>Simple fruit. Thoughtful preparation. Plenty of ways to enjoy it.</p>
+              <cite>From the palm to your pantry</cite>
             </blockquote>
           </div>
           <div className="official-hero-actions">
-            <Link className="btn hero-primary" href="/products">Browse wholesale catalog <ArrowUpRight size={18} /></Link>
-            <Link className="hero-story-link" href="/products">Request bulk dates <span aria-hidden="true">→</span></Link>
+            <Link className="btn hero-primary" href="/products">Shop the collection <ArrowUpRight size={18} /></Link>
+            <Link className="hero-story-link" href="/recipes">Explore recipes <span aria-hidden="true">→</span></Link>
           </div>
-          <p className="hero-letter-signoff">Bulk Medjool dates supplied by email request.</p>
+          <p className="hero-letter-signoff">Whole fruit, pitted favorites and portable bites.</p>
         </article>
 
         <figure className="hero-field-photo">
           <div className="hero-field-photo-image">
-            <Image src="/assets/harvest.jpg" alt="A worker carefully harvesting dates in Bard Valley" fill priority sizes="(max-width: 800px) 88vw, 590px" />
+            <Image src="/images/home/date-palm-golden-hour.webp" alt="A bowl of premium Medjool dates in a sunlit date palm grove" fill priority quality={88} sizes="(max-width: 800px) 94vw, 94vw" />
           </div>
-          <figcaption><span>Harvest morning, Bard Valley</span><strong>Real people. Real care.</strong></figcaption>
-          <div className="hero-field-stamp" aria-hidden="true"><span>Grown with</span><strong>♥</strong><span>in the valley</span></div>
+          <figcaption><span>Golden-hour Medjools</span><strong>Naturally rich. Beautifully simple.</strong></figcaption>
+          <div className="hero-field-stamp" aria-hidden="true"><span>Soft</span><strong>♥</strong><span>caramel-like</span></div>
         </figure>
       </div>
 
       <div className="official-hero-marquee" aria-hidden="true">
-        <span>People first</span><i>✦</i><span>Hand harvested</span><i>✦</i><span>Desert grown</span><i>✦</i>
-        <span>People first</span><i>✦</i><span>Hand harvested</span><i>✦</i><span>Desert grown</span>
+        <span>Whole fruit</span><i>✦</i><span>Caramel-like taste</span><i>✦</i><span>Recipe ready</span><i>✦</i>
+        <span>Whole fruit</span><i>✦</i><span>Caramel-like taste</span><i>✦</i><span>Recipe ready</span>
       </div>
     </section>
   );
@@ -282,10 +293,10 @@ export function OfficialHero() {
 
 export function GoodnessShowcase() {
   const benefits = [
-    { id: "potassium", label: "Potassium support", detail: "A whole-fruit snack with naturally occurring minerals.", image: "/goodness-official/potassium.png" },
-    { id: "glycemic", label: "Steady sweetness", detail: "Caramel-like flavor with a naturally low glycemic index.", image: "/goodness-official/glycemic-index.png" },
-    { id: "vitamins", label: "Daily essentials", detail: "A simple source of vitamins, minerals and real fruit energy.", image: "/goodness-official/vitamins-minerals.png" },
-    { id: "heart", label: "Heart-smart choice", detail: "A better pantry staple for snacks, smoothies and recipes.", image: "/goodness-official/heart-healthy.png" },
+    { id: "potassium", label: "Whole-fruit simplicity", detail: "A soft, naturally sweet fruit that is easy to enjoy on its own." },
+    { id: "glycemic", label: "Read the label", detail: "Use the current serving size and Nutrition Facts panel for product-specific details." },
+    { id: "vitamins", label: "Kitchen versatility", detail: "Chop, blend, stuff or pair dates with foods you already love." },
+    { id: "heart", label: "Everyday enjoyment", detail: "A caramel-like ingredient for breakfasts, snacks and shareable recipes." },
   ];
 
   return (
@@ -298,26 +309,23 @@ export function GoodnessShowcase() {
       <div className="section-inner wellness-redesign-inner">
         <div className="wellness-redesign-copy">
           <p className="goodness-kicker">Nutrition desk</p>
-          <h2 className="goodness-headline" id="goodness-title">Medjool energy, redesigned as a bold benefit dashboard.</h2>
-          <p className="wellness-redesign-lead">No more empty bowl layout. This section now works like a premium nutrition panel with strong cards, numbered highlights and a product-led visual block.</p>
+          <h2 className="goodness-headline" id="goodness-title">A whole-fruit favorite, without the wellness hype.</h2>
+          <p className="wellness-redesign-lead">Explore practical, label-aware guidance for fitting Medjool dates into everyday meals, snacks and active routines.</p>
           <div className="wellness-redesign-actions">
             <Link className="btn red goodness-cta" href="/health-and-wellness">Explore Medjool nutrition <ArrowUpRight size={18} /></Link>
-            <span>4 key benefits</span>
+            <span>Responsible, evidence-informed guidance</span>
           </div>
         </div>
 
         <div className="wellness-dashboard" aria-label="Medjool date nutrition highlights">
           <div className="wellness-product-panel">
             <div className="wellness-product-card" aria-hidden="true">
-              <Image src="/goodness-official/bowl-of-dates.png" alt="" width={770} height={519} sizes="(max-width: 900px) 76vw, 430px" />
-              <div>
-                <span>Natural</span>
-                <strong>Medjool fuel</strong>
-              </div>
+              <Image src="/images/wellness/balanced-breakfast.webp" alt="A balanced breakfast prepared with fruit, oats and Medjool dates" width={1600} height={900} sizes="(max-width: 900px) 76vw, 430px" />
+              <div><span>Soft</span><strong>Medjool goodness</strong></div>
             </div>
             <div className="wellness-score-card">
-              <strong>16+</strong>
-              <span>vitamins & minerals</span>
+              <strong>Label</strong>
+              <span>first, always</span>
             </div>
           </div>
 
@@ -332,7 +340,6 @@ export function GoodnessShowcase() {
                 transition={{ delay: index * 0.08, duration: 0.45, ease: "easeOut" }}
               >
                 <span className="wellness-benefit-number">0{index + 1}</span>
-                <Image src={benefit.image} alt="" width={170} height={170} sizes="74px" />
                 <h3>{benefit.label}</h3>
                 <p>{benefit.detail}</p>
               </motion.article>
@@ -357,7 +364,7 @@ export function HeroVideo() {
   return (
     <motion.div ref={ref} className="video-stage" style={reduceMotion ? undefined : { rotate, y, scale }}>
       <div className="video-topbar" aria-hidden="true"><span /><span /><span /><b>sunshine-reel.mp4</b></div>
-      <video autoPlay={!reduceMotion} muted loop playsInline preload="metadata" poster="/assets/palm.jpg" controls={Boolean(reduceMotion)}>
+      <video autoPlay={!reduceMotion} muted loop playsInline preload="metadata" poster="/images/home/date-palm-golden-hour.webp" controls={Boolean(reduceMotion)}>
         <source src="/assets/sunshine-reel.mp4" type="video/mp4" />
       </video>
       {!reduceMotion && <div className="play-chip"><Play size={16} fill="currentColor" /> scroll motion reel</div>}
@@ -420,7 +427,7 @@ export function RecipeMedia() {
   const reduceMotion = useReducedMotion();
   return (
     <motion.div className="recipe-media" whileHover={reduceMotion ? undefined : { scale: 1.015 }} transition={{ type: "spring", stiffness: 140, damping: 16 }}>
-      <Image src="/assets/recipe.jpg" alt="A recipe prepared with Medjool dates" fill sizes="(max-width: 1024px) 100vw, 50vw" />
+      <Image src="/images/recipes/date-recipe-spread.webp" alt="A breakfast bowl, smoothie, energy bites and stuffed Medjool dates" fill sizes="(max-width: 1024px) 100vw, 50vw" />
     </motion.div>
   );
 }
