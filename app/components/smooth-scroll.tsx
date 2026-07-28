@@ -32,7 +32,7 @@ export function SmoothScroll() {
     if (window.location.hash) {
       hashFrame = window.requestAnimationFrame(() => {
         const target = document.querySelector<HTMLElement>(window.location.hash);
-        if (target) lenis.scrollTo(target, { offset: -104, duration: 1.08, easing: easeOutExpo });
+        if (target) lenis.scrollTo(target, { offset: -104, duration: 1.08, easing: easeOutExpo })
       });
     }
 

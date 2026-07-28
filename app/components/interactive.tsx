@@ -408,7 +408,13 @@ export function ProductCard({ product }: { product: Product }) {
     >
       <Link className="product-card-media" href={`/products/${product.slug}`} aria-label={`View ${product.name}`}>
         {product.isNew && <span className="product-card-badge">New</span>}
-        <Image src={product.image} alt={`${product.name} package`} width={600} height={600} sizes="(max-width: 760px) 82vw, (max-width: 1180px) 42vw, 28vw" />
+        <Image 
+          src={product.image} 
+          alt={`${product.name} package`} 
+          width={600} 
+          height={600} 
+          sizes="(max-width: 760px) 82vw, (max-width: 1180px) 42vw, 28vw"
+        />
       </Link>
       <div className="product-card-copy">
         <p className="product-card-category">{category?.name}</p>

@@ -14,7 +14,13 @@ export function ProductTile({ product }: { product: Product }) {
     <Card className="catalog-card">
       <Link className="catalog-card-media" href={`/products/${product.slug}`} aria-label={`View ${product.name}`}>
         {product.isNew && <Badge className="catalog-new-badge">New</Badge>}
-        <Image src={product.image} alt={product.name} width={600} height={600} sizes="(max-width: 760px) 86vw, (max-width: 1100px) 42vw, 30vw" />
+        <Image 
+          src={product.image} 
+          alt={product.name} 
+          width={600} 
+          height={600} 
+          sizes="(max-width: 760px) 86vw, (max-width: 1100px) 42vw, 30vw"
+        />
       </Link>
       <CardHeader>
         <Badge variant="outline">{category?.name}</Badge>
