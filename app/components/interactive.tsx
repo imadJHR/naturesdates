@@ -241,7 +241,7 @@ export function Header() {
                 );
               })}
               <WholesaleStatus />
-              <a href="mailto:contact@naturesdates.com" className="mobile-nav-link" style={{background:'var(--green)',color:'white',justifyContent:'center'}}>contact@naturesdates.com</a>
+              <a href="mailto:contact@naturesdates.com" className="mobile-nav-link mobile-email-link">contact@naturesdates.com</a>
             </nav>
           </div>
           <button className="mobile-menu-backdrop" type="button" aria-label="Close navigation overlay" onClick={() => setOpen(false)} />

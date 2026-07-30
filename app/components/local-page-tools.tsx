@@ -91,32 +91,43 @@ export function LocalContactForm() {
   };
 
   return (
-    <section className="local-tool-section" id="contact-form" aria-labelledby="contact-form-title"><div className="info-shell contact-form-shell">
-      <div className="contact-form-intro">
-        <p className="info-kicker">Contact Nature&apos;s Dates</p><h2 id="contact-form-title">Let&apos;s get your question to the right place.</h2>
-        <p>Choose a topic and share the useful details. This form prepares a complete email draft for you to review and send.</p>
-        <a href="mailto:contact@naturesdates.com" className="contact-email-link"><Mail size={18} /> contact@naturesdates.com</a>
-        <div className="contact-route-list">
-          <article><PackageSearch size={21} /><div><strong>Product support</strong><span>Include the product, package code, purchase location and what happened.</span></div></article>
-          <article><Building2 size={21} /><div><strong>Wholesale &amp; retail</strong><span>Include your company, region, estimated quantity and preferred format.</span></div></article>
+    <section className="local-tool-section contact-section" id="contact-form" aria-labelledby="contact-form-title">
+      <div className="info-shell contact-form-shell">
+        <div className="contact-form-intro">
+          <p className="info-kicker">Contact Nature&apos;s Dates</p>
+          <h2 id="contact-form-title">Let&apos;s get your question to the right place.</h2>
+          <p className="contact-lede">Choose a topic and share the useful details. This form prepares a complete email draft for you to review and send.</p>
+          <a href="mailto:contact@naturesdates.com" className="contact-email-link"><Mail size={18} /> contact@naturesdates.com</a>
+          <div className="contact-route-list">
+            <article className="contact-route-card">
+              <span className="contact-route-icon"><PackageSearch size={21} /></span>
+              <div><strong>Product support</strong><span>Include the product, package code, purchase location and what happened.</span></div>
+            </article>
+            <article className="contact-route-card">
+              <span className="contact-route-icon"><Building2 size={21} /></span>
+              <div><strong>Wholesale &amp; retail</strong><span>Include your company, region, estimated quantity and preferred format.</span></div>
+            </article>
+          </div>
+          <p className="contact-privacy-note"><strong>A quick privacy note:</strong> Do not include payment details, passwords, medical records or other sensitive personal information.</p>
         </div>
-        <p className="contact-privacy-note"><strong>A quick privacy note:</strong> Do not include payment details, passwords, medical records or other sensitive personal information.</p>
+        <form className="local-contact-form" onSubmit={submit} noValidate>
+          <div className="contact-form-heading"><span>Tell us a little more</span><strong>Fields marked * are required.</strong></div>
+          <div className="contact-field-grid">
+            <label>Name *<input name="name" autoComplete="name" minLength={2} placeholder="Your full name" required /></label>
+            <label>Email *<input name="email" type="email" autoComplete="email" placeholder="you@example.com" required /></label>
+            <label>Company or organization<input name="company" autoComplete="organization" placeholder="Optional" /></label>
+            <label>City and country<input name="location" autoComplete="address-level2 country-name" placeholder="Helpful for availability questions" /></label>
+          </div>
+          <label className="contact-topic">Inquiry type *<select name="topic" defaultValue="General inquiry"><option>General inquiry</option><option>Customer support inquiry</option><option>Wholesale inquiry</option><option>Retail partnership inquiry</option><option>Press inquiry</option></select></label>
+          <label className="contact-honeypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
+          <label className="contact-message">How can we help? *<textarea name="message" rows={7} minLength={10} placeholder="For product support, include the exact product, package details, where you bought it and a clear description." required /></label>
+          <button className="contact-submit" type="submit"><Send size={17} /> Prepare your email</button>
+          <small className="contact-form-footnote">Nothing is sent automatically. You will review the draft in your email app before sending.</small>
+          {status === "success" && <p className="contact-success" role="status"><Check size={17} /> Your email draft is ready. <a href={mailto}>Open your email app to send it.</a></p>}
+          {status === "error" && <p className="contact-error" role="alert">Please enter a valid name, email and message, then try again.</p>}
+        </form>
       </div>
-      <form className="local-contact-form" onSubmit={submit} noValidate>
-        <div className="contact-form-heading"><span>Tell us a little more</span><strong>Fields marked * are required.</strong></div>
-        <label>Name *<input name="name" autoComplete="name" minLength={2} placeholder="Your full name" required /></label>
-        <label>Email *<input name="email" type="email" autoComplete="email" placeholder="you@example.com" required /></label>
-        <label>Company or organization<input name="company" autoComplete="organization" placeholder="Optional" /></label>
-        <label>City and country<input name="location" autoComplete="address-level2 country-name" placeholder="Helpful for availability questions" /></label>
-        <label className="contact-topic">Inquiry type *<select name="topic" defaultValue="General inquiry"><option>General inquiry</option><option>Customer support inquiry</option><option>Wholesale inquiry</option><option>Retail partnership inquiry</option><option>Press inquiry</option></select></label>
-        <label className="contact-honeypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
-        <label className="contact-message">How can we help? *<textarea name="message" rows={7} minLength={10} placeholder="For product support, include the exact product, package details, where you bought it and a clear description." required /></label>
-        <button className="contact-submit" type="submit"><Send size={17} /> Prepare your email</button>
-        <small className="contact-form-footnote">Nothing is sent automatically. You will review the draft in your email app before sending.</small>
-        {status === "success" && <p className="contact-success" role="status"><Check size={17} /> Your email draft is ready. <a href={mailto}>Open your email app to send it.</a></p>}
-        {status === "error" && <p className="contact-error" role="alert">Please enter a valid name, email and message, then try again.</p>}
-      </form>
-    </div></section>
+    </section>
   );
 }
 

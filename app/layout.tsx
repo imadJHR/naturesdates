@@ -2,8 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Nunito, Pacifico } from "next/font/google";
 import "lenis/dist/lenis.css";
 import "./globals.css";
-import "./content-pages.css";
 import { SmoothScroll } from "./components/smooth-scroll";
+import { CustomCursor } from "./components/custom-cursor";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const nunito = Nunito({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
@@ -92,6 +92,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className={`${nunito.variable} ${pacifico.variable}`}>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
         <SmoothScroll />
+        <CustomCursor />
         {children}
       </body>
     </html>

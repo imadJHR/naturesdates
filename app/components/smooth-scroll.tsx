@@ -15,16 +15,17 @@ export function SmoothScroll() {
 
     const lenis = new Lenis({
       autoRaf: true,
-      duration: 1.08,
-      easing: easeOutExpo,
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 0.86,
-      touchMultiplier: 1,
+      wheelMultiplier: 1,
+      touchMultiplier: 1.4,
+      syncTouch: true,
       overscroll: true,
       anchors: {
         offset: -104,
-        duration: 1.08,
-        easing: easeOutExpo,
+        duration: 1.2,
+        easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       },
     });
 

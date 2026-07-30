@@ -3,9 +3,6 @@ import { Mail, PackageCheck } from "lucide-react";
 import type { Product } from "@/app/data/products";
 import { Button } from "./ui/button";
 
-export type WholesaleProduct = Product;
-export type WholesaleItem = Product;
-
 const CONTACT_EMAIL = "contact@naturesdates.com";
 
 function buildWholesaleMailto(product?: Pick<Product, "name" | "shortName">) {

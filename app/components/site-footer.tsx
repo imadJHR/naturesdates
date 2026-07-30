@@ -36,7 +36,7 @@ export function SiteFooter() {
             <Link href="/faq">FAQ</Link><Link href="/contact-us">Contact</Link><Link href="/privacy">Privacy</Link><Link href="/terms">Terms</Link>
           </div>
         </div>
-        <div className="footer-wordmark" aria-hidden="true">DATE HOUSE</div>
+        <div className="footer-wordmark" aria-hidden="true">NATURES DATES</div>
         <div className="footer-bottom">
           <span>© 2026 Nature&apos;s Dates. All rights reserved.</span>
           <span>Premium Medjool dates for modern everyday moments.</span>
