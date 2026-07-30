@@ -41,11 +41,11 @@ function buildWholesaleMailto(product?: Pick<Product, "name" | "shortName">) {
 
 export function WholesaleQuoteButton({
   product,
-  size = "default",
+  size = "md",
   className,
 }: {
   product: Product;
-  size?: "default" | "sm" | "lg";
+  size?: "sm" | "md" | "lg";
   className?: string;
 }) {
   return (
@@ -60,7 +60,7 @@ export function WholesaleQuoteButton({
 
 export function WholesaleStatus() {
   return (
-    <Link className="cart-status" href="/contact-us" aria-label="Contact Natures Dates for wholesale orders">
+    <Link className="inline-flex items-center gap-2 min-h-[44px] border border-white/38 rounded-full px-3.5 py-[9px] bg-white/16 text-white text-xs font-black whitespace-nowrap" href="/contact-us" aria-label="Contact Natures Dates for wholesale orders">
       <PackageCheck size={17} />
       Wholesale
     </Link>

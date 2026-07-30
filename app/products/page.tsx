@@ -18,13 +18,13 @@ export default function ProductsPage() {
   return (
     <>
       <Header />
-      <main className="catalog-page">
-        <section className="catalog-hero">
-          <div className="catalog-shell">
-            <p className="catalog-eyebrow">Natures Dates collection</p>
-            <h1>Find your<br /><span>favorite date.</span></h1>
-            <p>Browse classic fresh Medjools, organic options and portable Mini Medjools by category.</p>
-            <div className="category-shortcuts">
+      <main className="bg-white">
+        <section className="bg-[#8B1832] text-white py-16 md:py-24 px-4">
+          <div className="max-w-[1200px] mx-auto">
+            <p className="text-[#C9A961] text-xs font-black tracking-[0.17em] uppercase mb-4">Natures Dates collection</p>
+            <h1 className="m-0 text-[clamp(48px,12vw,96px)] leading-[0.86] tracking-[-0.06em] mb-4">Find your<br /><span className="text-[#C9A961]">favorite date.</span></h1>
+            <p className="max-w-[620px] text-white/80 text-lg leading-[1.6] mb-6">Browse classic fresh Medjools, organic options and portable Mini Medjools by category.</p>
+            <div className="flex flex-wrap gap-2.5">
               {productCategories.map((category) => (
                 <Button asChild variant="outline" key={category.slug}>
                   <Link href={`/products/category/${category.slug}`}>{category.name} <ArrowRight size={15} /></Link>
@@ -33,8 +33,8 @@ export default function ProductsPage() {
             </div>
           </div>
         </section>
-        <section className="catalog-listing">
-          <div className="catalog-shell"><ProductCatalogTabs /></div>
+        <section className="px-4 py-16">
+          <div className="max-w-[1200px] mx-auto"><ProductCatalogTabs /></div>
         </section>
       </main>
       <SiteFooter />

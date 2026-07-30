@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Nunito, Pacifico } from "next/font/google";
 import "lenis/dist/lenis.css";
 import "./globals.css";
-import "./content-pages.css";
 import { SmoothScroll } from "./components/smooth-scroll";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 
@@ -13,7 +12,7 @@ const siteUrl = new URL(SITE_URL);
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#d4af37",
+  themeColor: "#C9A961",
 };
 
 export const metadata: Metadata = {

@@ -59,37 +59,91 @@ export default function FaqPage() {
   return <>
     <Header />
     <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-    <main className="faq-page">
-      <section className="faq-hero">
-        <div className="info-shell faq-hero-grid">
-          <div className="faq-hero-copy">
-            <p className="info-kicker">Questions, clearly answered</p>
-            <h1>Good questions deserve useful answers.</h1>
-            <p>Find practical guidance for choosing, storing and preparing Medjool dates—plus clear next steps for product support, retail and wholesale inquiries.</p>
-            <div className="faq-hero-actions"><Link href="#faq-answers">Explore the answers <ArrowRight size={17} /></Link><Link href="/contact-us">Contact the team</Link></div>
+    <main className="overflow-hidden bg-[#fff8ef] text-[#1B4D3E]">
+      <section className="relative overflow-hidden px-4 py-[clamp(72px,8vw,112px)]" style={{ background: "radial-gradient(circle at 96% 4%, rgba(241,161,30,.28), transparent 26%), radial-gradient(circle at 8% 100%, rgba(0,121,133,.16), transparent 28%), #2d574d" }}>
+        <div className="w-[min(1180px,calc(100%-28px))] mx-auto grid grid-cols-1 lg:grid-cols-[0.92fr_1.08fr] gap-[clamp(46px,7vw,92px)] items-center">
+          <div>
+            <p className="text-[#ffcb61] text-xs font-black tracking-[0.16em] uppercase mb-4">Questions, clearly answered</p>
+            <h1 className="max-w-[650px] m-0 text-white text-[clamp(62px,6.5vw,94px)] leading-[0.86] tracking-[-0.065em]">Good questions deserve useful answers.</h1>
+            <p className="max-w-[590px] mt-[26px] text-white/76 text-[clamp(17px,1.6vw,20px)] leading-[1.65]">Find practical guidance for choosing, storing and preparing Medjool dates&mdash;plus clear next steps for product support, retail and wholesale inquiries.</p>
+            <div className="flex flex-wrap gap-[11px] mt-8">
+              <Link href="#faq-answers" className="inline-flex items-center gap-2 min-h-[50px] px-5 py-0 rounded-full bg-[#f1a11e] text-[#4c2e1f] text-xs font-black uppercase">Explore the answers <ArrowRight size={17} /></Link>
+              <Link href="/contact-us" className="inline-flex items-center gap-2 min-h-[50px] px-5 py-0 rounded-full border border-white/30 text-white text-xs font-black uppercase hover:border-white hover:bg-white hover:text-[#2d574d]">Contact the team</Link>
+            </div>
           </div>
-          <div className="faq-hero-media">
-            <Image src="/images/home/date-palm-golden-hour.webp" alt="Premium Medjool dates in a sunlit palm grove" fill priority sizes="(max-width: 760px) 92vw, 45vw" />
-            <div className="faq-hero-card"><strong>{questions.length}</strong><span>clear answers across products, storage, nutrition and support</span></div>
-          </div>
-        </div>
-      </section>
-
-      <nav className="faq-topic-nav" aria-label="FAQ topics"><div className="info-shell">{faqGroups.map((group, index) => <a href={`#${group.id}`} key={group.id}><span>{String(index + 1).padStart(2, "0")}</span>{group.category}</a>)}</div></nav>
-
-      <section className="faq-answers" id="faq-answers">
-        <div className="info-shell">
-          <div className="faq-answers-heading"><div><p className="info-kicker">Browse by topic</p><h2>Everything in one place.</h2></div><p>Package information always takes priority for product-specific ingredients, allergens, nutrition and storage directions.</p></div>
-          <div className="faq-groups">
-            {faqGroups.map((group, groupIndex) => <section className="faq-group" id={group.id} key={group.category}>
-              <div className="faq-group-heading"><span>{String(groupIndex + 1).padStart(2, "0")}</span><div><h2>{group.category}</h2><p>{group.intro}</p></div></div>
-              <div className="faq-list">{group.items.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</div>
-            </section>)}
+          <div className="relative min-h-[clamp(320px,70vw,570px)] overflow-hidden border-[8px] border-white/92 rounded-[22px_58px_22px_22px] bg-[#b98153] shadow-[0_34px_76px_rgba(20,42,35,0.32)] rotate-[1deg]">
+            <Image src="/images/home/date-palm-golden-hour.webp" alt="Premium Medjool dates in a sunlit palm grove" fill priority className="object-cover" sizes="(max-width: 760px) 92vw, 45vw" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(31,35,24,0.58)] to-transparent" />
+            <div className="absolute right-5 bottom-5 left-5 z-[2] flex items-center gap-[17px] rounded-[17px] p-[17px_19px] bg-[rgba(255,248,239,0.92)] text-[#315d51] shadow-[0_18px_38px_rgba(22,38,31,0.22)]">
+              <strong className="text-[42px] leading-[1] tracking-[-0.05em]">{questions.length}</strong>
+              <span className="max-w-[250px] text-xs font-black leading-[1.45]">clear answers across products, storage, nutrition and support</span>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="faq-support-cta"><div className="info-shell faq-support-inner"><div><p className="info-kicker">Still need help?</p><h2>Bring us the details.</h2><p>A product name, package code, purchase location and clear question help the team understand what you need.</p></div><div><CheckCircle2 size={24} /><span>Product and package questions</span><CheckCircle2 size={24} /><span>Retail and wholesale inquiries</span><Link href="/contact-us"><MailQuestion size={18} /> Start a conversation <ArrowRight size={17} /></Link></div></div></section>
+      <nav className="sticky top-[82px] z-[5] bg-[#f1a11e] overflow-x-auto" aria-label="FAQ topics">
+        <div className="w-[min(1180px,calc(100%-28px))] mx-auto flex">
+          {faqGroups.map((group, index) => (
+            <a href={`#${group.id}`} key={group.id} className="flex-none md:flex-1 flex items-center gap-2.5 min-w-0 min-h-[82px] border-l border-[rgba(91,48,26,0.15)] last:border-r px-3.5 py-3 text-[#56321f] text-[11px] font-black leading-[1.25] hover:bg-[rgba(255,255,255,0.22)] transition-colors">
+              <span className="grid w-[34px] aspect-square flex-none place-items-center rounded-full bg-[rgba(255,255,255,0.34)] text-[10px]">{String(index + 1).padStart(2, "0")}</span>
+              {group.category}
+            </a>
+          ))}
+        </div>
+      </nav>
+
+      <section className="px-4 py-[clamp(82px,9vw,130px)]" id="faq-answers">
+        <div className="w-[min(1180px,calc(100%-28px))] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.55fr] gap-[clamp(24px,6vw,50px)] items-end mb-16">
+            <div>
+              <p className="text-[#C9A961] text-xs font-black tracking-[0.16em] uppercase mb-4">Browse by topic</p>
+              <h2 className="m-0 text-[#643620] text-[clamp(50px,6vw,82px)] leading-[0.88] tracking-[-0.06em]">Everything in one place.</h2>
+            </div>
+            <p className="m-0 border-l-3 border-[#f1a11e] pl-5 text-[#795847] text-base leading-[1.7]">Package information always takes priority for product-specific ingredients, allergens, nutrition and storage directions.</p>
+          </div>
+          <div className="grid gap-[34px]">
+            {faqGroups.map((group, groupIndex) => (
+              <section className="scroll-mt-[115px] grid grid-cols-1 lg:grid-cols-[minmax(250px,0.7fr)_minmax(0,1.3fr)] gap-[clamp(30px,5vw,70px)] border-t border-[#e7d5c8] pt-[34px]" id={group.id} key={group.category}>
+                <div className="grid grid-cols-[44px_1fr] gap-3.5 items-start">
+                  <span className="grid w-[44px] aspect-square place-items-center rounded-full bg-[#f2d9ab] text-[#8f401e] text-[11px] font-black">{String(groupIndex + 1).padStart(2, "0")}</span>
+                  <div>
+                    <h2 className="mt-[3px] mb-[9px] text-[#663720] text-[clamp(26px,2.6vw,36px)] leading-[1] tracking-[-0.04em]">{group.category}</h2>
+                    <p className="m-0 text-[#886b5a] text-sm leading-[1.55]">{group.intro}</p>
+                  </div>
+                </div>
+                <div className="grid gap-2.5">
+                  {group.items.map((item) => (
+                    <details key={item.question} className="border border-[rgba(102,59,38,0.12)] rounded-[16px_27px_16px_16px] px-5 bg-white shadow-[0_12px_30px_rgba(92,47,27,0.06)] open:border-[rgba(193,2,48,0.18)] open:shadow-[0_18px_40px_rgba(92,47,27,0.1)]">
+                      <summary className="min-h-[66px] flex items-center justify-between gap-3 text-[#603420] text-sm font-black leading-[1.35] cursor-pointer list-none [&::-webkit-details-marker]:hidden after:content-['+'] after:grid after:w-8 after:aspect-square after:flex-none after:place-items-center after:rounded-full after:bg-[#f8e6ca] after:text-[#bd4722] after:text-[21px] after:font-light open:after:content-['−']">{item.question}</summary>
+                      <p className="max-w-[760px] m-0 mr-[48px] mb-[22px] text-[#7b5c4b] text-sm leading-[1.75]">{item.answer}</p>
+                    </details>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="px-4 py-[clamp(70px,8vw,110px)] bg-[#643620] text-white">
+        <div className="w-[min(1180px,calc(100%-28px))] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_0.65fr] gap-[clamp(42px,7vw,90px)] items-center">
+          <div>
+            <p className="text-[#ffc85c] text-xs font-black tracking-[0.16em] uppercase mb-4">Still need help?</p>
+            <h2 className="m-0 text-white text-[clamp(52px,6vw,82px)] leading-[0.88] tracking-[-0.06em]">Bring us the details.</h2>
+            <p className="max-w-[650px] text-white/72 text-base leading-[1.7] mt-[18px]">A product name, package code, purchase location and clear question help the team understand what you need.</p>
+          </div>
+          <div className="grid grid-cols-[28px_1fr] gap-[14px_12px] items-center rounded-[18px_36px_18px_18px] p-[27px] bg-[rgba(255,255,255,0.08)]">
+            <CheckCircle2 size={24} className="text-[#ffc85c]" />
+            <span className="text-sm font-black">Product and package questions</span>
+            <CheckCircle2 size={24} className="text-[#ffc85c]" />
+            <span className="text-sm font-black">Retail and wholesale inquiries</span>
+            <Link href="/contact-us" className="col-span-full inline-flex items-center justify-center gap-2 min-h-[48px] rounded-full bg-[#f1a11e] text-[#50301f] text-xs font-black uppercase mt-2">
+              <MailQuestion size={18} /> Start a conversation <ArrowRight size={17} />
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
     <SiteFooter />
   </>;

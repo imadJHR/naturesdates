@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "Medjool date products, recipes and sunshine-inspired snack ideas.",
     start_url: "/",
     display: "standalone",
-    background_color: "#fff7ef",
-    theme_color: "#c9002f",
+    background_color: "#FFFFFF",
+    theme_color: "#8B1832",
     icons: [
       { src: "/icon.png", sizes: "512x512", type: "image/png" },
       { src: "/favicon-192.png", sizes: "192x192", type: "image/png" },
