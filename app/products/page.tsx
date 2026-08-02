@@ -22,7 +22,7 @@ export default function ProductsPage() {
         <section className="catalog-hero">
           <div className="catalog-shell">
             <p className="catalog-eyebrow">Natures Dates collection</p>
-            <h1>Find your<br /><span>favorite date.</span></h1>
+            <h1>Find your<br /><span style={{ color: "#fff" }}>favorite date.</span></h1>
             <p>Browse classic fresh Medjools, organic options and portable Mini Medjools by category.</p>
             <div className="category-shortcuts">
               {productCategories.map((category) => (

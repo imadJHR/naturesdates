@@ -12,7 +12,6 @@ import type { Product } from "@/app/data/products";
 import { productCategories } from "@/app/data/products";
 import { siteConfig } from "@/app/data/site-config";
 import { WholesaleQuoteButton, WholesaleStatus } from "./cart-actions";
-import { ThemeToggle } from "./theme-toggle";
 import { Certifications } from "./certifications";
 import { Reveal, RevealSection } from "./reveal";
 
@@ -200,7 +199,6 @@ export function Header() {
       <a href={siteConfig.phoneHref} className="header-phone" aria-label={`Call us at ${siteConfig.phone}`}>
         {siteConfig.phone}
       </a>
-      <ThemeToggle />
       <button
         ref={triggerRef}
         className="mobile-menu-btn"

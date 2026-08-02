@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "./legacy-globals.css";
 @import "./legacy-content-pages.css";
-@import "./theme-dark.css";
-@import "./theme-dark-text.css";
 
 /* Custom cursor (desktop / fine pointer only, activated by JS) */
 .cursor-dot {
@@ -141,7 +139,7 @@ p, li, .info-content-card p, .info-content-card li, .faq-list details p,
 /* UI components -> Manrope (nav, buttons, forms, inputs, labels,
    badges, dropdowns, tables, captions, small text) */
 .desktop-nav-link, .mobile-nav-link, .mobile-nav-parent > button,
-.btn, .shad-button, .shad-button-outline, .theme-toggle, .trade, .email-link,
+.btn, .shad-button, .shad-button-outline, .trade, .email-link,
 .btn.green, .btn.red, .btn-primary, .header-phone, .cart-status,
 input, textarea, select, label, .form-label, .badge, .shad-badge, .shad-badge-secondary,
 .desktop-dropdown-link, .dropdown-trigger, table, th, td, .caption, small, .info-kicker,
@@ -152,7 +150,7 @@ input, textarea, select, label, .form-label, .badge, .shad-badge, .shad-badge-se
 
 /* Secondary text / labels weight */
 .desktop-nav-link, .mobile-nav-link, .mobile-nav-parent > button,
-.btn, .shad-button, .shad-button-outline, .theme-toggle, .trade, .email-link,
+.btn, .shad-button, .shad-button-outline, .trade, .email-link,
 .btn.green, .btn.red, .btn-primary, .header-phone, .cart-status,
 input, textarea, select, .badge, .shad-badge, .shad-badge-secondary,
 .desktop-dropdown-link, table, th { font-weight: 600; }
@@ -161,7 +159,7 @@ label, .form-label, .builder-group legend span, .info-kicker,
 
 /* Nav / buttons: tighter, modern tracking */
 .desktop-nav-link, .mobile-nav-link, .mobile-nav-parent > button,
-.btn, .shad-button, .shad-button-outline, .theme-toggle, .trade, .email-link,
+.btn, .shad-button, .shad-button-outline, .trade, .email-link,
 .btn.green, .btn.red, .btn-primary, .header-phone, .cart-status {
   letter-spacing: -0.005em;
 }
@@ -226,22 +224,6 @@ input, textarea, select, label, .form-label, .badge, .shad-badge,
   outline-offset: 4px;
 }
 
-/* ── Dark Mode: keep every badge clearly visible on dark chocolate ── */
-[data-theme="dark"] .cert-badge--halal { color: #f5ede3; }
-[data-theme="dark"] .cert-badge--usda img { filter: drop-shadow(0 0 0 rgba(0,0,0,0)); }
-/* FSSC wordmark greys vanish on dark -> lighten to a soft warm white,
-   preserving shape and the brand green where present. */
-[data-theme="dark"] .cert-badge--fssc img {
-  filter: brightness(0) invert(0.9);
-}
-[data-theme="dark"] .cert-badge:hover,
-[data-theme="dark"] .cert-badge:focus-visible {
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
-}
-[data-theme="dark"] .cert-badge:focus-visible {
-  outline-color: var(--gold, #e8a33d);
-}
-
 /* Tighten spacing on small screens */
 @media (max-width: 640px) {
   .certifications { gap: clamp(14px, 5vw, 26px); --cert-h: 46px; }
@@ -280,10 +262,8 @@ input, textarea, select, label, .form-label, .badge, .shad-badge,
   .site-header { gap: 8px; padding-right: 12px; }
 }
 
-/* Small phones: compact icon-only theme toggle + tighter wholesale pill. */
+/* Tighten spacing on small screens */
 @media (max-width: 420px) {
-  .theme-toggle { width: 40px; height: 40px; padding: 0; justify-content: center; }
-  .theme-toggle .theme-toggle-label { display: none; }
   .site-header .cart-status { padding: 0 12px; gap: 0; }
 }
 
@@ -292,7 +272,6 @@ input, textarea, select, label, .form-label, .badge, .shad-badge,
   .site-header .cart-status { width: 40px; justify-content: center; padding: 0; font-size: 0; }
   .logo { width: 76px; height: 76px; }
   .mobile-menu-btn { width: 40px; height: 40px; }
-  .theme-toggle { width: 38px; height: 38px; }
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -314,10 +293,6 @@ input, textarea, select, label, .form-label, .badge, .shad-badge,
   color: #fff;
   box-shadow: 0 14px 34px rgba(31, 20, 4, .32);
   cursor: pointer;
-}
-[data-theme="dark"] .scroll-to-top {
-  background: var(--red);
-  color: var(--cream);
 }
 
 @media (max-width: 640px) {

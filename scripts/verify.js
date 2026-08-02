@@ -8,7 +8,7 @@ const pages = [["home","/"],["contact","/contact-us"],["faq","/faq"],["products"
     await p.setViewport({ width: 1280, height: 900, deviceScaleFactor: 1 });
     for (const [n,u] of pages) {
       await p.goto("http://localhost:3000"+u, { waitUntil: "networkidle0", timeout: 60000 });
-      await p.evaluate((t) => { localStorage.setItem("naturesdates-theme", t); document.documentElement.setAttribute("data-theme", t); }, theme);
+      await p.evaluate((t) => { document.documentElement.setAttribute("data-theme", t); }, theme);
       await p.reload({ waitUntil: "networkidle0", timeout: 60000 });
       await p.evaluate((t) => document.documentElement.setAttribute("data-theme", t), theme);
       await new Promise(r => setTimeout(r, 500));

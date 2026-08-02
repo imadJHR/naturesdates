@@ -5,7 +5,6 @@ import "./globals.css";
 import { SmoothScroll } from "./components/smooth-scroll";
 import { CustomCursor } from "./components/custom-cursor";
 import { ScrollToTop } from "./components/scroll-to-top";
-import { ThemeProvider } from "./components/theme-provider";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const manrope = Manrope({
@@ -102,22 +101,14 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('naturesdates-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t;}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`,
-          }}
-        />
-      </head>
+      <head />
       <body className={`${manrope.variable} ${cormorant.variable} ${pacifico.variable}`}>
-        <ThemeProvider>
-          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
           <SmoothScroll />
           <CustomCursor />
           <ScrollToTop />
           {children}
-        </ThemeProvider>
-      </body>
+        </body>
     </html>
   );
 }

@@ -11,7 +11,7 @@ let server;
 
 // globals.css only @imports the real stylesheets; read them together so the
 // style assertions below inspect the actual compiled source.
-const cssFiles = ["globals.css", "legacy-globals.css", "legacy-content-pages.css", "theme-dark.css", "theme-dark-text.css"];
+const cssFiles = ["globals.css", "legacy-globals.css", "legacy-content-pages.css"];
 function readCss() {
   return cssFiles.map((file) => readFileSync(new URL(`../app/${file}`, import.meta.url), "utf8")).join("\n");
 }
