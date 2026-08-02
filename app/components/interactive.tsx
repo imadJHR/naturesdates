@@ -10,6 +10,8 @@ import type { Product } from "@/app/data/products";
 import { productCategories } from "@/app/data/products";
 import { siteConfig } from "@/app/data/site-config";
 import { WholesaleQuoteButton, WholesaleStatus } from "./cart-actions";
+import { ThemeToggle } from "./theme-toggle";
+import { Certifications } from "./certifications";
 
 type NavigationItem = {
   href: string;
@@ -190,6 +192,10 @@ export function Header() {
         </ul>
       </nav>
       <WholesaleStatus />
+      <a href={siteConfig.phoneHref} className="header-phone" aria-label={`Call us at ${siteConfig.phone}`}>
+        {siteConfig.phone}
+      </a>
+      <ThemeToggle />
       <button
         ref={triggerRef}
         className="mobile-menu-btn"
@@ -242,6 +248,7 @@ export function Header() {
               })}
               <WholesaleStatus />
               <a href="mailto:contact@naturesdates.com" className="mobile-nav-link mobile-email-link">contact@naturesdates.com</a>
+              <a href={siteConfig.phoneHref} className="mobile-nav-link mobile-phone-link">{siteConfig.phone}</a>
             </nav>
           </div>
           <button className="mobile-menu-backdrop" type="button" aria-label="Close navigation overlay" onClick={() => setOpen(false)} />
@@ -272,6 +279,7 @@ export function OfficialHero() {
             <Link className="hero-story-link" href="/recipes">Explore recipes <span aria-hidden="true">→</span></Link>
           </div>
           <p className="hero-letter-signoff">Whole fruit, pitted favorites and portable bites.</p>
+          <Certifications size="sm" lazy={false} className="hero-certifications" />
         </article>
 
         <figure className="hero-field-photo">
@@ -348,6 +356,7 @@ export function GoodnessShowcase() {
         </div>
 
         <p className="goodness-disclaimer wellness-redesign-disclaimer">Nutrition and certifications vary by product. Check the current package; certification does not extend to recipes or suggested uses.</p>
+        <Certifications className="wellness-certifications" />
       </div>
     </section>
   );

@@ -13,6 +13,7 @@ import { SiteFooter } from "@/app/components/site-footer";
 import { Badge } from "@/app/components/ui/badge";
 import { Button } from "@/app/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/app/components/ui/card";
+import { Certifications } from "@/app/components/certifications";
 import { getCategory, getProduct, products } from "@/app/data/products";
 import { recipes } from "@/app/data/recipes";
 import { createPageMetadata, SITE_NAME, SITE_URL } from "@/lib/seo";
@@ -67,6 +68,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 <WholesaleQuoteButton product={product} size="lg" />
                 <Button asChild variant="outline" size="lg"><Link href="/our-products">Wholesale guide <ArrowRight size={17} /></Link></Button>
               </div>
+              <Certifications className="product-detail-certifications" />
             </div>
           </div>
         </section>

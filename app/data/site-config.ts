@@ -2,6 +2,8 @@ export const siteConfig = {
   name: "Nature's Dates",
   url: "https://naturesdates.com",
   email: "contact@naturesdates.com",
+  phone: "+966 56 993 3559",
+  phoneHref: "tel:+966569933559",
   announcement: "Naturally sweet Medjool moments — from snack time to recipe time.",
   business: {
     legalName: "TODO: Confirm company legal name",

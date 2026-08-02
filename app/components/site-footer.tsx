@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { NewsletterForm } from "./local-page-tools";
+import { siteConfig } from "@/app/data/site-config";
+import { Certifications } from "./certifications";
 
 export function SiteFooter() {
   return (
@@ -27,6 +29,7 @@ export function SiteFooter() {
           <div>
             <h3>Wholesale contact</h3>
             <a href="mailto:contact@naturesdates.com">contact@naturesdates.com</a>
+            <a href={siteConfig.phoneHref} className="footer-phone">{siteConfig.phone}</a>
             <Link href="/contact-us">Contact Natures Dates</Link>
             <Link href="/products">Wholesale catalog</Link>
             <Link href="/faq">Product FAQ</Link>
@@ -37,6 +40,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div className="footer-wordmark" aria-hidden="true">NATURES DATES</div>
+        <Certifications className="footer-certifications" />
         <div className="footer-bottom">
           <span>© 2026 Nature&apos;s Dates. All rights reserved.</span>
           <span>Premium Medjool dates for modern everyday moments.</span>

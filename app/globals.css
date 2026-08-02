@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "./legacy-globals.css";
 @import "./legacy-content-pages.css";
+@import "./theme-dark.css";
+@import "./theme-dark-text.css";
 
 /* Custom cursor (desktop / fine pointer only, activated by JS) */
 .cursor-dot {
@@ -36,28 +38,223 @@ html.has-custom-cursor * { cursor: none !important; }
 
 /* ─────────────────────────────────────────────────────────────
    Natures Dates — Tailwind v4 design tokens
-   New brand palette: bordeaux #8B1832 (primary),
-   white #FFFFFF, forest green #1B4D3E, sand beige #D4A574.
+   Brand palette extracted from the Medjool dates packaging:
+   deep date red #A70310 (primary), dark burgundy #8A050C,
+   palm green #2A8863, sand beige #E4CEB2, golden brown #C8842B,
+   warm white #FCFAF7, very dark brown #1F1404 (text).
    ───────────────────────────────────────────────────────────── */
 @theme {
-  --color-brand-bordeaux: #8B1832;
-  --color-brand-white: #FFFFFF;
-  --color-brand-forest: #1B4D3E;
-  --color-brand-sand: #D4A574;
+  --color-brand-bordeaux: #A70310;
+  --color-brand-white: #FCFAF7;
+  --color-brand-forest: #2A8863;
+  --color-brand-sand: #E4CEB2;
 
   /* semantic aliases (kept for utility compatibility) */
-  --color-brand-red: #8B1832;
-  --color-brand-brown: #8B1832;
-  --color-brand-green: #1B4D3E;
-  --color-brand-deep-green: #1B4D3E;
-  --color-brand-teal: #1B4D3E;
-  --color-brand-tan: #D4A574;
-  --color-brand-orange: #D4A574;
-  --color-brand-sun: #E8B563;
-  --color-brand-cream: #FFFFFF;
-  --color-brand-cream-2: #FFFFFF;
-  --color-brand-soft-tan: #F0E2D2;
+  --color-brand-red: #A70310;
+  --color-brand-brown: #A70310;
+  --color-brand-green: #2A8863;
+  --color-brand-deep-green: #2A8863;
+  --color-brand-teal: #2A8863;
+  --color-brand-tan: #E4CEB2;
+  --color-brand-orange: #C8842B;
+  --color-brand-sun: #C8842B;
+  --color-brand-cream: #FCFAF7;
+  --color-brand-cream-2: #FCFAF7;
+  --color-brand-soft-tan: #F3E7D6;
 
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   --font-script: var(--font-script), cursive;
+  --font-display: var(--font-display), Georgia, serif;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Natures Dates — Editorial typography pairing
+   Headings  : Cormorant Garamond (elegant, luxury display)
+   Body / UI : Manrope (modern, highly readable)
+   Fonts are swapped ONLY here; no layout / spacing / component
+   changes. Pacifico (--font-script) is kept for script accents.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --font-display-stack: var(--font-display), Georgia, "Times New Roman", serif;
+  --font-body-stack: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Headings -> Cormorant Garamond */
+h1, h2, h3, h4, h5, h6,
+.hero h1, .hero-field-letter h1, .official-hero-eyebrow,
+.info-hero-copy h1, .info-kicker, .faq-hero-copy h1, .faq-hero-copy .info-kicker,
+.info-section-heading h2, .info-content-card h3, .info-disclaimer,
+.faq-answers-heading h2, .faq-group-heading h2, .faq-group-heading p,
+.faq-support-inner h2, .recipe-body h2, .recipe-card-copy h3,
+.recipe-more-heading h2, .recipe-ingredients-card li, .recipe-method-card li p,
+.story-facts-heading h2, .story-sources-inner h2, .story-facts-grid article strong,
+.story-facts-grid article > strong, .local-builder-heading h2, .contact-form-shell h2,
+.contact-form-heading, .builder-group h3, .builder-group legend span,
+.sunshine-moment-heading, .sunshine-moment-heading .script, .wellness-redesign-copy h2,
+.product-card h3, .product-highlights, .footer-cta h2, .footer-eyebrow,
+.footer-columns h3, .related-heading, .catalog-eyebrow, .catalog-hero h1 span,
+.section-eyebrow, .modal-title, .card-title, .display-heading, .legal-content h2 {
+  font-family: var(--font-display-stack);
+}
+
+/* Heading weights (per spec) */
+h1, .hero h1, .hero-field-letter h1, .info-hero-copy h1, .faq-hero-copy h1,
+.footer-cta h2, .catalog-hero h1 span { font-weight: 700; }
+h2, h3, .info-section-heading h2, .info-content-card h3, .faq-answers-heading h2,
+.faq-group-heading h2, .recipe-body h2, .recipe-more-heading h2, .story-facts-heading h2,
+.story-sources-inner h2, .local-builder-heading h2, .contact-form-shell h2,
+.wellness-redesign-copy h2, .product-card h3, .footer-columns h3,
+.related-heading, .recipe-card-copy h3, .modal-title, .card-title, .display-heading { font-weight: 700; }
+h4, h5, h6 { font-weight: 600; }
+
+/* Heading rhythm: tighter line-height + refined letter-spacing */
+h1, h2, h3, h4, h5, h6,
+.hero h1, .info-hero-copy h1, .faq-hero-copy h1, .footer-cta h2,
+.info-section-heading h2, .faq-answers-heading h2, .recipe-body h2,
+.product-card h3, .recipe-card-copy h3, .footer-columns h3, .story-facts-heading h2,
+.wellness-redesign-copy h2, .display-heading {
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+h4, h5, h6, .info-content-card h3, .faq-group-heading h2, .recipe-more-heading h2,
+.local-builder-heading h2, .contact-form-shell h2, .card-title, .modal-title {
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+}
+
+/* Body / UI -> Manrope (default via body font-family) */
+body {
+  font-family: var(--font-body-stack);
+  font-weight: 400;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+p, li, .info-content-card p, .info-content-card li, .faq-list details p,
+.faq-group-heading p, .recipe-ingredients-card li, .recipe-method-card li p,
+.story-facts-grid p, .builder-result p, .contact-detail-card p, .footer-bottom,
+.legal-content p {
+  font-family: var(--font-body-stack);
+}
+
+/* UI components -> Manrope (nav, buttons, forms, inputs, labels,
+   badges, dropdowns, tables, captions, small text) */
+.desktop-nav-link, .mobile-nav-link, .mobile-nav-parent > button,
+.btn, .shad-button, .shad-button-outline, .theme-toggle, .trade, .email-link,
+.btn.green, .btn.red, .btn-primary, .header-phone, .cart-status,
+input, textarea, select, label, .form-label, .badge, .shad-badge, .shad-badge-secondary,
+.desktop-dropdown-link, .dropdown-trigger, table, th, td, .caption, small, .info-kicker,
+.footer-columns a, .announcement-bar, .newsletter, .builder-option, .builder-group legend span,
+.contact-success, .cart-line, .cart-summary {
+  font-family: var(--font-body-stack);
+}
+
+/* Secondary text / labels weight */
+.desktop-nav-link, .mobile-nav-link, .mobile-nav-parent > button,
+.btn, .shad-button, .shad-button-outline, .theme-toggle, .trade, .email-link,
+.btn.green, .btn.red, .btn-primary, .header-phone, .cart-status,
+input, textarea, select, .badge, .shad-badge, .shad-badge-secondary,
+.desktop-dropdown-link, table, th { font-weight: 600; }
+label, .form-label, .builder-group legend span, .info-kicker,
+.announcement-bar, .footer-columns a, small { font-weight: 500; }
+
+/* Nav / buttons: tighter, modern tracking */
+.desktop-nav-link, .mobile-nav-link, .mobile-nav-parent > button,
+.btn, .shad-button, .shad-button-outline, .theme-toggle, .trade, .email-link,
+.btn.green, .btn.red, .btn-primary, .header-phone, .cart-status {
+  letter-spacing: -0.005em;
+}
+input, textarea, select, label, .form-label, .badge, .shad-badge,
+.shad-badge-secondary, .info-kicker, small, .caption {
+  letter-spacing: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Certification badges (Halal / USDA Organic / FSSC 22000)
+   Official SVGs. Shared visual height, preserved proportions,
+   equal spacing, subtle premium hover. Light + Dark support.
+   Scoped classes only — no changes to existing components.
+   ───────────────────────────────────────────────────────────── */
+.certifications {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(18px, 3vw, 38px);
+  --cert-h: 58px;
+}
+.cert-size-sm { --cert-h: 44px; }
+
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--cert-h);
+  margin: 0;
+  border-radius: 10px;
+  background: transparent;
+  transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+}
+.cert-badge img {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  display: block;
+  object-fit: contain;
+  /* crisp edges */
+  shape-rendering: geometricPrecision;
+}
+
+/* Halal emblem uses currentColor -> dark in light, light in dark */
+.cert-badge--halal { color: #1f1404; }
+.cert-badge--usda img { /* self-colored seal; keep as-is */ }
+
+/* FSSC 22000 wordmark: fixed greens/greys. Keep brand colors in light. */
+.cert-badge--fssc img { width: auto; }
+
+/* Subtle premium hover: slight scale + soft shadow (no flashy motion) */
+.cert-badge:hover,
+.cert-badge:focus-visible {
+  transform: scale(1.03);
+  box-shadow: 0 10px 26px rgba(31, 20, 4, 0.16);
+  outline: none;
+}
+.cert-badge:focus-visible {
+  outline: 2px solid var(--gold, #c8842b);
+  outline-offset: 4px;
+}
+
+/* ── Dark Mode: keep every badge clearly visible on dark chocolate ── */
+[data-theme="dark"] .cert-badge--halal { color: #f5ede3; }
+[data-theme="dark"] .cert-badge--usda img { filter: drop-shadow(0 0 0 rgba(0,0,0,0)); }
+/* FSSC wordmark greys vanish on dark -> lighten to a soft warm white,
+   preserving shape and the brand green where present. */
+[data-theme="dark"] .cert-badge--fssc img {
+  filter: brightness(0) invert(0.9);
+}
+[data-theme="dark"] .cert-badge:hover,
+[data-theme="dark"] .cert-badge:focus-visible {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
+}
+[data-theme="dark"] .cert-badge:focus-visible {
+  outline-color: var(--gold, #e8a33d);
+}
+
+/* Tighten spacing on small screens */
+@media (max-width: 640px) {
+  .certifications { gap: clamp(14px, 5vw, 26px); --cert-h: 46px; }
+  .cert-size-sm { --cert-h: 38px; }
+}
+
+/* ── Certifications: placement spacing (no layout/color changes) ── */
+.hero-certifications { margin-top: 26px; justify-content: flex-start; }
+.wellness-certifications { margin-top: 34px; }
+.product-detail-certifications { margin-top: 22px; justify-content: flex-start; }
+.footer-certifications { margin-top: 26px; }
+
+@media (max-width: 880px) {
+  .hero-certifications { justify-content: center; }
+  .product-detail-certifications { justify-content: center; }
 }

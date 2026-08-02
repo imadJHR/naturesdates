@@ -1,12 +1,24 @@
 import type { Metadata, Viewport } from "next";
-import { Nunito, Pacifico } from "next/font/google";
+import { Manrope, Cormorant_Garamond, Pacifico } from "next/font/google";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 import { SmoothScroll } from "./components/smooth-scroll";
 import { CustomCursor } from "./components/custom-cursor";
+import { ThemeProvider } from "./components/theme-provider";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 
-const nunito = Nunito({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
+const manrope = Manrope({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
+  display: "swap",
+});
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-display",
+  display: "swap",
+});
 const pacifico = Pacifico({ subsets: ["latin"], weight: "400", variable: "--font-script", display: "swap" });
 const siteUrl = new URL(SITE_URL);
 
@@ -89,11 +101,20 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${nunito.variable} ${pacifico.variable}`}>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-        <SmoothScroll />
-        <CustomCursor />
-        {children}
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('naturesdates-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);document.documentElement.style.colorScheme=t;}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`,
+          }}
+        />
+      </head>
+      <body className={`${manrope.variable} ${cormorant.variable} ${pacifico.variable}`}>
+        <ThemeProvider>
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+          <SmoothScroll />
+          <CustomCursor />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
