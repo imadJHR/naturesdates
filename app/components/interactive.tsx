@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useRevealEnabled } from "./use-motion";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
@@ -264,6 +265,7 @@ export function Header() {
 
 export function OfficialHero() {
   const reduceMotion = useReducedMotion();
+  const animate = useRevealEnabled();
   const sectionRef = useRef<HTMLElement>(null);
   const photoImageRef = useRef<HTMLDivElement>(null);
 
@@ -295,13 +297,13 @@ export function OfficialHero() {
     return () => ctx.revert();
   }, [reduceMotion]);
 
-  const heroItem = reduceMotion
-    ? {}
-    : {
+  const heroItem = animate
+    ? {
         initial: { opacity: 0, y: 20 },
         animate: { opacity: 1, y: 0 },
         transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
-      };
+      }
+    : {};
 
   return (
     <section ref={sectionRef} id="top" className="hero official-hero section-orange" aria-labelledby="hero-title">
@@ -318,8 +320,8 @@ export function OfficialHero() {
             </blockquote>
           </motion.div>
           <motion.div className="official-hero-actions" {...heroItem} transition={{ duration: 0.6, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}>
-            <MotionLink className="btn hero-primary" href="/products" whileHover={reduceMotion ? undefined : { y: -2, scale: 1.02 }} whileTap={reduceMotion ? undefined : { scale: 0.96 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>Shop the collection <ArrowUpRight size={18} /></MotionLink>
-            <MotionLink className="hero-story-link" href="/recipes" whileHover={reduceMotion ? undefined : { y: -2 }} whileTap={reduceMotion ? undefined : { scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>Explore recipes <span aria-hidden="true">→</span></MotionLink>
+            <MotionLink className="btn hero-primary" href="/products" whileHover={animate ? { y: -2, scale: 1.02 } : undefined} whileTap={animate ? { scale: 0.96 } : undefined} transition={{ type: "spring", stiffness: 400, damping: 17 }}>Shop the collection <ArrowUpRight size={18} /></MotionLink>
+            <MotionLink className="hero-story-link" href="/recipes" whileHover={animate ? { y: -2 } : undefined} whileTap={animate ? { scale: 0.97 } : undefined} transition={{ type: "spring", stiffness: 400, damping: 17 }}>Explore recipes <span aria-hidden="true">→</span></MotionLink>
           </motion.div>
           <motion.p className="hero-letter-signoff" {...heroItem} transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}>Whole fruit, pitted favorites and portable bites.</motion.p>
           <Certifications size="sm" lazy={false} className="hero-certifications" animate />
@@ -406,14 +408,14 @@ export function GoodnessShowcase() {
 }
 
 export function ProductCard({ product }: { product: Product }) {
-  const reduceMotion = useReducedMotion();
+  const animate = useRevealEnabled();
   const category = productCategories.find((item) => item.slug === product.category);
 
   return (
     <motion.article
       className="product-card"
       style={{ "--product-accent": product.accent } as CSSProperties}
-      whileHover={reduceMotion ? undefined : { y: -16, scale: 1.03 }}
+      whileHover={animate ? { y: -16, scale: 1.03 } : undefined}
       transition={{ type: "spring", stiffness: 120, damping: 14 }}
     >
       <Link className="product-card-media" href={`/products/${product.slug}`} aria-label={`View ${product.name}`}>
@@ -440,9 +442,9 @@ export function ProductCard({ product }: { product: Product }) {
 }
 
 export function RecipeMedia() {
-  const reduceMotion = useReducedMotion();
+  const animate = useRevealEnabled();
   return (
-    <motion.div className="recipe-media" whileHover={reduceMotion ? undefined : { scale: 1.015 }} transition={{ type: "spring", stiffness: 140, damping: 16 }}>
+    <motion.div className="recipe-media" whileHover={animate ? { scale: 1.015 } : undefined} transition={{ type: "spring", stiffness: 140, damping: 16 }}>
       <Image src="/images/recipes/date-recipe-spread.webp" alt="A breakfast bowl, smoothie, energy bites and stuffed Medjool dates" fill sizes="(max-width: 1024px) 100vw, 50vw" />
     </motion.div>
   );

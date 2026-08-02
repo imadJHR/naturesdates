@@ -2,6 +2,7 @@
 
 import type { ImgHTMLAttributes } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { useRevealEnabled } from "./use-motion";
 
 type Cert = {
   src: string;
@@ -64,6 +65,7 @@ export function Certifications({
   animate = false,
 }: CertificationsProps) {
   const reduceMotion = useReducedMotion();
+  const animateEnabled = useRevealEnabled();
   const classes = `certifications cert-size-${size} ${className}`.trim();
   const rowProps = {
     className: classes,
@@ -71,7 +73,7 @@ export function Certifications({
     "aria-label": "Certifications and food safety standards",
   };
 
-  if (!animate || reduceMotion) {
+  if (!animate || !animateEnabled) {
     return (
       <div {...rowProps}>
         {CERTS.map((cert) => (

@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import type { ReactNode } from "react";
+import { useRevealEnabled } from "./use-motion";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -13,13 +14,13 @@ type RevealProps = {
 };
 
 export function Reveal({ children, className, delay = 0, amount = 0.2 }: RevealProps) {
-  const reduceMotion = useReducedMotion();
+  const enabled = useRevealEnabled();
 
   return (
     <motion.div
       className={className}
-      initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+      initial={enabled ? { opacity: 0, y: 20 } : false}
+      whileInView={enabled ? { opacity: 1, y: 0 } : undefined}
       viewport={{ once: true, amount }}
       transition={{ duration: 0.6, delay, ease: EASE }}
     >
@@ -34,15 +35,15 @@ type RevealSectionProps = RevealProps & {
 };
 
 export function RevealSection({ children, className, id, delay = 0, amount = 0.2, ...rest }: RevealSectionProps) {
-  const reduceMotion = useReducedMotion();
+  const enabled = useRevealEnabled();
 
   return (
     <motion.section
       id={id}
       className={className}
       {...rest}
-      initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-      whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+      initial={enabled ? { opacity: 0, y: 20 } : false}
+      whileInView={enabled ? { opacity: 1, y: 0 } : undefined}
       viewport={{ once: true, amount }}
       transition={{ duration: 0.6, delay, ease: EASE }}
     >
