@@ -2,7 +2,9 @@
   - All dark red/green TEXT -> light tint so it stays visible on dark surfaces.
   - All light BACKGROUNDS (cards/sections/inputs) -> dark surface, except
     pill buttons that intentionally keep a light bg + dark text.
-  - Dark red BORDERS -> light tint. */
+  - Dark red BORDERS -> light tint.
+  - The editorial hero (hero-field-letter) is skipped on purpose: it is
+    already a dark glass card with warm text in light mode. */
 
 [data-theme="dark"] .desktop-dropdown p { color: var(--date-light); }
 [data-theme="dark"] .desktop-dropdown-link:hover, .desktop-dropdown-link:focus-visible { color: var(--date-light); }
@@ -27,28 +29,8 @@
 [data-theme="dark"] .footer-columns h3 { color: var(--date-light); }
 [data-theme="dark"] .footer-columns a:hover { color: var(--date-light); }
 [data-theme="dark"] .legal-content a { color: var(--green-light); }
-[data-theme="dark"] .btn.hero-primary { color: var(--date-light); }
-[data-theme="dark"] .hero-human-photo figcaption { color: var(--date-light); }
-[data-theme="dark"] .hero-human-photo figcaption strong { color: var(--date-light); }
-[data-theme="dark"] .hero-grower-note { color: var(--date-light); }
-[data-theme="dark"] .hero-grower-note span { color: var(--date-light); }
-[data-theme="dark"] .official-hero-marquee { color: var(--date-light); }
-[data-theme="dark"] .official-hero-marquee i { color: var(--date-light); }
-[data-theme="dark"] /* Human-first hero — an editorial field letter from Bard Valley */
-.hero.official-hero { color: var(--date-light); }
-[data-theme="dark"] .hero-field-letter .official-hero-eyebrow { color: var(--date-light); }
-[data-theme="dark"] .hero-field-letter .official-hero-eyebrow span { color: var(--date-light); }
-[data-theme="dark"] .hero-field-letter h1 { color: var(--date-light); }
-[data-theme="dark"] .hero-field-letter h1 span { color: var(--date-light); }
-[data-theme="dark"] .hero-field-letter h1 strong { color: var(--date-light); }
-[data-theme="dark"] .hero-field-letter .official-hero-lead { color: var(--date-light); }
-[data-theme="dark"] .hero-person-note blockquote p { color: var(--date-light); }
-[data-theme="dark"] .hero-person-note cite { color: var(--date-light); }
-[data-theme="dark"] .hero-field-letter .hero-story-link { color: var(--date-light); }
-[data-theme="dark"] .hero-letter-signoff { color: var(--date-light); }
 [data-theme="dark"] .not-found-script { color: var(--date-light); }
 [data-theme="dark"] body { color: var(--date-light); }
-[data-theme="dark"] .hero-field-letter .btn.hero-primary { color: var(--date-light); }
 [data-theme="dark"] .goodness-headline { color: var(--date-light); }
 [data-theme="dark"] .product-card h3,
 .fresh-product-copy h4 { color: var(--date-light); }
@@ -65,8 +47,6 @@ body { color: var(--date-light); }
 [data-theme="dark"] .wellness-redesign .goodness-headline { color: var(--date-light); }
 [data-theme="dark"] .wellness-redesign-actions > span { color: var(--date-light); }
 [data-theme="dark"] .wellness-benefit-card h3 { color: var(--date-light); }
-[data-theme="dark"] /* Hero rollback requested: restore the previous editorial field-letter hero section. */
-.hero.official-hero { color: var(--date-light); }
 [data-theme="dark"] .faq-list summary::after { color: var(--date-light); }
 [data-theme="dark"] .legal-cta a { color: var(--date-light); }
 [data-theme="dark"] .contact-error { color: var(--date-light); }
@@ -137,19 +117,26 @@ body { color: var(--date-light); }
 [data-theme="dark"] .hero { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .blob-yellow { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .video-stage { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .story-signals span { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .photo-card { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .well-card { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .goodness-benefit:hover .goodness-icon, .goodness-icon:focus-visible { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .product-card { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .product-card-media { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .product-card-category { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .product-card-link { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .product-card-link:hover { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .products { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .recipes { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .shad-badge-outline { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .shad-card { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .shad-tabs-list { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] /* Product catalogue */
 .new-products-section { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .fresh-category-card { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .fresh-product-card { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .fresh-product-media { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .moment-tabs-list { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .moment-panel { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .moment-copy li { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .moment-visual { background: var(--bg-2); background-color: var(--bg-2); }
@@ -158,23 +145,22 @@ body { color: var(--date-light); }
 [data-theme="dark"] .category-hero { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .product-detail-hero { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .product-notes { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .cart-line { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .cart-line-media { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .cart-qty { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .cart-qty button { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .cart-summary, .checkout-form, .cart-empty, .checkout-success-card { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .checkout-form input, .checkout-form textarea { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] /* Footer — seule partie inspirée de footer.design */
 footer { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .footer-cta, .footer-contact-card { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .footer-cta { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .footer-columns > div { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .legal-note { background: var(--bg-2); background-color: var(--bg-2); }
-[data-theme="dark"] /* Home hero — a sunny editorial composition with an organic product stage */
-.hero.official-hero { background: var(--bg-2); background-color: var(--bg-2); }
-[data-theme="dark"] .hero-human-photo { background: var(--bg-2); background-color: var(--bg-2); }
-[data-theme="dark"] .hero-grower-note { background: var(--bg-2); background-color: var(--bg-2); }
-[data-theme="dark"] .official-hero-marquee { background: var(--bg-2); background-color: var(--bg-2); }
-[data-theme="dark"] .hero.official-hero { background: var(--bg-2); background-color: var(--bg-2); }
-[data-theme="dark"] /* Human-first hero — an editorial field letter from Bard Valley */
-.hero.official-hero { background: var(--bg-2); background-color: var(--bg-2); }
-[data-theme="dark"] .hero-person-note { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .goodness-benefit, .benefit-potassium, .benefit-glycemic, .benefit-vitamins, .benefit-heart { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .not-found-hero { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .not-found-text-link { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .not-found-text-link:hover { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] /* 404 polish pass — calmer home-inspired composition */
 .not-found-hero { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] body { background: var(--bg-2); background-color: var(--bg-2); }
@@ -183,60 +169,80 @@ footer { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .goodness-icon { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .products,
 .new-products-section { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .product-card,
+.fresh-category-card,
+.fresh-product-card,
+.shad-card { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .product-card-media,
 .fresh-product-media { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .footer-cta,
+.footer-contact-card,
+.footer-columns > div { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] /* User requested: keep the redesign, but restore the original warm Natural-Delights-style color palette. */
 body { background: var(--bg-2); background-color: var(--bg-2); }
-[data-theme="dark"] .hero-field-photo-image { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] html,
 body { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] /* Complete redesign for the Wellness / benefits section. */
 .wellness-redesign { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .wellness-redesign .goodness-kicker::before { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .wellness-redesign-actions > span { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .wellness-product-card,
+.wellness-score-card,
+.wellness-benefit-card { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .wellness-product-card { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .wellness-benefit-card img { background: var(--bg-2); background-color: var(--bg-2); }
-[data-theme="dark"] /* Hero rollback requested: restore the previous editorial field-letter hero section. */
-.hero.official-hero { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .wellness-redesign-disclaimer { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] /* Launch-ready content components */
 .home-categories { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .home-faq .faq-list details { background: var(--bg-2); background-color: var(--bg-2); }
-/* Home FAQ teaser: section goes dark so the light left copy is readable.
-   Subtitle -> --text (warm white, ~#F5E9D7); description -> --text-soft
-   (#D8D1C7). "Good to know" script keeps its gold -- stays visible. */
-[data-theme="dark"] .home-faq { background: var(--bg); color: var(--text); }
-[data-theme="dark"] .home-faq .section-inner.two-col > div:first-child { color: var(--text); }
-[data-theme="dark"] .home-faq .section-inner.two-col > div:first-child > h2 { color: var(--text); }
-[data-theme="dark"] .home-faq .section-inner.two-col > div:first-child > p:not(.script) { color: var(--text-soft); }
 [data-theme="dark"] .product-faq, .product-wellness { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .faq-list details { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .builder-result { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] /* Recipe collection */
 .recipe-hub { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .recipe-hub-intro span { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .recipe-card { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .recipe-card-image { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .recipe-card-image::after { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] /* Recipe detail pages */
 .recipe-page { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .recipe-detail-image { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .recipe-photo-note { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .recipe-meta span { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .recipe-product-link:hover { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .recipe-body { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .recipe-ingredients-card { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .recipe-method-card { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .recipe-method-card li { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .recipe-notes-card > a { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .recipe-notes-card > a:hover { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .recipe-more { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .moment-copy { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .story-editorial-notes { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .category-highlight-list li { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .category-photo-label { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .category-products { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .category-product-grid .catalog-card { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .category-product-grid .catalog-card-media { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .category-guide-steps article { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .category-explore { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .category-explore a { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .info-page { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .info-hero { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .info-hero-media { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .info-hero-media.is-contain { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .info-highlight-grid > div { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .info-highlight-grid span { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .info-content-card { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .info-disclaimer { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .story-facts-section { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .story-facts-grid article:nth-child(3) { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .story-source-list a { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .story-source-list a:hover { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .builder-group { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .builder-option { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .contact-email-link:hover { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .contact-route-card { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .contact-route-icon { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .local-contact-form { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .local-contact-form input, .local-contact-form select, .local-contact-form textarea { background: var(--bg-2); background-color: var(--bg-2); }
@@ -244,12 +250,17 @@ body { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .info-related-links a { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] /* FAQ page */
 .faq-page { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .faq-hero-card { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .faq-topic-nav a span { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .faq-topic-nav a:hover { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .faq-answers { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .faq-group-heading > span { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .faq-page .faq-list details { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .faq-page .faq-list summary::after { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .faq-support-inner > div:last-child { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .faq-support-inner > div:last-child a { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .info-page-contact-us .info-content-section { background: var(--bg-2); background-color: var(--bg-2); }
+[data-theme="dark"] .contact-route-list article { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] /* ─────────────────────────────────────────────────────────────
    Contact page
    ───────────────────────────────────────────────────────────── */
@@ -268,3 +279,41 @@ body { background: var(--bg-2); background-color: var(--bg-2); }
 [data-theme="dark"] .contact-field input:focus,
 .contact-field select:focus,
 .contact-field textarea:focus { border-color: var(--date-light); }
+
+/* ---- MANUAL DARK TUNING (preserved) ---- */
+/* Editorial hero: in light mode the field-letter is a cream paper card with
+   dark-red ink. In dark mode the card must become a dark surface so the warm
+   text and the light certification badges stay visible. */
+[data-theme="dark"] .hero-field-letter {
+  background: var(--bg);
+  background-color: var(--bg);
+  border-color: var(--border);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+[data-theme="dark"] .hero-field-letter .official-hero-eyebrow {
+  border-bottom-color: var(--border);
+  color: var(--gold);
+}
+[data-theme="dark"] .hero-field-letter .official-hero-eyebrow span { color: var(--text-soft); }
+[data-theme="dark"] .hero-field-letter h1,
+[data-theme="dark"] .hero-field-letter h1 span,
+[data-theme="dark"] .hero-field-letter h1 strong { color: var(--text); }
+[data-theme="dark"] .hero-field-letter h1 span { color: var(--gold); }
+[data-theme="dark"] .hero-field-letter .official-hero-lead { color: var(--text-soft); }
+[data-theme="dark"] .hero-field-letter .hero-person-note {
+  border-left-color: var(--gold);
+  background: var(--bg-3);
+  background-color: var(--bg-3);
+}
+[data-theme="dark"] .hero-field-letter .hero-person-note img { border-color: var(--bg); }
+[data-theme="dark"] .hero-field-letter .hero-person-note blockquote p { color: var(--text-soft); }
+[data-theme="dark"] .hero-field-letter .hero-person-note cite { color: var(--gold); }
+[data-theme="dark"] .hero-field-letter .hero-story-link { color: var(--gold); }
+[data-theme="dark"] .hero-field-letter .hero-story-link:hover { color: var(--text); }
+[data-theme="dark"] .hero-field-letter .btn.hero-primary {
+  background: var(--red);
+  background-color: var(--red);
+  color: var(--cream);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35);
+}
+[data-theme="dark"] .hero-field-letter .hero-letter-signoff { color: var(--gold); }

@@ -28,7 +28,7 @@ export function SiteFooter() {
           </div>
           <div>
             <h3>Wholesale contact</h3>
-            <a href="mailto:contact@naturesdates.com">contact@naturesdates.com</a>
+            <a href={`mailto:${siteConfig.email}`}>{siteConfig.email}</a>
             <a href={siteConfig.phoneHref} className="footer-phone">{siteConfig.phone}</a>
             <Link href="/contact-us">Contact Natures Dates</Link>
             <Link href="/products">Wholesale catalog</Link>

@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { ArrowRight, Mail, PackageCheck } from "lucide-react";
+import { siteConfig } from "@/app/data/site-config";
 import { Button } from "./ui/button";
 
-const CONTACT_EMAIL = "contact@naturesdates.com";
+const CONTACT_EMAIL = siteConfig.email;
 const mailtoHref = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Wholesale dates inquiry")}&body=${encodeURIComponent([
   "Hello Natures Dates,",
   "",

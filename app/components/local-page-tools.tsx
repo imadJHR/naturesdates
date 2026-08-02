@@ -2,6 +2,9 @@
 
 import { FormEvent, useMemo, useState } from "react";
 import { Building2, Check, Copy, Mail, PackageSearch, Printer, RotateCcw, Send } from "lucide-react";
+import { siteConfig } from "@/app/data/site-config";
+
+const CONTACT_EMAIL = siteConfig.email;
 
 const builderOptions = {
   "energy-builder": [
@@ -72,7 +75,7 @@ type ContactStatus = "idle" | "success" | "error";
 
 export function LocalContactForm() {
   const [status, setStatus] = useState<ContactStatus>("idle");
-  const [mailto, setMailto] = useState("mailto:contact@naturesdates.com");
+  const [mailto, setMailto] = useState(`mailto:${CONTACT_EMAIL}`);
 
   const submit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -86,7 +89,7 @@ export function LocalContactForm() {
     const message = String(data.get("message") ?? "").trim();
     if (name.length < 2 || message.length < 10 || !email.includes("@")) { setStatus("error"); return; }
     const body = `Name: ${name}\nEmail: ${email}\nCompany: ${company || "Not provided"}\nLocation: ${location || "Not provided"}\nInquiry: ${topic}\n\n${message}`;
-    setMailto(`mailto:contact@naturesdates.com?subject=${encodeURIComponent(`${topic} from ${name}`)}&body=${encodeURIComponent(body)}`);
+    setMailto(`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(`${topic} from ${name}`)}&body=${encodeURIComponent(body)}`);
     setStatus("success");
   };
 
@@ -97,7 +100,7 @@ export function LocalContactForm() {
           <p className="info-kicker">Contact Nature&apos;s Dates</p>
           <h2 id="contact-form-title">Let&apos;s get your question to the right place.</h2>
           <p className="contact-lede">Choose a topic and share the useful details. This form prepares a complete email draft for you to review and send.</p>
-          <a href="mailto:contact@naturesdates.com" className="contact-email-link"><Mail size={18} /> contact@naturesdates.com</a>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="contact-email-link"><Mail size={18} /> {CONTACT_EMAIL}</a>
           <div className="contact-route-list">
             <article className="contact-route-card">
               <span className="contact-route-icon"><PackageSearch size={21} /></span>
@@ -133,5 +136,5 @@ export function LocalContactForm() {
 
 export function NewsletterForm() {
   const [email, setEmail] = useState("");
-  return <form className="newsletter-form" onSubmit={(event) => { event.preventDefault(); window.location.href = `mailto:contact@naturesdates.com?subject=${encodeURIComponent("Newsletter interest")}&body=${encodeURIComponent(`Please add ${email} to the newsletter when subscriptions are available.`)}`; }}><label htmlFor="newsletter-email">Email address</label><div><input id="newsletter-email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" placeholder="you@example.com" required /><button type="submit">Join by email <Send size={15} /></button></div><small>Opens your email app. Live newsletter delivery requires a verified email provider.</small></form>;
+  return <form className="newsletter-form" onSubmit={(event) => { event.preventDefault(); window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Newsletter interest")}&body=${encodeURIComponent(`Please add ${email} to the newsletter when subscriptions are available.`)}`; }}><label htmlFor="newsletter-email">Email address</label><div><input id="newsletter-email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} autoComplete="email" placeholder="you@example.com" required /><button type="submit">Join by email <Send size={15} /></button></div><small>Opens your email app. Live newsletter delivery requires a verified email provider.</small></form>;
 }

@@ -1,22 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BookOpen, CheckCircle2, ExternalLink } from "lucide-react";
-import type { ContentPage } from "@/app/data/content-pages";
+import { wellnessPageSlugs, type ContentPage } from "@/app/data/content-pages";
 import { Header } from "./interactive";
 import { LocalBuilder, LocalContactForm } from "./local-page-tools";
 import { RecipeHub } from "./recipe-hub";
 import { SiteFooter } from "./site-footer";
 
-const wellnessPages = new Set([
-  "health-and-wellness",
-  "gut-health",
-  "kid-nutrition",
-  "vitality",
-  "alternative-diets",
-  "fitness",
-  "diabetes-health",
-  "pregnancy-health",
-]);
+const wellnessPages = new Set<string>(wellnessPageSlugs);
 
 type PageMessaging = {
   factsKicker: string;

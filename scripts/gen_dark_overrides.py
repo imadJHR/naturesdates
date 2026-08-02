@@ -1,8 +1,15 @@
+import os
 import re
 
 LIGHT_BG = ("#fcfaf7", "#fff", "#ffffff", "#e6b56a", "#e4ceb2", "#c8842b",
             "#f0e2d2", "#f3e7d6", "#fff8f1", "#fff9ec", "white",
-            "rgba(252, 250, 247", "rgba(255, 255, 255", "rgba(240, 200, 122")
+            "rgba(252,250,247", "rgba(255,255,255", "rgba(240,200,122")
+# selectors of the editorial hero — the active light-mode hero is already a
+# dark glass card with warm text, so it must NOT get red-text / surface
+# overrides in dark mode (those would turn its text bright red).
+HERO_SKIP = ("official-hero", "hero-field", "hero-person", "hero-letter",
+             "hero-story", "hero-human", "hero-grower", "hero-certifications",
+             "hero-primary")
 # selectors that are buttons/pills keeping a light bg + dark text (readable)
 BUTTON_SEL = (".btn", ".trade", ".email-link", ".shad-button", ".hero-primary",
               ".recipe-start-link", ".contact-hero-phone", ".shad-button-outline",
@@ -37,6 +44,8 @@ bg_overrides = []
 for path in ["app/legacy-globals.css", "app/legacy-content-pages.css"]:
     css = open(path, encoding="utf-8").read()
     for sel, decls in parse_rules(css):
+        if any(t in sel for t in HERO_SKIP):
+            continue
         color = decls.get("color")
         if color:
             cl = color.lower().replace(" ", "")
@@ -53,6 +62,8 @@ for path in ["app/legacy-globals.css", "app/legacy-content-pages.css"]:
 for path in ["app/legacy-globals.css", "app/legacy-content-pages.css"]:
     css = open(path, encoding="utf-8").read()
     for sel, decls in parse_rules(css):
+        if any(t in sel for t in HERO_SKIP):
+            continue
         bc = decls.get("border-color") or ""
         bcl = bc.lower().replace(" ", "")
         if ("#a70310" in bcl or "var(--red)" in bcl or "var(--date)" in bcl) and not is_button(sel):
@@ -72,7 +83,19 @@ header = ("/* AUTO-GENERATED dark-mode overrides (regenerate: scripts/gen_dark_o
           "  - All dark red/green TEXT -> light tint so it stays visible on dark surfaces.\n"
           "  - All light BACKGROUNDS (cards/sections/inputs) -> dark surface, except\n"
           "    pill buttons that intentionally keep a light bg + dark text.\n"
-          "  - Dark red BORDERS -> light tint. */\n\n")
+          "  - Dark red BORDERS -> light tint.\n"
+          "  - The editorial hero (hero-field-letter) is skipped on purpose: it is\n"
+          "    already a dark glass card with warm text in light mode. */\n\n")
 content = header + "\n".join(text_overrides) + "\n\n/* ---- surfaces to dark ---- */\n" + "\n".join(bg_overrides) + "\n"
-open("app/theme-dark-text.css", "w", encoding="utf-8").write(content)
+
+OUT = "app/theme-dark-text.css"
+MANUAL = "/* ---- MANUAL DARK TUNING (preserved) ---- */"
+manual = ""
+if os.path.exists(OUT):
+    old = open(OUT, encoding="utf-8").read()
+    if MANUAL in old:
+        manual = old.split(MANUAL, 1)[1].rstrip("\n")
+if manual:
+    content += f"\n\n{MANUAL}\n{manual}\n"
+open(OUT, "w", encoding="utf-8").write(content)
 print("text overrides:", len(text_overrides), "| bg/border overrides:", len(bg_overrides))

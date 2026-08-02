@@ -8,6 +8,11 @@
 # tests and local artifacts
 /test-results
 /mobile-hero-check*.png
+/_verify
+/_h.html
+
+# backup files
+*.bak
 
 # TypeScript and environment files
 *.tsbuildinfo

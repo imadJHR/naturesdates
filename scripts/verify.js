@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const puppeteer = require("puppeteer-core");
 const pages = [["home","/"],["contact","/contact-us"],["faq","/faq"],["products","/products"],["product","/products/whole-fresh-medjool-dates"]];
 (async () => {

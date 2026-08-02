@@ -1,10 +1,21 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ContentPageView } from "@/app/components/content-page";
-import { contentPages, getContentPage } from "@/app/data/content-pages";
+import { contentPages, getContentPage, wellnessPageSlugs } from "@/app/data/content-pages";
 import { createPageMetadata, SITE_URL } from "@/lib/seo";
 
 type LocalPageProps = { params: Promise<{ slug: string }> };
+
+const breadcrumbLabels: Record<string, string> = {
+  "health-and-wellness": "Health and Wellness",
+  "gut-health": "Gut Health",
+  "kid-nutrition": "Kid Nutrition",
+  vitality: "Vitality",
+  "alternative-diets": "Alternative Diets",
+  fitness: "Fitness",
+  "diabetes-health": "Diabetes Health",
+  "pregnancy-health": "Pregnancy Health",
+};
 
 export function generateStaticParams() {
   return contentPages.map((page) => ({ slug: page.slug }));
@@ -24,7 +35,7 @@ export async function generateMetadata({ params }: LocalPageProps): Promise<Meta
 export default async function LocalContentPage({ params }: LocalPageProps) {
   const page = getContentPage((await params).slug);
   if (!page) notFound();
-  const structuredPageType = ["health-and-wellness", "gut-health", "kid-nutrition", "vitality", "alternative-diets", "fitness", "diabetes-health", "pregnancy-health"].includes(page.slug) ? "WebPage" : null;
+  const structuredPageType = wellnessPageSlugs.includes(page.slug) ? "WebPage" : null;
   const structuredData = structuredPageType ? {
     "@context": "https://schema.org",
     "@graph": [
@@ -36,7 +47,6 @@ export default async function LocalContentPage({ params }: LocalPageProps) {
         description: page.seoDescription ?? page.intro,
         isPartOf: { "@id": `${SITE_URL}/#website` },
         inLanguage: "en-US",
-        dateModified: "2026-07-15",
         about: page.slug === "gut-health" ? [
           { "@type": "Thing", name: "Dietary fiber" },
           { "@type": "Thing", name: "Digestive wellness" },
@@ -76,7 +86,7 @@ export default async function LocalContentPage({ params }: LocalPageProps) {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-          { "@type": "ListItem", position: 2, name: page.slug === "gut-health" ? "Gut Health" : page.slug === "kid-nutrition" ? "Kid Nutrition" : page.slug === "vitality" ? "Vitality" : page.slug === "alternative-diets" ? "Alternative Diets" : page.slug === "fitness" ? "Fitness" : page.slug === "diabetes-health" ? "Diabetes Health" : page.slug === "pregnancy-health" ? "Pregnancy Health" : "Health and Wellness", item: `${SITE_URL}/${page.slug}` },
+          { "@type": "ListItem", position: 2, name: breadcrumbLabels[page.slug] ?? "Health and Wellness", item: `${SITE_URL}/${page.slug}` },
         ],
       },
     ],

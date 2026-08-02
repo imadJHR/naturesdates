@@ -15,16 +15,3 @@ export const siteConfig = {
     paymentProvider: "TODO: Confirm payment provider if commerce is enabled",
   },
 } as const;
-
-export const protectedProductAssets = [
-  "/natures-dates-logo.webp",
-  "/assets/pack_whole.webp",
-  "/assets/whole_dates.webp",
-  "/assets/pack_coconut.webp",
-  "/assets/mini_coconut.webp",
-  "/assets/mini_pecan.webp",
-  "/hero-official/whole-pack.png",
-  "/hero-official/coconut-pack.png",
-  "/hero-official/loose-dates.png",
-  "/hero-official/coconut-dates.png",
-] as const;

@@ -1,5 +1,16 @@
 export type ContentPageKind = "standard" | "energy-builder" | "smoothie-builder" | "contact";
 
+export const wellnessPageSlugs: readonly string[] = [
+  "health-and-wellness",
+  "gut-health",
+  "kid-nutrition",
+  "vitality",
+  "alternative-diets",
+  "fitness",
+  "diabetes-health",
+  "pregnancy-health",
+];
+
 export type ContentPageSection = {
   title: string;
   body: string;

@@ -258,3 +258,39 @@ input, textarea, select, label, .form-label, .badge, .shad-badge,
   .hero-certifications { justify-content: center; }
   .product-detail-certifications { justify-content: center; }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Navbar — responsive hardening across every device size.
+   Loaded last, so these rules win the cascade.
+   ───────────────────────────────────────────────────────────── */
+
+/* Wide tablets / narrow desktops: desktop nav is active but tight
+   (mobile menu kicks in only below 1180px). Give it breathing room. */
+@media (min-width: 1181px) and (max-width: 1399px) {
+  .site-header { gap: 10px; padding-left: 148px; }
+  .site-header .desktop-nav { font-size: 14px; }
+  .desktop-nav-list { gap: 12px; }
+  .site-header .header-phone { padding: 8px 12px; font-size: 12px; }
+}
+
+/* Phones: the phone pill moves into the mobile menu, so drop it from the bar
+   to stop the header overflowing on small viewports. */
+@media (max-width: 640px) {
+  .site-header .header-phone { display: none; }
+  .site-header { gap: 8px; padding-right: 12px; }
+}
+
+/* Small phones: compact icon-only theme toggle + tighter wholesale pill. */
+@media (max-width: 420px) {
+  .theme-toggle { width: 40px; height: 40px; padding: 0; justify-content: center; }
+  .theme-toggle .theme-toggle-label { display: none; }
+  .site-header .cart-status { padding: 0 12px; gap: 0; }
+}
+
+/* Tiny devices (Galaxy Fold, iPhone SE 1st gen, etc.): icon-only wholesale. */
+@media (max-width: 340px) {
+  .site-header .cart-status { width: 40px; justify-content: center; padding: 0; font-size: 0; }
+  .logo { width: 76px; height: 76px; }
+  .mobile-menu-btn { width: 40px; height: 40px; }
+  .theme-toggle { width: 38px; height: 38px; }
+}

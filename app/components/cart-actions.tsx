@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { Mail, PackageCheck } from "lucide-react";
 import type { Product } from "@/app/data/products";
+import { siteConfig } from "@/app/data/site-config";
 import { Button } from "./ui/button";
 
-const CONTACT_EMAIL = "contact@naturesdates.com";
+const CONTACT_EMAIL = siteConfig.email;
 
 function buildWholesaleMailto(product?: Pick<Product, "name" | "shortName">) {
   const subject = product ? `Wholesale inquiry: ${product.name}` : "Wholesale dates inquiry";

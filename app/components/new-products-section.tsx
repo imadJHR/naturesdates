@@ -22,7 +22,7 @@ export function NewProductsSection() {
             <p className="script small tan">Freshly Picked</p>
             <h2>Meet what&apos;s new.</h2>
             <p>
-              Portable Mini Medjools with playful flavors, styled in a compact responsive showcase that never cuts the product cards.
+              Portable Mini Medjools with playful flavors — coconut for a bright, tropical finish and cacao pecan for a deeper, nutty bite.
             </p>
           </div>
           <Button asChild size="lg">

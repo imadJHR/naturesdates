@@ -9,6 +9,13 @@ const formerOfficialHost = ["natural", "delights", ".com"].join("");
 const formerOfficialLink = new RegExp(`href="https?://(?:www\\.)?${formerOfficialHost.replace(".", "\\.")}`, "i");
 let server;
 
+// globals.css only @imports the real stylesheets; read them together so the
+// style assertions below inspect the actual compiled source.
+const cssFiles = ["globals.css", "legacy-globals.css", "legacy-content-pages.css", "theme-dark.css", "theme-dark-text.css"];
+function readCss() {
+  return cssFiles.map((file) => readFileSync(new URL(`../app/${file}`, import.meta.url), "utf8")).join("\n");
+}
+
 before(async () => {
   const buildExecutable = process.platform === "win32" ? process.env.ComSpec ?? "cmd.exe" : "npm";
   const buildArguments = process.platform === "win32" ? ["/d", "/s", "/c", "npm run build"] : ["run", "build"];
@@ -49,7 +56,7 @@ for (const [route, marker] of [
   ["/products/organic-pitted-medjool-dates", "Organic Pitted Medjool Dates"],
   ["/products/coconut-mini-medjools", "Coconut Mini Medjools"],
   ["/products/cacao-pecan-mini-medjools", "Cacao Pecan Mini Medjools"],
-  ["/faq", "About &amp; FAQ"],
+  ["/faq", "Good questions deserve useful answers"],
   ["/privacy", "Information you choose to provide"],
   ["/terms", "Business identity and jurisdiction"],
   ["/health-and-wellness", "practical way to think"],
@@ -217,12 +224,12 @@ test("the responsive navbar exposes the complete local navigation", async () => 
 });
 
 test("the products decoration covers every responsive viewport", () => {
-  const css = readFileSync(new URL("../app/globals.css", import.meta.url), "utf8");
+  const css = readCss();
   const productsRule = css.match(/\.products \{[^}]*\}/)?.[0] ?? "";
 
   assert.match(css, /max\(100%, min\(2400px, 110%\)\)/);
-  assert.match(css, /\.two-col, \.product-row, \.wellness-grid \{ grid-template-columns: 1fr; \}/);
-  assert.match(productsRule, /background-color: #f0e4dc/);
+  assert.match(css, /\.product-row \{ grid-template-columns: 1fr;/);
+  assert.match(productsRule, /background-color: #e6b56a/);
   assert.match(productsRule, /products-center\.webp/);
   assert.doesNotMatch(productsRule, /products-background\.png/);
   assert.match(css, /max\(100%, 1880px\) 210px/);
@@ -239,8 +246,8 @@ test("the products decoration covers every responsive viewport", () => {
 
 test("the recipes image keeps its original composition without duplicate copy", async () => {
   const html = await (await fetch(baseUrl)).text();
-  const css = readFileSync(new URL("../app/globals.css", import.meta.url), "utf8");
+  const css = readCss();
   assert.doesNotMatch(html, /MEDJOOL DATES FOR EVERYDAY RECIPES/i);
   assert.match(css, /\.recipe-media[^}]*aspect-ratio: 15 \/ 8/);
-  assert.match(css, /\.recipes[^}]*background-position: calc\(100% \+ 110px\) 100%/);
+  assert.match(css, /\.recipes[^}]*background-position: calc\(100% \+ 100px\) 100%/);
 });

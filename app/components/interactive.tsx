@@ -4,8 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, ArrowUpRight, ChevronDown, Menu, Play, X } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight, ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import type { Product } from "@/app/data/products";
 import { productCategories } from "@/app/data/products";
 import { siteConfig } from "@/app/data/site-config";
@@ -247,7 +247,7 @@ export function Header() {
                 );
               })}
               <WholesaleStatus />
-              <a href="mailto:contact@naturesdates.com" className="mobile-nav-link mobile-email-link">contact@naturesdates.com</a>
+              <a href={`mailto:${siteConfig.email}`} className="mobile-nav-link mobile-email-link">{siteConfig.email}</a>
               <a href={siteConfig.phoneHref} className="mobile-nav-link mobile-phone-link">{siteConfig.phone}</a>
             </nav>
           </div>
@@ -359,48 +359,6 @@ export function GoodnessShowcase() {
         <Certifications className="wellness-certifications" />
       </div>
     </section>
-  );
-}
-
-export function HeroVideo() {
-  const ref = useRef<HTMLDivElement>(null);
-  const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-  const rotate = useTransform(scrollYProgress, [0, 1], [-7, 7]);
-  const y = useTransform(scrollYProgress, [0, 1], [60, -70]);
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.92, 1.05, 0.96]);
-
-  return (
-    <motion.div ref={ref} className="video-stage" style={reduceMotion ? undefined : { rotate, y, scale }}>
-      <div className="video-topbar" aria-hidden="true"><span /><span /><span /><b>sunshine-reel.mp4</b></div>
-      <video autoPlay={!reduceMotion} muted loop playsInline preload="metadata" poster="/images/home/date-palm-golden-hour.webp" controls={Boolean(reduceMotion)}>
-        <source src="/assets/sunshine-reel.mp4" type="video/mp4" />
-      </video>
-      {!reduceMotion && <div className="play-chip"><Play size={16} fill="currentColor" /> scroll motion reel</div>}
-    </motion.div>
-  );
-}
-
-export function AnimatedPhoto({ src, alt, label, className }: { src: string; alt: string; label: string; className: string }) {
-  return (
-    <motion.figure className={`photo-card ${className}`}>
-      <Image src={src} alt={alt} fill sizes="(max-width: 640px) 78vw, 30vw" />
-      <figcaption>{label}</figcaption>
-    </motion.figure>
-  );
-}
-
-export function AnimatedBowl() {
-  const reduceMotion = useReducedMotion();
-  return (
-    <motion.div
-      className="bowl-motion"
-      whileInView={reduceMotion ? undefined : { scale: [0.88, 1.05, 1], rotate: [0, -2, 0] }}
-      viewport={{ once: true, amount: 0.45 }}
-      transition={{ duration: 1.1 }}
-    >
-      <Image src="/assets/bowl_dates.webp" alt="Bowl of Medjool dates" width={770} height={519} sizes="(max-width: 640px) 82vw, 560px" />
-    </motion.div>
   );
 }
 
