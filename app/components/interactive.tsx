@@ -3,8 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, type CSSProperties } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
 import type { Product } from "@/app/data/products";
 import { productCategories } from "@/app/data/products";
@@ -12,6 +14,7 @@ import { siteConfig } from "@/app/data/site-config";
 import { WholesaleQuoteButton, WholesaleStatus } from "./cart-actions";
 import { ThemeToggle } from "./theme-toggle";
 import { Certifications } from "./certifications";
+import { Reveal, RevealSection } from "./reveal";
 
 type NavigationItem = {
   href: string;
@@ -69,6 +72,8 @@ function NavigationLink({
   const classes = [className, active ? "is-active" : ""].filter(Boolean).join(" ");
   return <Link className={classes || undefined} href={item.href} onClick={onClick} aria-current={active ? "page" : undefined}>{item.label}</Link>;
 }
+
+const MotionLink = motion.create(Link);
 
 export function Header() {
   const pathname = usePathname();
@@ -260,33 +265,73 @@ export function Header() {
 }
 
 export function OfficialHero() {
+  const reduceMotion = useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const photoImageRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (reduceMotion) return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const photo = photoImageRef.current?.querySelector("img");
+    if (!photo) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        photo,
+        { yPercent: -8, scale: 1.14 },
+        {
+          yPercent: 8,
+          scale: 1.14,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+        },
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, [reduceMotion]);
+
+  const heroItem = reduceMotion
+    ? {}
+    : {
+        initial: { opacity: 0, y: 20 },
+        animate: { opacity: 1, y: 0 },
+        transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
+      };
+
   return (
-    <section id="top" className="hero official-hero section-orange" aria-labelledby="hero-title">
+    <section ref={sectionRef} id="top" className="hero official-hero section-orange" aria-labelledby="hero-title">
       <div className="official-hero-shell">
         <article className="hero-field-letter">
-          <p className="official-hero-eyebrow">Premium Medjool dates <span aria-hidden="true">— naturally versatile</span></p>
-          <h1 id="hero-title"><span>Raised by hand.</span><strong>Ripened by sunshine.</strong></h1>
-          <p className="official-hero-lead">Soft, caramel-like and naturally sweet, Medjool dates make everyday snacking and recipe time feel a little more generous.</p>
-          <div className="hero-person-note">
+          <motion.p className="official-hero-eyebrow" {...heroItem} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>Premium Medjool dates <span aria-hidden="true">— naturally versatile</span></motion.p>
+          <motion.h1 id="hero-title" {...heroItem} transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}><span>Raised by hand.</span><strong>Ripened by sunshine.</strong></motion.h1>
+          <motion.p className="official-hero-lead" {...heroItem} transition={{ duration: 0.6, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}>Soft, caramel-like and naturally sweet, Medjool dates make everyday snacking and recipe time feel a little more generous.</motion.p>
+          <motion.div className="hero-person-note" {...heroItem} transition={{ duration: 0.6, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}>
             <Image src="/images/ingredients/date-harvest.webp" alt="Fresh dates at harvest" width={96} height={96} />
             <blockquote>
               <p>Simple fruit. Thoughtful preparation. Plenty of ways to enjoy it.</p>
               <cite>From the palm to your pantry</cite>
             </blockquote>
-          </div>
-          <div className="official-hero-actions">
-            <Link className="btn hero-primary" href="/products">Shop the collection <ArrowUpRight size={18} /></Link>
-            <Link className="hero-story-link" href="/recipes">Explore recipes <span aria-hidden="true">→</span></Link>
-          </div>
-          <p className="hero-letter-signoff">Whole fruit, pitted favorites and portable bites.</p>
-          <Certifications size="sm" lazy={false} className="hero-certifications" />
+          </motion.div>
+          <motion.div className="official-hero-actions" {...heroItem} transition={{ duration: 0.6, delay: 0.32, ease: [0.16, 1, 0.3, 1] }}>
+            <MotionLink className="btn hero-primary" href="/products" whileHover={reduceMotion ? undefined : { y: -2, scale: 1.02 }} whileTap={reduceMotion ? undefined : { scale: 0.96 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>Shop the collection <ArrowUpRight size={18} /></MotionLink>
+            <MotionLink className="hero-story-link" href="/recipes" whileHover={reduceMotion ? undefined : { y: -2 }} whileTap={reduceMotion ? undefined : { scale: 0.97 }} transition={{ type: "spring", stiffness: 400, damping: 17 }}>Explore recipes <span aria-hidden="true">→</span></MotionLink>
+          </motion.div>
+          <motion.p className="hero-letter-signoff" {...heroItem} transition={{ duration: 0.6, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}>Whole fruit, pitted favorites and portable bites.</motion.p>
+          <Certifications size="sm" lazy={false} className="hero-certifications" animate />
         </article>
 
         <figure className="hero-field-photo">
-          <div className="hero-field-photo-image">
+          <div ref={photoImageRef} className="hero-field-photo-image">
             <Image src="/images/home/date-palm-golden-hour.webp" alt="A bowl of premium Medjool dates in a sunlit date palm grove" fill priority quality={88} sizes="(max-width: 800px) 94vw, 94vw" />
           </div>
-          <figcaption><span>Golden-hour Medjools</span><strong>Naturally rich. Beautifully simple.</strong></figcaption>
+          <motion.figcaption {...heroItem} transition={{ duration: 0.6, delay: 0.48, ease: [0.16, 1, 0.3, 1] }}><span>Golden-hour Medjools</span><strong>Naturally rich. Beautifully simple.</strong></motion.figcaption>
           <div className="hero-field-stamp" aria-hidden="true"><span>Soft</span><strong>♥</strong><span>caramel-like</span></div>
         </figure>
       </div>
@@ -308,14 +353,14 @@ export function GoodnessShowcase() {
   ];
 
   return (
-    <section id="wellness" className="wellness wellness-redesign section-cream" aria-labelledby="goodness-title">
+    <RevealSection id="wellness" className="wellness wellness-redesign section-cream" aria-labelledby="goodness-title">
       <div className="wellness-redesign-bg" aria-hidden="true">
         <span />
         <span />
         <span />
       </div>
       <div className="section-inner wellness-redesign-inner">
-        <div className="wellness-redesign-copy">
+        <Reveal className="wellness-redesign-copy">
           <p className="goodness-kicker">Nutrition desk</p>
           <h2 className="goodness-headline" id="goodness-title">A whole-fruit favorite, without the wellness hype.</h2>
           <p className="wellness-redesign-lead">Explore practical, label-aware guidance for fitting Medjool dates into everyday meals, snacks and active routines.</p>
@@ -323,7 +368,7 @@ export function GoodnessShowcase() {
             <Link className="btn red goodness-cta" href="/health-and-wellness">Explore Medjool nutrition <ArrowUpRight size={18} /></Link>
             <span>Responsible, evidence-informed guidance</span>
           </div>
-        </div>
+        </Reveal>
 
         <div className="wellness-dashboard" aria-label="Medjool date nutrition highlights">
           <div className="wellness-product-panel">
@@ -358,7 +403,7 @@ export function GoodnessShowcase() {
         <p className="goodness-disclaimer wellness-redesign-disclaimer">Nutrition and certifications vary by product. Check the current package; certification does not extend to recipes or suggested uses.</p>
         <Certifications className="wellness-certifications" />
       </div>
-    </section>
+    </RevealSection>
   );
 }
 

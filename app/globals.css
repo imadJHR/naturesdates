@@ -294,3 +294,37 @@ input, textarea, select, label, .form-label, .badge, .shad-badge,
   .mobile-menu-btn { width: 40px; height: 40px; }
   .theme-toggle { width: 38px; height: 38px; }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Scroll-to-top button — fixed, bottom-right, brand red.
+   Loaded last so it wins the cascade in both themes.
+   ───────────────────────────────────────────────────────────── */
+.scroll-to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 95;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 14px 34px rgba(31, 20, 4, .32);
+  cursor: pointer;
+}
+[data-theme="dark"] .scroll-to-top {
+  background: var(--red);
+  color: var(--cream);
+}
+
+@media (max-width: 640px) {
+  .scroll-to-top {
+    right: 14px;
+    bottom: 14px;
+    width: 46px;
+    height: 46px;
+  }
+}

@@ -29,6 +29,8 @@ export function SmoothScroll() {
       },
     });
 
+    (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
+
     let hashFrame = 0;
     if (window.location.hash) {
       hashFrame = window.requestAnimationFrame(() => {
@@ -39,6 +41,7 @@ export function SmoothScroll() {
 
     return () => {
       window.cancelAnimationFrame(hashFrame);
+      (window as unknown as { __lenis?: Lenis }).__lenis = undefined;
       lenis.destroy();
     };
   }, [pathname]);

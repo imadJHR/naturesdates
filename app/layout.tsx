@@ -4,6 +4,7 @@ import "lenis/dist/lenis.css";
 import "./globals.css";
 import { SmoothScroll } from "./components/smooth-scroll";
 import { CustomCursor } from "./components/custom-cursor";
+import { ScrollToTop } from "./components/scroll-to-top";
 import { ThemeProvider } from "./components/theme-provider";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 
@@ -113,6 +114,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
           <SmoothScroll />
           <CustomCursor />
+          <ScrollToTop />
           {children}
         </ThemeProvider>
       </body>

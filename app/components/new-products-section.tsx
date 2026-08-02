@@ -6,6 +6,7 @@ import { getCategory, getProductsByCategory } from "@/app/data/products";
 import { WholesaleQuoteButton } from "./cart-actions";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
+import { RevealSection } from "./reveal";
 
 const featuredCategorySlug = "mini-medjools";
 
@@ -15,7 +16,7 @@ export function NewProductsSection() {
   const accent = featuredProducts[0]?.accent ?? "#c10230";
 
   return (
-    <section id="new-products" className="new-products-section">
+    <RevealSection id="new-products" className="new-products-section">
       <div className="section-inner">
         <div className="new-products-heading">
           <div>
@@ -85,6 +86,6 @@ export function NewProductsSection() {
           </div>
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }

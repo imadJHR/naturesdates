@@ -11,20 +11,21 @@ import {
 import { SiteFooter } from "./components/site-footer";
 import { NewProductsSection } from "./components/new-products-section";
 import { SunshineMoment } from "./components/sunshine-moment";
+import { Reveal, RevealSection } from "./components/reveal";
 import { productCategories, products as catalogProducts } from "./data/products";
 
 function Story() {
   return (
-    <section id="story" className="story section-brown">
+    <RevealSection id="story" className="story section-brown">
       <div className="section-inner story-editorial">
-        <div className="story-editorial-heading">
+        <Reveal className="story-editorial-heading">
           <div><p className="script small">Naturally generous</p><h2>One fruit.<br />A whole day of possibilities.</h2></div>
           <div className="story-editorial-intro">
             <p>From a quiet breakfast to the middle of a busy afternoon, Medjool dates bring a soft bite, caramel-like depth and effortless versatility.</p>
             <Link className="btn green" href="/products">Explore the collection <ArrowRight size={18} /></Link>
           </div>
-        </div>
-        <div className="story-editorial-grid">
+        </Reveal>
+        <Reveal delay={0.05} className="story-editorial-grid">
           <figure className="story-editorial-main">
             <Image src="/images/home/date-palm-golden-hour.webp" alt="Premium Medjool dates in a ceramic bowl beside sunlit date palms" fill sizes="(max-width: 900px) 94vw, 64vw" />
             <figcaption><span>01</span><div><strong>Sun-warmed character</strong><small>A naturally rich fruit with a soft, generous bite.</small></div></figcaption>
@@ -45,15 +46,15 @@ function Story() {
             <Image src="/images/family/lunchbox-kitchen.webp" alt="A parent and child preparing a date snack box" fill sizes="(max-width: 700px) 94vw, 25vw" />
             <figcaption>Everyday moments</figcaption>
           </figure>
-        </div>
+        </Reveal>
       </div>
-    </section>
+    </RevealSection>
   );
 }
 
 function Products() {
   return (
-    <section id="products" className="products section-light">
+    <RevealSection id="products" className="products section-light">
       <div className="organic-shape teal" aria-hidden="true" />
       <div className="section-inner">
         <div className="section-title">
@@ -68,7 +69,7 @@ function Products() {
           <Link className="btn red" href="/products">See all product details <ArrowRight size={18} /></Link>
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }
 
@@ -79,7 +80,7 @@ function CategoryExplore() {
     { image: "/images/home/categories/mini-medjools-lifestyle.webp", alt: "A parent and child preparing dates in a lunchbox", note: "Made for busy moments" },
   ];
 
-  return <section className="home-categories" id="categories"><div className="section-inner">
+  return <RevealSection className="home-categories" id="categories"><div className="section-inner">
     <div className="home-category-heading">
       <div><p className="script small tan">Choose your way</p><h2>One fruit. Three everyday rhythms.</h2></div>
       <p>From a bowl on the counter to an after-school lunchbox, find the Medjool format that fits the moment.</p>
@@ -99,16 +100,16 @@ function CategoryExplore() {
         </div>
       </Link>;
     })}</div>
-  </div></section>;
+  </div></RevealSection>;
 }
 
 function FaqPreview() {
-  return <section className="home-faq"><div className="section-inner two-col"><div><p className="script small">Good to know</p><h2>Questions before your first bite?</h2><p>Learn about whole versus pitted dates, storage, organic labels, allergens, nutrition information and wholesale inquiries.</p><Link className="btn red" href="/faq">Read the FAQ <ArrowRight size={18} /></Link></div><div className="faq-list"><details><summary>Whole or pitted?</summary><p>Whole dates retain the hard pit. Pitted dates simplify snack and recipe preparation, though every fruit should still be checked before use.</p></details><details><summary>How should dates be stored?</summary><p>Follow the current package directions, reseal after opening and protect the fruit from excess heat and moisture.</p></details><details><summary>Where are ingredients and allergens listed?</summary><p>The current package is the definitive source for ingredients, allergens, nutrition and certification marks.</p></details></div></div></section>;
+  return <RevealSection className="home-faq"><div className="section-inner two-col"><div><p className="script small">Good to know</p><h2>Questions before your first bite?</h2><p>Learn about whole versus pitted dates, storage, organic labels, allergens, nutrition information and wholesale inquiries.</p><Link className="btn red" href="/faq">Read the FAQ <ArrowRight size={18} /></Link></div><div className="faq-list"><details><summary>Whole or pitted?</summary><p>Whole dates retain the hard pit. Pitted dates simplify snack and recipe preparation, though every fruit should still be checked before use.</p></details><details><summary>How should dates be stored?</summary><p>Follow the current package directions, reseal after opening and protect the fruit from excess heat and moisture.</p></details><details><summary>Where are ingredients and allergens listed?</summary><p>The current package is the definitive source for ingredients, allergens, nutrition and certification marks.</p></details></div></div></RevealSection>;
 }
 
 function Recipes() {
   return (
-    <section id="recipes" className="recipes section-tan">
+    <RevealSection id="recipes" className="recipes section-tan">
       <div className="section-inner two-col reverse">
         <RecipeMedia />
         <div className="story-text">
@@ -118,7 +119,7 @@ function Recipes() {
           <Link className="btn red" href="/recipes">Browse recipes <ArrowRight size={18} /></Link>
         </div>
       </div>
-    </section>
+    </RevealSection>
   );
 }
 

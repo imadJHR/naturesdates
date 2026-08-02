@@ -7,6 +7,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { RevealSection } from "./reveal";
 
 type Moment = {
   id: string;
@@ -97,7 +98,7 @@ const moments: Moment[] = [
 
 export function SunshineMoment() {
   return (
-    <section
+    <RevealSection
       className="sunshine-moment"
       id="moments"
       aria-labelledby="sunshine-moment-title"
@@ -186,6 +187,6 @@ export function SunshineMoment() {
           ))}
         </Tabs>
       </div>
-    </section>
+    </RevealSection>
   );
 }
