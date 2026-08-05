@@ -4,10 +4,13 @@ import { ArrowRight } from "lucide-react";
 import { NewsletterForm } from "./local-page-tools";
 import { siteConfig } from "@/app/data/site-config";
 import { Certifications } from "./certifications";
+import { DesertSkyline, DustField } from "./desert-decor";
 
 export function SiteFooter() {
   return (
     <footer id="contact">
+      <DesertSkyline className="footer-skyline" />
+      <DustField count={10} className="dust-subtle" />
       <div className="footer-inner">
         <div className="footer-top">
           <div className="footer-cta">

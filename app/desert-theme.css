@@ -1,0 +1,702 @@
+/* ═══════════════════════════════════════════════════════════════
+   SAHARA × MEDJOOL GOLD — desert atmosphere theme
+   Loaded last so it wins the cascade. Everything here is driven by
+   the packaging visual language: deep date red, rich burgundy,
+   desert gold, sand, clay, palm green, ivory + sand grain, Moroccan
+   geometry, kasbah + palm skylines and floating golden dust.
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  --gold: #d4a03c;
+  --gold-soft: #e6c15c;
+  --gold-deep: #b97b1f;
+  --burgundy: #5c0e12;
+  --burgundy-deep: #4a0c0f;
+  --date-red: #8e1b1b;
+  --date-red-deep: #7a1517;
+  --sand: #e7d6bb;
+  --sand-soft: #f3e7d2;
+  --ivory: #faf4e8;
+  --ivory-soft: #f4ead4;
+  --clay: #c2703d;
+  --palm-green: #2f6b4a;
+  --palm-green-deep: #24503a;
+  --warm-brown: #2b1a12;
+
+  /* Legacy semantic variables remapped to the desert palette so every
+     existing component inherits the new identity automatically. */
+  --orange: var(--gold);
+  --sun: var(--gold);
+  --red: var(--date-red);
+  --cream: var(--ivory);
+  --cream-2: var(--ivory-soft);
+  --brown: var(--warm-brown);
+  --tan: var(--sand);
+  --soft-tan: var(--sand-soft);
+  --green: var(--palm-green);
+  --deep-green: var(--palm-green);
+  --teal: var(--palm-green);
+  --white: var(--ivory);
+  --ink: var(--warm-brown);
+  --date: var(--date-red);
+  --almond: var(--ivory);
+  --saffron: var(--gold);
+  --olive: var(--palm-green);
+  --rose: var(--date-red);
+}
+
+/* ── Global canvas ──────────────────────────────────────────── */
+html { background: var(--ivory); }
+body {
+  color: var(--warm-brown);
+  background:
+    radial-gradient(1100px 560px at 88% -6%, rgba(212, 160, 60, .16), transparent 60%),
+    radial-gradient(900px 520px at -6% 34%, rgba(143, 94, 38, .1), transparent 55%),
+    linear-gradient(180deg, var(--ivory) 0%, var(--ivory-soft) 100%);
+}
+.section-light { background: var(--sand-soft); }
+.section-tan { background: var(--ivory); color: var(--date-red); }
+
+/* ── Announcement bar + header (deep wood-red, gold accents) ── */
+.announcement-bar {
+  background: linear-gradient(90deg, #6e1618, var(--date-red) 50%, #6e1618);
+  color: #f3e0b8;
+}
+.announcement-bar a { color: #f6e7c8; }
+
+.site-header {
+  background: linear-gradient(180deg, var(--burgundy) 0%, #6e1618 100%);
+  border-bottom: 1px solid rgba(212, 160, 60, .24);
+  box-shadow: 0 14px 40px rgba(43, 26, 18, .28);
+}
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url("/desert/sand-grain.svg");
+  background-size: 190px 190px;
+  opacity: .5;
+  mix-blend-mode: overlay;
+}
+.logo { background: var(--burgundy); box-shadow: 0 18px 45px rgba(74, 12, 15, .4); }
+.desktop-nav-link:hover,
+.desktop-nav-link.is-active { color: var(--gold-soft); }
+.desktop-nav-link.is-active::after { background: var(--gold); }
+.desktop-dropdown { background: #fbf6ea; box-shadow: 0 26px 70px rgba(74, 12, 15, .3); }
+.mobile-menu-btn { background: var(--date-red); box-shadow: 0 12px 25px rgba(43, 26, 18, .26); }
+.mobile-menu-head { color: var(--date-red); }
+.mobile-menu-panel { background: var(--ivory); }
+
+/* ── Buttons & pills ────────────────────────────────────────── */
+.btn.red,
+.btn-primary,
+.shad-button-default,
+.trade { background: linear-gradient(135deg, var(--date-red), var(--date-red-deep)); }
+.btn.green,
+.email-link,
+.product-card-cart,
+.catalog-add-cart { background: linear-gradient(135deg, #37795a, var(--palm-green)); }
+.btn:hover { box-shadow: 0 20px 45px rgba(122, 21, 23, .3); }
+.shad-button-default { box-shadow: 0 14px 30px rgba(142, 27, 27, .22); }
+.shad-button-outline { border-color: rgba(43, 26, 18, .22); background: rgba(251, 246, 234, .6); }
+.shad-badge-default { background: var(--date-red); }
+.shad-badge-secondary { background: rgba(47, 107, 74, .16); color: var(--palm-green-deep); }
+.shad-tabs-trigger[data-state="active"] { background: var(--date-red); box-shadow: 0 10px 24px rgba(142, 27, 27, .24); }
+
+/* ── Hero: layered Sahara scene ─────────────────────────────── */
+.hero.official-hero {
+  color: var(--ivory);
+  background:
+    radial-gradient(95% 75% at 80% 8%, rgba(212, 160, 60, .3), transparent 48%),
+    linear-gradient(122deg, var(--burgundy-deep) 0%, #6e1618 46%, var(--date-red) 100%);
+}
+.hero.official-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: .5;
+  background-image: url("/desert/sand-grain.svg");
+  background-size: 210px 210px;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+}
+.hero-desert-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* Kasbah skyline — tintable layered Moroccan-arch silhouettes.
+   Base rules first so usage classes below can safely override position/height. */
+.desert-skyline {
+  --skyline-back: rgba(92, 14, 18, .55);
+  --skyline-front: #3f0d10;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.desert-skyline > div { position: absolute; inset: 0; }
+.skyline-back { color: var(--skyline-back); }
+.skyline-front { color: var(--skyline-front); }
+.skyline-arch,
+.skyline-palm {
+  position: absolute;
+  display: block;
+  height: auto;
+  width: auto;
+}
+.skyline-arch svg,
+.skyline-palm { shape-rendering: geometricPrecision; }
+
+.hero-skyline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(150px, 24vw, 285px);
+}
+/* HERO-only skyline pieces (distinct from footer's DesertSkyline) */
+.hero-dune { opacity: .9; }
+.hero-gateway,
+.hero-palm {
+  z-index: 1;
+  /* Override the inline 1em height on the SVG so it scales to full height.
+     Width stays driven by the inline clamp() on the element itself. */
+  height: auto !important;
+}
+.hero-gateway { z-index: 2; }
+.hero-palm-right { z-index: 1; }
+.hero-skyline > svg,
+.hero-gateway svg,
+.hero-palm svg { display: block; width: 100%; height: auto; }
+
+/* Hero letter panel — warm ivory parchment, gold border */
+.hero-field-letter {
+  border-color: rgba(212, 160, 60, .45);
+  background:
+    radial-gradient(140% 120% at 100% 0%, rgba(212, 160, 60, .14), transparent 55%),
+    linear-gradient(160deg, #fbf6ea 0%, var(--ivory-soft) 100%);
+  box-shadow: 0 30px 80px rgba(43, 26, 18, .3);
+}
+.hero-field-letter::before,
+.hero-field-letter::after { background: rgba(212, 160, 60, .62); }
+.hero-field-letter .official-hero-eyebrow { border-bottom-color: rgba(212, 160, 60, .4); color: var(--date-red); }
+.hero-gold-chip {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  margin-left: 10px;
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold) 55%, #b8862f);
+  color: var(--burgundy-deep);
+  font-size: 10px;
+  font-weight: 1000;
+  letter-spacing: .15em;
+  line-height: 1;
+  text-transform: uppercase;
+  box-shadow: 0 6px 16px rgba(184, 134, 47, .4);
+  white-space: nowrap;
+}
+.hero-gold-chip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgba(255, 255, 255, .5) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: gold-sheen 5.5s ease-in-out infinite;
+}
+@keyframes gold-sheen {
+  0%, 55% { transform: translateX(-100%); }
+  85%, 100% { transform: translateX(100%); }
+}
+.hero-field-letter h1 span { color: #b97b1f; }
+.hero-field-letter h1 strong { color: var(--date-red); }
+.hero-field-letter .official-hero-lead { color: rgba(43, 26, 18, .8); }
+.hero-person-note { background: #efe0c6; border-left-color: var(--gold); }
+.hero-person-note img { border-color: #fff; }
+.hero-person-note blockquote p { color: var(--burgundy); }
+.hero-person-note cite { color: var(--date-red); }
+.hero-field-letter .btn.hero-primary {
+  background: linear-gradient(135deg, var(--gold-soft), var(--gold) 55%, #b8862f);
+  color: var(--burgundy-deep);
+  box-shadow: 0 14px 32px rgba(184, 134, 47, .42);
+}
+.hero-field-letter .btn.hero-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 42px rgba(184, 134, 47, .5); }
+.hero-field-letter .hero-story-link { color: var(--date-red); }
+.hero-letter-signoff { color: #a9711b; }
+.hero-field-photo-image { background: var(--burgundy); box-shadow: 0 35px 95px rgba(43, 26, 18, .38); }
+.hero-field-photo-image img { filter: saturate(1.06) contrast(1.05) sepia(.16); }
+.hero-field-photo-image::after {
+  background: linear-gradient(180deg, transparent 48%, rgba(74, 12, 15, .66) 100%);
+}
+.hero-field-stamp {
+  border-color: rgba(212, 160, 60, .95);
+  background: rgba(212, 160, 60, .18);
+  backdrop-filter: blur(4px);
+}
+.hero-field-stamp strong { color: var(--gold-soft); }
+.hero-field-photo figcaption { color: #fff; }
+/* Gold marquee band — echoes the packaging GOLD badge */
+.official-hero-marquee {
+  background: linear-gradient(90deg, #c9a24b, var(--gold-soft) 50%, #c9a24b);
+  color: var(--burgundy-deep);
+  border-top: 1px solid rgba(255, 255, 255, .22);
+}
+.official-hero-marquee i { color: var(--date-red); }
+
+/* ── Floating golden dust ───────────────────────────────────── */
+.dust-field {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+.dust-field i {
+  position: absolute;
+  bottom: -14px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 226, 150, .95), rgba(212, 160, 60, .4));
+  box-shadow: 0 0 8px rgba(212, 160, 60, .45);
+  opacity: var(--dust-op, .4);
+  will-change: transform;
+  animation: dust-rise linear infinite;
+}
+@keyframes dust-rise {
+  0% { transform: translate3d(0, 0, 0); opacity: 0; }
+  8% { opacity: var(--dust-op, .4); }
+  92% { opacity: var(--dust-op, .4); }
+  100% { transform: translate3d(var(--dust-drift, 24px), -108vh, 0); opacity: 0; }
+}
+.dust-subtle { z-index: 2; }
+.dust-subtle i { opacity: calc(var(--dust-op, .4) * .55); }
+
+/* Dune section dividers — sit at the very bottom of a section and bleed into
+   the section below. The bottom edge is fully opaque (it carries the next
+   section's colour) and only the TOP edge fades, so the seam between two
+   sections reads as one continuous surface with no visible gap or hairline. */
+.desert-seam { position: relative; }
+.dune-divider {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  height: clamp(56px, 7.5vw, 104px);
+  pointer-events: none;
+}
+.dune-divider svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* Fade only the top so the bottom stays a solid colour-match with the
+     following section; this removes the old "transparent bottom" leak. */
+  mask-image: linear-gradient(0deg, #000 62%, transparent 100%);
+  -webkit-mask-image: linear-gradient(0deg, #000 62%, transparent 100%);
+}
+.dune-path { fill: var(--dune-front); }
+.dune-path.dune-back { fill: var(--dune-back); opacity: .92; }
+
+/* ── Story: deep burgundy desert night ──────────────────────── */
+.story {
+  color: var(--ivory);
+  background:
+    radial-gradient(72% 55% at 14% 6%, rgba(212, 160, 60, .2), transparent 52%),
+    linear-gradient(180deg, var(--burgundy) 0%, var(--burgundy-deep) 100%);
+}
+.story::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: .42;
+  pointer-events: none;
+  background-image: url("/desert/sand-grain.svg");
+  background-size: 200px 200px;
+  mix-blend-mode: soft-light;
+  animation: sand-drift 28s ease-in-out infinite alternate;
+}
+@keyframes sand-drift {
+  from { background-position: 0 0; }
+  to { background-position: 140px 46px; }
+}
+.story-palms {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+}
+.story-palm {
+  position: absolute;
+  bottom: 0;
+  width: clamp(110px, 14vw, 200px);
+  height: auto;
+  color: var(--gold-deep);
+  opacity: .42;
+}
+.story-palm-left { left: -18px; }
+.story-palm-right { right: -14px; transform: scaleX(-1); }
+.story-editorial-heading .script { color: var(--gold-soft); }
+.story-editorial-heading h2 { color: var(--ivory); }
+.story-editorial-heading h2::after {
+  content: "";
+  display: block;
+  width: 78px;
+  height: 3px;
+  margin-top: 22px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--gold-soft), var(--gold) 60%, transparent);
+}
+.story-editorial-intro p { color: rgba(250, 244, 232, .8); }
+.story-editorial-notes { background: #efe0c6; }
+.story-editorial-notes > p { color: var(--date-red); }
+.story-editorial-notes li { border-top-color: rgba(43, 26, 18, .14); }
+.story-editorial-notes li > span { color: #a9711b; }
+.story-editorial-notes strong { color: var(--burgundy); }
+.story-editorial-notes small { color: rgba(43, 26, 18, .68); }
+.story-editorial-main { background: var(--burgundy-deep); }
+.story-editorial-mini { border-color: var(--ivory); }
+.story-editorial-mini figcaption { background: var(--palm-green); }
+
+/* ── Wellness: sand + Moroccan geometry ─────────────────────── */
+.wellness-redesign {
+  background:
+    radial-gradient(90% 60% at 0% 0%, rgba(212, 160, 60, .2), transparent 46%),
+    radial-gradient(80% 60% at 100% 100%, rgba(47, 107, 74, .12), transparent 52%),
+    linear-gradient(135deg, var(--ivory) 0%, var(--sand-soft) 55%, #eddcbf 100%);
+}
+.wellness-redesign::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  opacity: .5;
+  background-image: url("/desert/moroccan-pattern.svg");
+  background-size: 320px 320px;
+  mask-image: radial-gradient(115% 105% at 50% 42%, #000 22%, transparent 78%);
+  -webkit-mask-image: radial-gradient(115% 105% at 50% 42%, #000 22%, transparent 78%);
+}
+.wellness-redesign-bg span:nth-child(1) { background: rgba(142, 27, 27, .13); }
+.wellness-redesign-bg span:nth-child(2) { border-color: rgba(212, 160, 60, .32); }
+.wellness-redesign-bg span:nth-child(3) { background: rgba(47, 107, 74, .14); }
+.wellness-redesign .goodness-kicker { background: var(--date-red); }
+/* Nutrition section decorative SVG layer (date palms + Moroccan arches).
+   Subtle / low so it never competes with the nutrition cards. */
+.nutrition-decor {
+  --skyline-back: rgba(142, 27, 27, .16);
+  --skyline-front: rgba(92, 14, 18, .28);
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.nutrition-arch-row { position: absolute; inset: 0; }
+.nutrition-arch {
+  position: absolute;
+  display: block;
+  height: auto;
+  width: auto;
+  bottom: 0;
+}
+.nutrition-arch svg { display: block; width: 100%; height: auto; }
+.nutrition-palm {
+  position: absolute;
+  display: block;
+  height: auto;
+  width: auto;
+  bottom: 0;
+  opacity: .5;
+}
+.nutrition-palm svg { display: block; width: 100%; height: auto; }
+/* Keep decorative layer behind the section content */
+.wellness-redesign-inner { position: relative; z-index: 1; }
+@media (max-width: 800px) {
+  .nutrition-arch { opacity: .8; }
+  .nutrition-palm { opacity: .42; }
+}
+.wellness-redesign .goodness-kicker::before { background: var(--gold-soft); }
+.wellness-redesign .goodness-headline { color: #6e1618; }
+.wellness-redesign-lead { color: rgba(43, 26, 18, .82); }
+.wellness-redesign-actions > span { border-color: rgba(212, 160, 60, .4); background: rgba(251, 246, 234, .78); color: var(--date-red); }
+.wellness-product-card,
+.wellness-score-card,
+.wellness-benefit-card { border-color: rgba(212, 160, 60, .26); background: rgba(255, 251, 240, .92); }
+.wellness-product-card {
+  background:
+    radial-gradient(circle at 50% 30%, rgba(212, 160, 60, .36), transparent 46%),
+    linear-gradient(180deg, var(--ivory), #efe0c6);
+}
+.wellness-product-card div { background: var(--burgundy); }
+.wellness-score-card { background: var(--burgundy); }
+.wellness-score-card strong { color: var(--gold-soft); }
+.wellness-score-card::after { border-color: rgba(212, 160, 60, .38); }
+.wellness-benefit-number { background: var(--date-red); }
+.wellness-benefit-card h3 { color: #6e1618; }
+.wellness-benefit-card::before {
+  background: linear-gradient(135deg, rgba(212, 160, 60, .34), rgba(142, 27, 27, .1));
+}
+.wellness-benefit-card:nth-child(2)::before { background: linear-gradient(135deg, rgba(47, 107, 74, .32), rgba(36, 80, 58, .14)); }
+.wellness-benefit-card:nth-child(3)::before { background: linear-gradient(135deg, rgba(142, 27, 27, .15), rgba(212, 160, 60, .32)); }
+.wellness-benefit-card:nth-child(4)::before { background: linear-gradient(135deg, rgba(36, 80, 58, .2), rgba(47, 107, 74, .26)); }
+.wellness-redesign-disclaimer { border-color: rgba(212, 160, 60, .3); background: rgba(251, 246, 234, .7); }
+
+/* ── Categories, products, catalogue ────────────────────────── */
+.home-categories {
+  background:
+    radial-gradient(85% 60% at 100% 0%, rgba(212, 160, 60, .14), transparent 46%),
+    var(--ivory);
+}
+.home-categories::before { border-color: rgba(142, 27, 27, .06); }
+.home-category-heading h2 { color: #6e1618; }
+.home-category-heading > p { border-left-color: var(--gold); color: rgba(43, 26, 18, .74); }
+.home-category-card { border-color: var(--ivory); background: #7a1517; }
+.home-category-number { border-color: rgba(212, 160, 60, .55); background: rgba(74, 12, 15, .38); color: #f3e0b8; }
+.home-category-content > p { color: var(--gold-soft); }
+.home-category-content strong { background: var(--date-red); }
+.home-category-card::after { border-color: color-mix(in srgb, var(--home-category-accent) 30%, transparent); }
+
+.products {
+  background:
+    radial-gradient(85% 55% at 90% 6%, rgba(212, 160, 60, .17), transparent 50%),
+    radial-gradient(70% 50% at 4% 92%, rgba(142, 27, 27, .07), transparent 46%),
+    linear-gradient(180deg, var(--sand-soft) 0%, #eddcbf 100%);
+}
+.products .script.tan,
+.new-products-section .script.tan { color: var(--date-red); }
+.section-title h2 { color: #6e1618; }
+.section-intro { color: rgba(43, 26, 18, .74); }
+.product-card {
+  border-color: rgba(212, 160, 60, .24);
+  background: linear-gradient(180deg, #fbf6ea 0%, var(--ivory-soft) 100%);
+  box-shadow: 0 26px 60px rgba(43, 26, 18, .13);
+}
+.product-card-media { background: radial-gradient(circle at 50% 54%, rgba(212, 160, 60, .26), transparent 56%), #efe0c6; }
+.product-card h3 { color: var(--date-red); }
+.product-card-category { color: var(--product-accent); background: color-mix(in srgb, var(--product-accent) 12%, #fbf6ea); }
+
+.new-products-section {
+  background:
+    radial-gradient(85% 55% at 90% 6%, rgba(212, 160, 60, .17), transparent 50%),
+    linear-gradient(180deg, var(--ivory) 0%, var(--ivory-soft) 100%);
+}
+.new-products-section::before { border-color: rgba(212, 160, 60, .26); }
+.new-products-heading h2 { color: #6e1618; }
+.fresh-product-card { border-color: rgba(212, 160, 60, .2); background: rgba(255, 251, 240, .86); }
+.fresh-product-media { background: radial-gradient(circle at 50% 54%, color-mix(in srgb, var(--category-accent) 26%, #fbf6ea), transparent 60%); }
+.fresh-product-copy h4 { color: var(--date-red); }
+
+/* ── Sunshine moments: palm-green oasis ─────────────────────── */
+.sunshine-moment {
+  color: var(--ivory);
+  background:
+    radial-gradient(62% 55% at 84% 10%, rgba(212, 160, 60, .3), transparent 55%),
+    radial-gradient(70% 60% at 10% 92%, rgba(232, 220, 190, .12), transparent 55%),
+    linear-gradient(150deg, var(--palm-green) 0%, var(--palm-green-deep) 100%);
+}
+.sunshine-moment::before { border-color: rgba(212, 160, 60, .24); }
+.sunshine-moment::after { background: rgba(74, 12, 15, .3); }
+.sunshine-moment-heading .script { color: var(--gold-soft); }
+.sunshine-moment-heading h2 { color: var(--ivory); }
+.sunshine-moment-heading > p { border-left-color: var(--gold); color: rgba(250, 244, 232, .78); }
+.moment-tabs-list { border-color: rgba(212, 160, 60, .28); background: rgba(250, 244, 232, .09); }
+.moment-panel { border-color: rgba(212, 160, 60, .32); background: var(--ivory); }
+.moment-copy { border-color: rgba(212, 160, 60, .22); background: rgba(251, 246, 234, .97); }
+.moment-visual { background: var(--burgundy); }
+.moment-visual::after { background: linear-gradient(90deg, transparent 48%, rgba(74, 12, 15, .4)); }
+.moment-photo-label { border-color: rgba(212, 160, 60, .4); background: rgba(74, 12, 15, .4); }
+.moment-copy h3 { color: #6e1618; }
+.moment-copy > p:not(.moment-eyebrow) { color: rgba(43, 26, 18, .76); }
+
+/* ── Recipes, FAQ ───────────────────────────────────────────── */
+.recipes { background: linear-gradient(180deg, var(--ivory) 0%, var(--sand-soft) 100%); }
+.recipes .story-text h2 { color: #6e1618; }
+.recipe-media { border-color: rgba(212, 160, 60, .5); background: var(--burgundy); box-shadow: 0 34px 80px rgba(74, 12, 15, .32); }
+.recipe-hub {
+  background:
+    radial-gradient(circle at 92% 4%, rgba(212, 160, 60, .22), transparent 24%),
+    radial-gradient(circle at 2% 48%, rgba(142, 27, 27, .08), transparent 22%),
+    var(--sand-soft);
+}
+.recipe-hub-heading h2 { color: #6e1618; }
+.recipe-hub-intro { border-left-color: var(--date-red); }
+.recipe-hub-intro p { color: #6e1618; }
+.recipe-card { border-color: rgba(212, 160, 60, .22); background: #fbf6ea; }
+.recipe-card-image { background: #efe0c6; }
+.recipe-card-copy h3,
+.recipe-card-time,
+.recipe-card-description,
+.recipe-card-link { color: var(--date-red); }
+.recipe-builder-banner { background: linear-gradient(150deg, var(--burgundy), var(--burgundy-deep)); }
+.recipe-builder-copy h2 { color: var(--ivory); }
+.recipe-builder-copy .info-kicker { color: var(--gold-soft); }
+.recipe-builder-actions a:first-child { border-color: var(--gold); background: var(--gold); color: var(--burgundy-deep); }
+.recipe-detail-hero {
+  background:
+    radial-gradient(circle at 96% 4%, rgba(212, 160, 60, .3), transparent 27%),
+    radial-gradient(circle at 12% 100%, rgba(212, 160, 60, .12), transparent 28%),
+    linear-gradient(160deg, var(--burgundy), var(--burgundy-deep));
+}
+.recipe-detail-hero::after { border-color: rgba(212, 160, 60, .1); }
+.recipe-detail-image { background: #efe0c6; }
+.recipe-detail-copy .info-kicker { color: var(--gold-soft); }
+.recipe-meta svg { color: var(--gold-soft); }
+.recipe-start-link { background: var(--gold); color: var(--burgundy-deep); }
+.recipe-method-card { background: var(--sand-soft); }
+.recipe-method-card li { background: rgba(251, 246, 234, .82); }
+.recipe-notes-card { background: var(--burgundy); }
+.recipe-notes-card h2 { color: var(--ivory); }
+.recipe-notes-card .recipe-body-kicker { color: var(--gold-soft); }
+.recipe-notes-card h3 { color: var(--gold-soft); }
+.recipe-more { background: #efe0c6; }
+.recipe-more-heading h2 { color: #6e1618; }
+
+.home-faq {
+  background:
+    radial-gradient(70% 55% at 90% 0%, rgba(212, 160, 60, .12), transparent 52%),
+    linear-gradient(180deg, var(--warm-brown) 0%, #221309 100%);
+  color: var(--ivory);
+}
+.home-faq h2 { color: var(--ivory); }
+.home-faq .faq-list details { background: var(--ivory); color: var(--warm-brown); }
+
+/* ── Footer: burgundy, gold geometry, desert skyline ────────── */
+footer {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--burgundy) 0%, var(--burgundy-deep) 100%);
+  color: var(--ivory);
+}
+footer::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 0;
+  height: min(360px, 42%);
+  pointer-events: none;
+  background-image: url("/desert/moroccan-pattern.svg");
+  background-size: 300px 300px;
+  opacity: .38;
+  mask-image: linear-gradient(180deg, #000 18%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, #000 18%, transparent 100%);
+}
+.footer-skyline {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  height: clamp(110px, 16vw, 200px);
+  pointer-events: none;
+  --skyline-back: rgba(90, 14, 18, .95);
+  --skyline-front: #36090c;
+}
+.footer-inner { position: relative; z-index: 2; }
+footer .dust-subtle { z-index: 3; }
+.footer-cta,
+.footer-contact-card,
+.footer-columns > div { background: rgba(250, 244, 232, .08); border-color: rgba(212, 160, 60, .24); }
+.footer-cta {
+  background:
+    radial-gradient(circle at 12% 10%, rgba(212, 160, 60, .24), transparent 46%),
+    rgba(250, 244, 232, .08);
+}
+.footer-eyebrow { color: var(--gold-soft); }
+.footer-columns h3 { color: var(--ivory); }
+.footer-wordmark {
+  color: var(--gold-soft);
+  font-family: var(--font-display-stack);
+  letter-spacing: .16em;
+}
+.footer-contact-card p,
+.footer-columns a,
+.footer-bottom { color: rgba(250, 244, 232, .78); }
+.footer-newsletter { border-color: rgba(212, 160, 60, .24); }
+.newsletter-form button { background: var(--date-red); }
+.newsletter-form small { color: rgba(250, 244, 232, .7); }
+
+/* ── Catalog, category, product & content pages ─────────────── */
+.catalog-page,
+.category-page,
+.product-page,
+.cart-page,
+.recipe-page { background: var(--ivory); }
+.catalog-hero,
+.cart-hero {
+  background:
+    radial-gradient(85% 70% at 86% 10%, rgba(212, 160, 60, .34), transparent 52%),
+    linear-gradient(125deg, var(--burgundy-deep) 0%, var(--date-red-deep) 60%, var(--date-red) 100%);
+  color: var(--ivory);
+}
+.catalog-hero h1 { color: var(--ivory); }
+.catalog-hero h1 span { color: var(--gold-soft); }
+.catalog-hero > .catalog-shell > p:not(.catalog-eyebrow) { color: rgba(250, 244, 232, .85); }
+.category-hero { background: var(--ivory); }
+.category-hero h1,
+.product-detail-copy h1 { color: #6e1618; }
+.product-detail-hero { background: var(--ivory); }
+.product-detail-media { background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--product-accent) 24%, transparent), transparent 52%), var(--ivory); }
+.product-notes { background: var(--ivory); }
+.category-showcase { background: linear-gradient(150deg, var(--burgundy), var(--burgundy-deep)); }
+.category-showcase-copy .category-kicker { color: var(--gold-soft); }
+.category-guide { background: var(--palm-green); }
+.category-guide-actions a { background: var(--burgundy); }
+.category-guide-steps article { background: rgba(251, 246, 234, .78); }
+.category-explore { background: var(--ivory); }
+.category-product-grid .catalog-card { background: #fbf6ea; }
+.info-page { background: var(--ivory); }
+.info-hero {
+  background:
+    radial-gradient(circle at 100% 0, rgba(212, 160, 60, .18), transparent 36%),
+    linear-gradient(145deg, var(--ivory) 0%, var(--ivory-soft) 100%);
+}
+.info-hero-copy h1,
+.info-section-heading h2,
+.local-builder-heading h2,
+.contact-form-shell h2,
+.info-related-inner h2,
+.story-facts-heading h2,
+.story-sources-inner h2 { color: #6e1618; }
+.info-hero-media { border-color: rgba(212, 160, 60, .5); background: #efe0c6; }
+.info-hero-media.is-contain { background: radial-gradient(circle, rgba(212, 160, 60, .2), var(--ivory) 70%); }
+.info-content-card { border-color: rgba(212, 160, 60, .22); background: #fbf6ea; }
+.info-primary-link { background: var(--date-red); }
+.info-highlight-grid > div { background: rgba(251, 246, 234, .94); }
+.info-disclaimer { background: var(--ivory); }
+.story-facts-section { background: var(--ivory); }
+.recipe-body { background: var(--ivory); }
+.recipe-ingredients-card { background: #fbf6ea; }
+.product-faq { background: #efe0c6; }
+
+/* ── Responsive polish ──────────────────────────────────────── */
+@media (max-width: 800px) {
+  .hero.official-hero { background: linear-gradient(180deg, var(--burgundy-deep), #6e1618 70%, var(--date-red)); }
+  /* Lift the skyline above the gold marquee band so the gateway + palms are
+     fully visible and not clipped by the marquee (which sits at the hero base). */
+  .hero-skyline { height: clamp(120px, 30vw, 200px); bottom: 54px; }
+  /* Blend the dune base into the gold marquee band instead of a hard edge */
+  .hero-dune {
+    mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
+  }
+  .official-hero-marquee { background: linear-gradient(90deg, #c9a24b, var(--gold-soft)); }
+}
+@media (max-width: 520px) {
+  .hero-field-letter { background: linear-gradient(160deg, #fbf6ea 0%, var(--ivory-soft) 100%); }
+}
+
+/* ── Accessibility: honour reduced motion ───────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .dust-field i,
+  .hero-gold-chip::after,
+  .story::before { animation: none !important; }
+  .dust-field { display: none; }
+}

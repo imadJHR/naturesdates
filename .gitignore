@@ -22,3 +22,12 @@
 # OS and editor files
 .DS_Store
 Thumbs.db
+
+# verification artifacts (screenshots, puppeteer scripts, audits)
+*.png
+seam-audit.json
+scripts/cap-*.js
+scripts/diag-*.js
+scripts/verify-copy.js
+scripts/capture-*.js
+.freebuff/

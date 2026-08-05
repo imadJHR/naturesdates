@@ -15,6 +15,9 @@ import { siteConfig } from "@/app/data/site-config";
 import { WholesaleQuoteButton, WholesaleStatus } from "./cart-actions";
 import { Certifications } from "./certifications";
 import { Reveal, RevealSection } from "./reveal";
+import { DesertSkyline, DustField } from "./desert-decor";
+import { HeroSkyline } from "./artifacts/HeroSkyline";
+import { NutritionDecor } from "./artifacts/NutritionDecor";
 
 type NavigationItem = {
   href: string;
@@ -309,7 +312,7 @@ export function OfficialHero() {
     <section ref={sectionRef} id="top" className="hero official-hero section-orange" aria-labelledby="hero-title">
       <div className="official-hero-shell">
         <article className="hero-field-letter">
-          <motion.p className="official-hero-eyebrow" {...heroItem} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}>Premium Medjool dates <span aria-hidden="true">— naturally versatile</span></motion.p>
+          <motion.p className="official-hero-eyebrow" {...heroItem} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}><span>Premium Medjool dates</span><em className="hero-gold-chip">Medjool Gold</em></motion.p>
           <motion.h1 id="hero-title" {...heroItem} transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}><span>Raised by hand.</span><strong>Ripened by sunshine.</strong></motion.h1>
           <motion.p className="official-hero-lead" {...heroItem} transition={{ duration: 0.6, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}>Soft, caramel-like and naturally sweet, Medjool dates make everyday snacking and recipe time feel a little more generous.</motion.p>
           <motion.div className="hero-person-note" {...heroItem} transition={{ duration: 0.6, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}>
@@ -336,6 +339,11 @@ export function OfficialHero() {
         </figure>
       </div>
 
+      <div className="hero-desert-scene" aria-hidden="true">
+        <DustField count={22} />
+        <HeroSkyline />
+      </div>
+
       <div className="official-hero-marquee" aria-hidden="true">
         <span>Whole fruit</span><i>✦</i><span>Caramel-like taste</span><i>✦</i><span>Recipe ready</span><i>✦</i>
         <span>Whole fruit</span><i>✦</i><span>Caramel-like taste</span><i>✦</i><span>Recipe ready</span>
@@ -346,14 +354,15 @@ export function OfficialHero() {
 
 export function GoodnessShowcase() {
   const benefits = [
-    { id: "potassium", label: "Whole-fruit simplicity", detail: "A soft, naturally sweet fruit that is easy to enjoy on its own." },
+    { id: "potassium", label: "Whole-fruit simplicity", detail: "A soft, naturally sweet whole fruit that is easy to enjoy on its own." },
     { id: "glycemic", label: "Read the label", detail: "Use the current serving size and Nutrition Facts panel for product-specific details." },
-    { id: "vitamins", label: "Kitchen versatility", detail: "Chop, blend, stuff or pair dates with foods you already love." },
-    { id: "heart", label: "Everyday enjoyment", detail: "A caramel-like ingredient for breakfasts, snacks and shareable recipes." },
+    { id: "vitamins", label: "Kitchen versatility", detail: "Chop, blend or pair dates with protein- and fiber-rich foods for balanced, nutrient-dense snacks." },
+    { id: "heart", label: "Everyday enjoyment", detail: "A naturally sweet, caramel-like fruit for breakfasts, snacks and everyday energy." },
   ];
 
   return (
     <RevealSection id="wellness" className="wellness wellness-redesign section-cream" aria-labelledby="goodness-title">
+      <NutritionDecor />
       <div className="wellness-redesign-bg" aria-hidden="true">
         <span />
         <span />
@@ -361,9 +370,9 @@ export function GoodnessShowcase() {
       </div>
       <div className="section-inner wellness-redesign-inner">
         <Reveal className="wellness-redesign-copy">
-          <p className="goodness-kicker">Nutrition desk</p>
+          <p className="goodness-kicker">Nutrition Desk</p>
           <h2 className="goodness-headline" id="goodness-title">A whole-fruit favorite, without the wellness hype.</h2>
-          <p className="wellness-redesign-lead">Explore practical, label-aware guidance for fitting Medjool dates into everyday meals, snacks and active routines.</p>
+          <p className="wellness-redesign-lead">Explore practical, evidence-based guidance for fitting Medjool dates into everyday meals, snacks and active routines.</p>
           <div className="wellness-redesign-actions">
             <Link className="btn red goodness-cta" href="/health-and-wellness">Explore Medjool nutrition <ArrowUpRight size={18} /></Link>
             <span>Responsible, evidence-informed guidance</span>

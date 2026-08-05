@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./legacy-globals.css";
 @import "./legacy-content-pages.css";
+@import "./desert-theme.css";
 
 /* Custom cursor (desktop / fine pointer only, activated by JS) */
 .cursor-dot {
@@ -8,7 +9,7 @@
   top: 0; left: 0;
   width: 9px; height: 9px;
   border-radius: 50%;
-  background: #1B4D3E;
+  background: #D4A03C;
   pointer-events: none;
   z-index: 9999;
   opacity: 1;
@@ -18,7 +19,7 @@
   position: fixed;
   top: 0; left: 0;
   width: 40px; height: 40px;
-  border: 2px solid rgba(27, 77, 62, .55);
+  border: 2px solid rgba(212, 160, 60, .55);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9998;
@@ -27,8 +28,8 @@
 }
 .cursor-ring.is-hover {
   width: 60px; height: 60px;
-  border-color: #1B4D3E;
-  background: rgba(27, 77, 62, .16);
+  border-color: #D4A03C;
+  background: rgba(212, 160, 60, .16);
 }
 /* Only hide the native cursor once the custom one is actually running */
 html.has-custom-cursor,
@@ -36,29 +37,32 @@ html.has-custom-cursor * { cursor: none !important; }
 
 /* ─────────────────────────────────────────────────────────────
    Natures Dates — Tailwind v4 design tokens
-   Brand palette extracted from the Medjool dates packaging:
-   deep date red #A70310 (primary), dark burgundy #8A050C,
-   palm green #2A8863, sand beige #E4CEB2, golden brown #C8842B,
-   warm white #FCFAF7, very dark brown #1F1404 (text).
+   Sahara × Medjool Gold palette extracted from the box packaging:
+   deep date red #8E1B1B (primary), rich burgundy #5C0E12,
+   desert gold #D4A03C, sand beige #E7D6BB, clay #C2703D,
+   palm green #2F6B4A, ivory #FAF4E8, warm brown #2B1A12 (text).
    ───────────────────────────────────────────────────────────── */
 @theme {
-  --color-brand-bordeaux: #A70310;
-  --color-brand-white: #FCFAF7;
-  --color-brand-forest: #2A8863;
-  --color-brand-sand: #E4CEB2;
+  --color-brand-bordeaux: #8E1B1B;
+  --color-brand-burgundy: #5C0E12;
+  --color-brand-white: #FAF4E8;
+  --color-brand-forest: #2F6B4A;
+  --color-brand-sand: #E7D6BB;
+  --color-brand-gold: #D4A03C;
+  --color-brand-clay: #C2703D;
+  --color-brand-brown: #2B1A12;
 
   /* semantic aliases (kept for utility compatibility) */
-  --color-brand-red: #A70310;
-  --color-brand-brown: #A70310;
-  --color-brand-green: #2A8863;
-  --color-brand-deep-green: #2A8863;
-  --color-brand-teal: #2A8863;
-  --color-brand-tan: #E4CEB2;
-  --color-brand-orange: #C8842B;
-  --color-brand-sun: #C8842B;
-  --color-brand-cream: #FCFAF7;
-  --color-brand-cream-2: #FCFAF7;
-  --color-brand-soft-tan: #F3E7D6;
+  --color-brand-red: #8E1B1B;
+  --color-brand-green: #2F6B4A;
+  --color-brand-deep-green: #2F6B4A;
+  --color-brand-teal: #2F6B4A;
+  --color-brand-tan: #E7D6BB;
+  --color-brand-orange: #D4A03C;
+  --color-brand-sun: #D4A03C;
+  --color-brand-cream: #FAF4E8;
+  --color-brand-cream-2: #F4EAD4;
+  --color-brand-soft-tan: #F3E7D2;
 
   --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   --font-script: var(--font-script), cursive;

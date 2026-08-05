@@ -12,11 +12,18 @@ import { SiteFooter } from "./components/site-footer";
 import { NewProductsSection } from "./components/new-products-section";
 import { SunshineMoment } from "./components/sunshine-moment";
 import { Reveal, RevealSection } from "./components/reveal";
+import { DuneDivider, DustField } from "./components/desert-decor";
+import { DatePalm } from "./components/artifacts/DatePalm";
 import { productCategories, products as catalogProducts } from "./data/products";
 
 function Story() {
   return (
     <RevealSection id="story" className="story section-brown">
+      <div className="story-palms" aria-hidden="true">
+        <DatePalm className="story-palm story-palm-left" />
+        <DatePalm className="story-palm story-palm-right" />
+      </div>
+      <DustField count={12} className="dust-subtle" />
       <div className="section-inner story-editorial">
         <Reveal className="story-editorial-heading">
           <div><p className="script small">Naturally generous</p><h2>One fruit.<br />A whole day of possibilities.</h2></div>
@@ -130,14 +137,14 @@ export default function Page() {
       <main>
         <Header />
         <OfficialHero />
-        <Story />
-        <GoodnessShowcase />
-        <CategoryExplore />
-        <Products />
-        <NewProductsSection />
-        <SunshineMoment />
-        <Recipes />
-        <FaqPreview />
+        <div className="desert-seam"><Story /><DuneDivider tone="sand" /></div>
+        <div className="desert-seam"><GoodnessShowcase /><DuneDivider tone="ivory" /></div>
+        <div className="desert-seam"><CategoryExplore /><DuneDivider tone="sand" /></div>
+        <div className="desert-seam"><Products /><DuneDivider tone="ivory" /></div>
+        <div className="desert-seam"><NewProductsSection /><DuneDivider tone="green" /></div>
+        <div className="desert-seam"><SunshineMoment /><DuneDivider tone="ivory" /></div>
+        <div className="desert-seam"><Recipes /><DuneDivider tone="brown" /></div>
+        <div className="desert-seam"><FaqPreview /><DuneDivider tone="burgundy" /></div>
         <SiteFooter />
       </main>
     </>
