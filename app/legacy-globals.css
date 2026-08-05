@@ -1491,25 +1491,11 @@ footer { background-color: #a70310; }
     linear-gradient(135deg, #fcfaf7 0%, #fcfaf7 46%, #f3e7d6 100%);
 }
 .wellness-redesign::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background-image:
-    linear-gradient(90deg, rgba(31, 20, 4, .06) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(31, 20, 4, .055) 1px, transparent 1px);
-  background-size: 72px 72px;
-  mask-image: linear-gradient(180deg, transparent, #1f1404 14%, #1f1404 86%, transparent);
+  content: none;
 }
 .wellness-redesign-bg span {
-  position: absolute;
-  z-index: -1;
-  border-radius: 999px;
-  pointer-events: none;
+  display: none;
 }
-.wellness-redesign-bg span:nth-child(1) { width: 420px; aspect-ratio: 1; left: -150px; top: 60px; background: rgba(167, 3, 16, .16); }
-.wellness-redesign-bg span:nth-child(2) { width: 360px; aspect-ratio: 1; right: -120px; top: 24%; border: 72px solid rgba(200, 132, 43, .23); }
-.wellness-redesign-bg span:nth-child(3) { width: 260px; aspect-ratio: 1; right: 18%; bottom: 5%; background: rgba(42, 136, 99, .13); transform: rotate(18deg); border-radius: 34% 66% 50% 50%; }
 .wellness-redesign .section-inner,
 .wellness-redesign-inner {
   width: min(1420px, calc(100% - 44px));

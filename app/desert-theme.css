@@ -373,20 +373,6 @@ body {
     radial-gradient(80% 60% at 100% 100%, rgba(47, 107, 74, .12), transparent 52%),
     linear-gradient(135deg, var(--ivory) 0%, var(--sand-soft) 55%, #eddcbf 100%);
 }
-.wellness-redesign::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  opacity: .5;
-  background-image: url("/desert/moroccan-pattern.svg");
-  background-size: 320px 320px;
-  mask-image: radial-gradient(115% 105% at 50% 42%, #000 22%, transparent 78%);
-  -webkit-mask-image: radial-gradient(115% 105% at 50% 42%, #000 22%, transparent 78%);
-}
-.wellness-redesign-bg span:nth-child(1) { background: rgba(142, 27, 27, .13); }
-.wellness-redesign-bg span:nth-child(2) { border-color: rgba(212, 160, 60, .32); }
-.wellness-redesign-bg span:nth-child(3) { background: rgba(47, 107, 74, .14); }
 .wellness-redesign .goodness-kicker { background: var(--date-red); }
 /* Nutrition section decorative SVG layer (date palms + Moroccan arches).
    Subtle / low so it never competes with the nutrition cards. */
@@ -399,15 +385,6 @@ body {
   overflow: hidden;
   pointer-events: none;
 }
-.nutrition-arch-row { position: absolute; inset: 0; }
-.nutrition-arch {
-  position: absolute;
-  display: block;
-  height: auto;
-  width: auto;
-  bottom: 0;
-}
-.nutrition-arch svg { display: block; width: 100%; height: auto; }
 .nutrition-palm {
   position: absolute;
   display: block;
@@ -420,7 +397,6 @@ body {
 /* Keep decorative layer behind the section content */
 .wellness-redesign-inner { position: relative; z-index: 1; }
 @media (max-width: 800px) {
-  .nutrition-arch { opacity: .8; }
   .nutrition-palm { opacity: .42; }
 }
 .wellness-redesign .goodness-kicker::before { background: var(--gold-soft); }

@@ -363,11 +363,6 @@ export function GoodnessShowcase() {
   return (
     <RevealSection id="wellness" className="wellness wellness-redesign section-cream" aria-labelledby="goodness-title">
       <NutritionDecor />
-      <div className="wellness-redesign-bg" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-      </div>
       <div className="section-inner wellness-redesign-inner">
         <Reveal className="wellness-redesign-copy">
           <p className="goodness-kicker">Nutrition Desk</p>

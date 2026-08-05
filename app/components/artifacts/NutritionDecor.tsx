@@ -1,13 +1,11 @@
 import type { CSSProperties } from "react";
 import { DatePalm } from "./DatePalm";
-import { MoroccanArch } from "./MoroccanArch";
 
 /**
  * NutritionDecor — decorative SVG layer for the "Nutrition desk" section.
- * Mirrors the homepage treatment (realistic date palms + clean Moroccan
- * architecture) but kept subtle and low so it never competes with the
- * nutrition cards. All pieces inherit currentColor and tint via the
- * --skyline-* custom properties, staying on the burgundy/gold brand palette.
+ * Per the brief, this section keeps ONLY the date-palm illustrations in the
+ * bottom corners. The repeating star/geometric pattern, the background
+ * circles/blobs, and the Moroccan arch skyline have all been removed.
  *
  * The hero keeps its own HeroSkyline; the footer keeps DesertSkyline; the
  * Story section keeps its DatePalm pair. This is scoped to Nutrition only.
@@ -21,41 +19,7 @@ export function NutritionDecor({
 }) {
   return (
     <div className={`nutrition-decor ${className}`} aria-hidden="true" style={style}>
-      {/* Low Moroccan arch row along the bottom — subtle, brand-tinted */}
-      <div className="nutrition-arch-row">
-        <MoroccanArch
-          className="nutrition-arch"
-          style={{
-            left: "6%",
-            bottom: 0,
-            width: "clamp(70px, 9vw, 130px)",
-            color: "var(--skyline-back)",
-            ["--arch-fill" as string]: "var(--skyline-back)",
-          }}
-        />
-        <MoroccanArch
-          className="nutrition-arch"
-          style={{
-            left: "44%",
-            bottom: 0,
-            width: "clamp(86px, 11vw, 160px)",
-            color: "var(--skyline-front)",
-            ["--arch-fill" as string]: "var(--skyline-front)",
-          }}
-        />
-        <MoroccanArch
-          className="nutrition-arch"
-          style={{
-            right: "6%",
-            bottom: 0,
-            width: "clamp(70px, 9vw, 130px)",
-            color: "var(--skyline-back)",
-            ["--arch-fill" as string]: "var(--skyline-back)",
-          }}
-        />
-      </div>
-
-      {/* Flanking date palms, low opacity so the cards stay the focus */}
+      {/* Flanking date palms only — kept per the brief. */}
       <DatePalm
         className="nutrition-palm nutrition-palm-left"
         style={{ left: -10, bottom: 0, width: "clamp(80px, 10vw, 150px)", color: "var(--skyline-front)" }}
