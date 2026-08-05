@@ -14,6 +14,7 @@ import { SunshineMoment } from "./components/sunshine-moment";
 import { Reveal, RevealSection } from "./components/reveal";
 import { DuneDivider, DustField } from "./components/desert-decor";
 import { DatePalm } from "./components/artifacts/DatePalm";
+import { NutritionDecor } from "./components/artifacts/NutritionDecor";
 import { productCategories, products as catalogProducts } from "./data/products";
 
 function Story() {
@@ -87,8 +88,10 @@ function CategoryExplore() {
     { image: "/images/home/categories/mini-medjools-lifestyle.webp", alt: "A parent and child preparing dates in a lunchbox", note: "Made for busy moments" },
   ];
 
-  return <RevealSection className="home-categories" id="categories"><div className="section-inner">
-    <div className="home-category-heading">
+  return <RevealSection className="home-categories" id="categories">
+    <NutritionDecor />
+    <div className="section-inner">
+      <div className="home-category-heading">
       <div><p className="script small tan">Choose your way</p><h2>One fruit. Three everyday rhythms.</h2></div>
       <p>From a bowl on the counter to an after-school lunchbox, find the Medjool format that fits the moment.</p>
     </div>
