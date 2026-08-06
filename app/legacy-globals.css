@@ -2296,12 +2296,15 @@ footer { background-color: #a70310; }
   align-items: center;
   gap: 8px;
   margin-top: auto;
+  padding: 4px 0;
   color: #a70310;
   font-size: 12px;
   font-weight: 1000;
   letter-spacing: .045em;
   text-transform: uppercase;
+  transition: gap .2s ease;
 }
+.recipe-card-link:hover { gap: 12px; }
 .recipe-card-link svg { transition: transform .2s ease; }
 .recipe-card-link:hover svg { transform: translateX(4px); }
 .recipe-builder-banner {
