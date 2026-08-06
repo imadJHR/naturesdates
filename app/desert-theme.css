@@ -423,7 +423,7 @@ body {
 .story-editorial-notes small { color: rgba(43, 26, 18, .68); }
 .story-editorial-main { background: var(--burgundy-deep); }
 .story-editorial-mini { border-color: var(--ivory); }
-.story-editorial-mini figcaption { background: var(--palm-green); }
+.story-editorial-mini figcaption { background: var(--date-red); }
 
 /* ── Wellness: sand + Moroccan geometry ─────────────────────── */
 .wellness-redesign {
@@ -764,7 +764,7 @@ footer::after {
 .product-notes { background: var(--ivory); }
 .category-showcase { background: linear-gradient(150deg, var(--burgundy), var(--burgundy-deep)); }
 .category-showcase-copy .category-kicker { color: var(--gold-soft); }
-.category-guide { background: var(--palm-green); }
+.category-guide { background: var(--date-red); }
 .category-guide-actions a { background: var(--burgundy); }
 .category-guide-steps article { background: rgba(251, 246, 234, .78); }
 .category-explore { background: var(--ivory); }
