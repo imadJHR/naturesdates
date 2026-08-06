@@ -50,15 +50,15 @@
 .story-facts-grid article:nth-child(3) p { color: rgba(252, 250, 247, .78); }
 .story-sources-section { padding: 90px 0; background: #a70310; color: white; }
 .story-sources-inner { display: grid; gap: 36px; }
-.story-sources-inner h2 { color: white; }
-.story-sources-inner .info-kicker { color: #c8842b; }
+.story-sources-section .story-sources-inner h2 { color: #ffffff; }
+.story-sources-inner .info-kicker { color: #f0d9a8; }
 .story-sources-inner > div > p:last-child { color: rgba(252, 250, 247, .7); }
 .story-source-list { display: grid; gap: 11px; }
 .story-source-list a { min-height: 84px; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; padding: 16px 18px; border: 1px solid rgba(252, 250, 247, .13); border-radius: 20px; background: rgba(252, 250, 247, .07); color: white; transition: transform .2s ease, background .2s ease; }
 .story-source-list a:hover { transform: translateY(-3px); background: rgba(252, 250, 247, .12); }
-.story-source-list a > svg:first-child { color: #c8842b; }
+.story-source-list a > svg:first-child { color: #f0d9a8; }
 .story-source-list span { display: grid; gap: 4px; }
-.story-source-list small { color: #c8842b; font-size: 9px; font-weight: 1000; letter-spacing: .1em; text-transform: uppercase; }
+.story-source-list small { color: #f5e3bb; font-size: 9px; font-weight: 1000; letter-spacing: .1em; text-transform: uppercase; }
 .story-source-list strong { font-size: 14px; line-height: 1.35; }
 .local-tool-section { padding: 86px 0; background: var(--brown); color: white; }
 .local-builder-heading { max-width: 760px; margin-bottom: 38px; }
@@ -153,7 +153,7 @@
   .builder-grid { grid-template-columns: minmax(0, 1.4fr) minmax(300px, .6fr); gap: 28px; }
   .contact-form-shell { grid-template-columns: minmax(0, .82fr) minmax(440px, 1.18fr); gap: 56px; align-items: start; }
   .info-related-inner { grid-template-columns: 1fr minmax(360px, .7fr); }
-  .story-sources-inner { grid-template-columns: minmax(0, .75fr) minmax(480px, 1.25fr); align-items: start; gap: 72px; }
+  .story-sources-inner { grid-template-columns: minmax(0, .85fr) minmax(440px, 1.15fr); align-items: start; gap: 48px; }
 }
 
 /* FAQ page */
