@@ -2616,9 +2616,9 @@ footer { background-color: #a70310; }
 }
 
 /* Sunshine moments — image-led editorial tabs */
-.sunshine-moment { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(circle at 88% 6%, rgba(200, 132, 43, .16), transparent 25%), linear-gradient(145deg, #3c5a43, #2b4233); color: white; }
+.sunshine-moment { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(circle at 88% 6%, rgba(200, 132, 43, .18), transparent 25%), linear-gradient(145deg, #a70310, #8e1b1b); color: white; }
 .sunshine-moment::before { width: 560px; height: 560px; top: -340px; right: -110px; border: 90px solid rgba(200, 132, 43, .12); }
-.sunshine-moment::after { background: rgba(43, 66, 51, .22); }
+.sunshine-moment::after { background: rgba(74, 12, 15, .26); }
 .sunshine-moment-inner { width: min(1240px, calc(100% - 32px)); }
 .sunshine-moment-heading { margin-bottom: 46px; grid-template-columns: minmax(0, 1.12fr) minmax(300px, .55fr); }
 .sunshine-moment-heading .script { color: var(--gold-soft); }

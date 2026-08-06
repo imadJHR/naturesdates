@@ -566,26 +566,26 @@ body {
 .fresh-product-media { background: radial-gradient(circle at 50% 54%, color-mix(in srgb, var(--category-accent) 26%, #fbf6ea), transparent 60%); }
 .fresh-product-copy h4 { color: var(--date-red); }
 
-/* ── Sunshine moments: palm-green oasis ─────────────────────── */
+/* ── Sunshine moments: burgundy oasis ─────────────────────── */
 .sunshine-moment {
   color: var(--ivory);
   background:
     radial-gradient(62% 55% at 84% 10%, rgba(212, 160, 60, .22), transparent 55%),
     radial-gradient(70% 60% at 10% 92%, rgba(232, 220, 190, .1), transparent 55%),
-    linear-gradient(150deg, #3c5a43 0%, #2b4233 100%);
+    linear-gradient(150deg, #a70310 0%, #8e1b1b 100%);
 }
 .sunshine-moment::before { border-color: rgba(243, 233, 207, .22); }
-.sunshine-moment::after { background: rgba(43, 66, 51, .3); }
+.sunshine-moment::after { background: rgba(74, 12, 15, .3); }
 .sunshine-moment-heading .script { color: var(--gold-soft); }
 .sunshine-moment-heading h2 { color: var(--ivory); }
 .sunshine-moment-heading > p { border-left-color: var(--gold); color: rgba(243, 233, 207, .82); }
 .moment-tabs-list { border-color: rgba(243, 233, 207, .2); background: rgba(243, 233, 207, .08); }
 .moment-panel { border-color: rgba(243, 233, 207, .22); background: #f3e7cf; }
-.moment-copy { border-color: rgba(43, 66, 51, .14); background: rgba(251, 246, 234, .97); }
-.moment-visual { background: #2b4233; }
-.moment-visual::after { background: linear-gradient(90deg, transparent 48%, rgba(43, 66, 51, .4)); }
-.moment-photo-label { border-color: rgba(243, 233, 207, .4); background: rgba(43, 66, 51, .42); }
-.moment-copy h3 { color: #2b4233; }
+.moment-copy { border-color: rgba(74, 12, 15, .16); background: rgba(251, 246, 234, .97); }
+.moment-visual { background: #8e1b1b; }
+.moment-visual::after { background: linear-gradient(90deg, transparent 48%, rgba(74, 12, 15, .42)); }
+.moment-photo-label { border-color: rgba(243, 233, 207, .4); background: rgba(74, 12, 15, .42); }
+.moment-copy h3 { color: #6e1618; }
 .moment-copy > p:not(.moment-eyebrow) { color: rgba(43, 26, 18, .8); }
 
 /* ── Recipes, FAQ ───────────────────────────────────────────── */
