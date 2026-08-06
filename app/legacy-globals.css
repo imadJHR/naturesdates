@@ -2716,8 +2716,8 @@ footer { background-color: #a70310; }
 
 /* Product category system */
 .category-page { --category-accent: #a70310; --category-deep: #a70310; --category-soft: #a70310; color: var(--brown); }
-.category-organic { --category-accent: #a70310; --category-deep: #a70310; --category-soft: #2a8863; }
-.category-mini-medjools { --category-accent: #a70310; --category-deep: #a70310; --category-soft: #2a8863; }
+.category-organic { --category-accent: #a70310; --category-deep: #a70310; --category-soft: #a70310; }
+.category-mini-medjools { --category-accent: #a70310; --category-deep: #a70310; --category-soft: #a70310; }
 .category-showcase { position: relative; overflow: hidden; padding: 0 0 clamp(48px, 5vw, 64px); background: var(--category-deep); color: white; }
 .category-showcase::before { content: ""; position: absolute; width: 520px; aspect-ratio: 1; right: -180px; top: -220px; border: 90px solid color-mix(in srgb, var(--category-accent) 42%, transparent); border-radius: 50%; opacity: .42; }
 .category-showcase .breadcrumbs { position: relative; z-index: 3; padding: 24px 0 32px; color: rgba(252, 250, 247, .68); }
