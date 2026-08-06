@@ -1,13 +1,68 @@
 import type { SVGProps } from "react";
 
 /**
- * DatePalm — a realistic date-palm silhouette.
- * Source base: Game-Icons "palm-tree" (CC BY 3.0 / GPL, free for commercial use),
- * served via the Iconify open API. Re-derived as a standalone, stylable path.
- * Uses `currentColor` so it inherits the surrounding text/border color and can be
- * tinted via CSS (fill / color). `aria-hidden` by default; decorative only.
+ * DatePalm — a stylized but recognizable *date* palm (Phoenix dactylifera):
+ *   - a tall, ringed fibrous trunk,
+ *   - a crown of arched, feathery (pinnate) fronds,
+ *   - two heavy date clusters (regimes) drooping below the crown — the
+ *     signature of a fruiting date palm.
+ * Uses `currentColor` so it inherits the surrounding color and can be tinted
+ * via CSS (fill / color). `aria-hidden` by default; decorative only.
  */
 export function DatePalm(props: SVGProps<SVGSVGElement>) {
+  // One arched feathery frond, drawn from the crown (~256,250) outward.
+  // `d` curves up then droops at the tip; barbs give the pinnate look.
+  const frond = (transform: string) => (
+    <g transform={transform}>
+      <path
+        d="M0 0 C70 -22 150 -26 214 -6 C236 2 250 14 252 26"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="9"
+        strokeLinecap="round"
+      />
+      <g stroke="currentColor" strokeWidth="4.5" strokeLinecap="round">
+        <path d="M40 -12 L52 -30" />
+        <path d="M70 -18 L84 -37" />
+        <path d="M100 -21 L116 -40" />
+        <path d="M130 -21 L148 -39" />
+        <path d="M160 -18 L180 -35" />
+        <path d="M190 -13 L210 -29" />
+        <path d="M40 -6 L52 12" />
+        <path d="M70 -8 L84 11" />
+        <path d="M100 -9 L116 11" />
+        <path d="M130 -8 L148 13" />
+        <path d="M160 -5 L180 14" />
+        <path d="M190 -1 L210 17" />
+      </g>
+    </g>
+  );
+
+  // A hanging date cluster: a curved stalk from under the crown, with an
+  // elongated bunch of oval dates at the bottom.
+  const cluster = (transform: string) => (
+    <g transform={transform}>
+      <path
+        d="M0 0 C-4 40 -2 84 6 128"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="5"
+        strokeLinecap="round"
+      />
+      <g fill="currentColor">
+        <ellipse cx="-2" cy="118" rx="9" ry="13" />
+        <ellipse cx="14" cy="120" rx="9" ry="13" />
+        <ellipse cx="6" cy="104" rx="9" ry="13" />
+        <ellipse cx="20" cy="104" rx="9" ry="13" />
+        <ellipse cx="10" cy="90" rx="9" ry="13" />
+        <ellipse cx="23" cy="90" rx="9" ry="13" />
+        <ellipse cx="14" cy="76" rx="8" ry="12" />
+        <ellipse cx="26" cy="76" rx="8" ry="12" />
+        <ellipse cx="18" cy="62" rx="7" ry="11" />
+      </g>
+    </g>
+  );
+
   return (
     <svg
       viewBox="0 0 512 512"
@@ -19,7 +74,36 @@ export function DatePalm(props: SVGProps<SVGSVGElement>) {
       focusable="false"
       {...props}
     >
-      <path d="M179.125 20.625c-28.052.12-54.046 5.813-66.72 9.78c0 0 114.968 19.51 124.532 98.876C149.573 3.32 54.28 155.657 54.28 155.657c19.868-5.212 76.76-20.682 114.75-14.156c25.992 4.465 51.33 28.03 50.236 27.733c-61.943 15.24-160.35 290.92-143.64 313.308c14.9 17.12 29.816 11.28 44.718 2.595c7.376-58.425 64.938-314.765 135.375-294.072c.01.003.02-.003.03 0c5.93 2.03 11.54 5.59 11.844 11.03c.58 10.363-6.11 27.3-4.53 39.063c3.662 27.296 9.007 36.79 16.78 46.313c18.564-10.435 36.326-48.057 40-67.564c16.634 7.284 43.373 24.155 65.187 86.813c11.404-58.716-5.042-105.03-59.03-125.595c23.38-10.105 125.142 41.03 137.563 69.53C475.648 199.264 390.167 136.378 319 139.72c13.644-3.56 28.638.6 42.906-9.907c19.146-14.098 41.474-26.24 62.28-39.282c-69.972-30.435-134.545-15.407-139.092 16.095c-3.573-69.916-57.83-86.204-105.97-86z" />
+      {/* Trunk */}
+      <path
+        d="M238 250
+           C236 300 234 360 232 430
+           C231 462 233 486 236 500
+           L276 500
+           C279 486 281 462 280 430
+           C278 360 276 300 274 250
+           C268 246 246 246 238 250 Z"
+      />
+      <path
+        d="M240 300 L270 302 M240 380 L272 382 M240 420 L274 422 M240 460 L276 462"
+        stroke="rgba(0,0,0,0.16)"
+        strokeWidth="3"
+        fill="none"
+      />
+
+      {/* Crown of arched feathery fronds */}
+      <g transform="translate(256 246)">
+        {frond("rotate(-6) scale(1.05)")}
+        {frond("rotate(-40) scale(1)")}
+        {frond("rotate(-74) scale(0.9)")}
+        {frond("rotate(6) scale(1.05)")}
+        {frond("rotate(40) scale(1)")}
+        {frond("rotate(74) scale(0.9)")}
+      </g>
+
+      {/* Two hanging date clusters (regimes) */}
+      <g transform="translate(238 256)">{cluster("rotate(-12)")}</g>
+      <g transform="translate(274 256)">{cluster("rotate(12)")}</g>
     </svg>
   );
 }
