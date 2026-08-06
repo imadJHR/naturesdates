@@ -1,0 +1,20 @@
+
+=== WIDTH 360 ===
+overflowX=0px docW=360 winW=360
+
+=== WIDTH 375 ===
+overflowX=0px docW=375 winW=375
+
+=== WIDTH 768 ===
+overflowX=0px docW=768 winW=768
+
+=== WIDTH 1024 ===
+overflowX=0px docW=1024 winW=1024
+
+=== WIDTH 1280 ===
+overflowX=0px docW=1280 winW=1280
+
+=== WIDTH 1440 ===
+overflowX=0px docW=1440 winW=1440
+
+ALL SHOTS DONE

@@ -1,0 +1,122 @@
+
+=== WIDTH 360 ===
+overflowX=1248px docW=1608 winW=360
+OVERFLOW OFFENDERS: [
+ {
+  "tag": "span",
+  "cls": "cert-badge cert-badge--halal",
+  "right": 927,
+  "w": 919
+ },
+ {
+  "tag": "img",
+  "cls": "",
+  "right": 927,
+  "w": 919
+ },
+ {
+  "tag": "span",
+  "cls": "cert-badge cert-badge--usda",
+  "right": 608,
+  "w": 600
+ },
+ {
+  "tag": "a",
+  "cls": "product-card-media",
+  "right": 608,
+  "w": 600
+ },
+ {
+  "tag": "a",
+  "cls": "fresh-product-media",
+  "right": 528,
+  "w": 520
+ }
+]
+
+=== WIDTH 375 ===
+overflowX=1233px docW=1608 winW=375
+OVERFLOW OFFENDERS: [
+ {
+  "tag": "span",
+  "cls": "cert-badge cert-badge--halal",
+  "right": 927,
+  "w": 919
+ },
+ {
+  "tag": "img",
+  "cls": "",
+  "right": 927,
+  "w": 919
+ },
+ {
+  "tag": "span",
+  "cls": "cert-badge cert-badge--usda",
+  "right": 608,
+  "w": 600
+ },
+ {
+  "tag": "a",
+  "cls": "product-card-media",
+  "right": 608,
+  "w": 600
+ },
+ {
+  "tag": "a",
+  "cls": "fresh-product-media",
+  "right": 528,
+  "w": 520
+ }
+]
+
+=== WIDTH 768 ===
+overflowX=840px docW=1608 winW=768
+OVERFLOW OFFENDERS: [
+ {
+  "tag": "span",
+  "cls": "cert-badge cert-badge--halal",
+  "right": 927,
+  "w": 919
+ },
+ {
+  "tag": "img",
+  "cls": "",
+  "right": 927,
+  "w": 919
+ }
+]
+
+=== WIDTH 1024 ===
+overflowX=584px docW=1608 winW=1024
+OVERFLOW OFFENDERS: [
+ {
+  "tag": "img",
+  "cls": "",
+  "right": 1608,
+  "w": 1600
+ }
+]
+
+=== WIDTH 1280 ===
+overflowX=328px docW=1608 winW=1280
+OVERFLOW OFFENDERS: [
+ {
+  "tag": "img",
+  "cls": "",
+  "right": 1608,
+  "w": 1600
+ }
+]
+
+=== WIDTH 1440 ===
+overflowX=168px docW=1608 winW=1440
+OVERFLOW OFFENDERS: [
+ {
+  "tag": "img",
+  "cls": "",
+  "right": 1608,
+  "w": 1600
+ }
+]
+
+ALL SHOTS DONE

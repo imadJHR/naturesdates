@@ -5,11 +5,13 @@ import { NewsletterForm } from "./local-page-tools";
 import { siteConfig } from "@/app/data/site-config";
 import { Certifications } from "./certifications";
 import { NutritionDecor } from "./artifacts/NutritionDecor";
+import { SectionPalms } from "./artifacts/SectionPalms";
 
 export function SiteFooter() {
   return (
     <footer id="contact">
       <NutritionDecor />
+      <SectionPalms className="footer-palms" opacity={0.5} />
       <div className="footer-inner">
         <div className="footer-top">
           <div className="footer-cta">
@@ -44,7 +46,7 @@ export function SiteFooter() {
         <div className="footer-wordmark" aria-hidden="true">NATURES DATES</div>
         <Certifications className="footer-certifications" />
         <div className="footer-bottom">
-          <span>© 2026 Nature&apos;s Dates. All rights reserved.</span>
+          <span>© 2026 Natures Dates. All rights reserved.</span>
           <span>Premium Medjool dates for modern everyday moments.</span>
         </div>
       </div>

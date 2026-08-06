@@ -1,15 +1,16 @@
 import type { CSSProperties } from "react";
 import { DatePalm } from "./DatePalm";
-import { MoroccanGateway } from "./MoroccanGateway";
 
 /**
  * HeroSkyline — the decorative desert silhouette shown ONLY at the bottom of the
- * hero section. Distinct from the footer's `DesertSkyline`: a low dune base, two
- * flanking date palms and a central grand Moorish gateway portal. All pieces
- * inherit currentColor and tint via the --skyline-* custom properties, so the
- * hero stays on the burgundy/gold brand palette.
+ * hero section. Distinct from the footer's `DesertSkyline`: a low dune base and
+ * two flanking date palms. All pieces inherit currentColor and tint via the
+ * --skyline-* custom properties, so the hero stays on the burgundy/gold brand
+ * palette.
  *
- * The footer skyline and the Story-section palms are intentionally untouched.
+ * The central Moorish gateway portal was removed at the user's request (it read
+ * as a dark archway over the hero copy). The footer skyline and the Story-section
+ * palms are intentionally untouched.
  */
 export function HeroSkyline({
   className = "",
@@ -32,19 +33,6 @@ export function HeroSkyline({
           fill="var(--skyline-back)"
         />
       </svg>
-
-      {/* Central Moorish gateway portal */}
-      <MoroccanGateway
-        className="hero-gateway"
-        style={{
-          position: "absolute",
-          left: "50%",
-          transform: "translateX(-50%)",
-          bottom: 0,
-          width: "clamp(86px, 11vw, 168px)",
-          color: "var(--skyline-front)",
-        }}
-      />
 
       {/* Flanking date palms */}
       <DatePalm

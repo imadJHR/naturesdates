@@ -8,6 +8,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { RevealSection } from "./reveal";
+import { SectionPalms } from "./artifacts/SectionPalms";
 
 type Moment = {
   id: string;

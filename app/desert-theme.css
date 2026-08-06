@@ -244,13 +244,72 @@ body {
 }
 .hero-field-stamp strong { color: var(--gold-soft); }
 .hero-field-photo figcaption { color: #fff; }
-/* Gold marquee band — echoes the packaging GOLD badge */
+/* Modern hero ticker — gold-to-burgundy band with a seamless looping scroll. */
 .official-hero-marquee {
-  background: linear-gradient(90deg, #c9a24b, var(--gold-soft) 50%, #c9a24b);
-  color: var(--burgundy-deep);
-  border-top: 1px solid rgba(255, 255, 255, .22);
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+  padding: 14px 0;
+  background:
+    linear-gradient(90deg, #8e1b1b 0%, #a8332b 28%, #c8842b 52%, #a8332b 74%, #8e1b1b 100%);
+  border-top: 1px solid rgba(255, 255, 255, .14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .12), 0 -10px 30px rgba(43, 12, 14, .35);
 }
-.official-hero-marquee i { color: var(--date-red); }
+/* Soft light-sweep sheen across the band */
+.official-hero-marquee::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 245, 225, .18) 48%, transparent 56%);
+  pointer-events: none;
+}
+.hero-marquee-inner {
+  display: flex;
+  width: max-content;
+  animation: hero-marquee-scroll 22s linear infinite;
+  will-change: transform;
+}
+@keyframes hero-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.hero-marquee-track {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+.hero-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 30px;
+  color: #fff7ea;
+  font-family: var(--font-body-stack);
+  font-size: clamp(12px, 1.1vw, 14px);
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.hero-marquee-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold-soft);
+  box-shadow: 0 0 10px rgba(230, 193, 92, .8);
+  flex: 0 0 auto;
+}
+.hero-marquee-star {
+  color: var(--gold-soft);
+  font-style: normal;
+  font-size: 1.05em;
+  opacity: .9;
+}
+/* Pause on hover for readability */
+.official-hero-marquee:hover .hero-marquee-inner { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-marquee-inner { animation: none; }
+}
 
 /* ── Floating golden dust ───────────────────────────────────── */
 .dust-field {
@@ -473,6 +532,7 @@ body {
 .home-category-card { border-color: var(--ivory); background: #7a1517; }
 .home-category-number { border-color: rgba(212, 160, 60, .55); background: rgba(74, 12, 15, .38); color: #f3e0b8; }
 .home-category-content > p { color: var(--gold-soft); }
+.home-category-card:not(.home-category-fresh-dates) .home-category-content > p { padding-left: 44px; }
 .home-category-content strong { background: var(--date-red); }
 .home-category-card::after { border-color: color-mix(in srgb, var(--home-category-accent) 30%, transparent); }
 
@@ -572,10 +632,64 @@ body {
 .recipe-more-heading h2 { color: #6e1618; }
 
 .home-faq {
+  position: relative;
+  overflow: hidden;
   background:
     radial-gradient(70% 55% at 90% 0%, rgba(212, 160, 60, .12), transparent 52%),
     linear-gradient(180deg, var(--warm-brown) 0%, #221309 100%);
   color: var(--ivory);
+}
+/* Date palms flanking the FAQ, tinted gold like the hero/Story sections. */
+.faq-palms {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+}
+.faq-palm {
+  position: absolute;
+  bottom: 0;
+  width: clamp(110px, 14vw, 200px);
+  height: auto;
+  color: var(--gold-deep);
+  opacity: .42;
+}
+.faq-palm-left { left: -18px; }
+.faq-palm-right { right: -14px; transform: scaleX(-1); }
+.home-faq .section-inner { position: relative; z-index: 2; }
+@media (max-width: 800px) {
+  .faq-palm { width: clamp(90px, 26vw, 150px); opacity: .34; }
+  .faq-palm-left { left: -22px; }
+  .faq-palm-right { right: -20px; }
+}
+/* Footer palms: gold on the dark (mobile) footer, muted burgundy on the cream (desktop) footer. */
+.footer-palms { z-index: 0; }
+.footer-palms .section-palm { color: rgba(167, 3, 16, .14); opacity: 1; }
+.footer-inner { position: relative; z-index: 2; }
+@media (max-width: 760px) {
+  .footer-palms .section-palm { color: var(--gold-deep); opacity: .5; }
+}
+.section-palms {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  pointer-events: none;
+}
+.section-palm {
+  position: absolute;
+  bottom: 0;
+  width: clamp(110px, 13vw, 200px);
+  height: auto;
+  color: var(--gold-deep);
+  opacity: var(--palm-opacity, .4);
+}
+.section-palm-left { left: -18px; }
+.section-palm-right { right: -14px; transform: scaleX(-1); }
+.section-inner { position: relative; z-index: 2; }
+@media (max-width: 800px) {
+  .section-palm { width: clamp(86px, 24vw, 150px); }
+  .section-palm-left { left: -22px; }
+  .section-palm-right { right: -20px; }
 }
 .home-faq h2 { color: var(--ivory); }
 .home-faq .faq-list details { background: var(--ivory); color: var(--warm-brown); }
@@ -615,7 +729,7 @@ footer::after {
 .footer-eyebrow { color: var(--gold-soft); }
 .footer-columns h3 { color: var(--ivory); }
 .footer-wordmark {
-  color: var(--gold-soft);
+  color: #ffffff;
   font-family: var(--font-display-stack);
   letter-spacing: .16em;
 }
@@ -690,7 +804,8 @@ footer::after {
     mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
     -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 100%);
   }
-  .official-hero-marquee { background: linear-gradient(90deg, #c9a24b, var(--gold-soft)); }
+  .official-hero-marquee { padding: 11px 0; }
+  .hero-marquee-item { font-size: 11px; letter-spacing: .1em; padding: 0 22px; }
 }
 @media (max-width: 520px) {
   .hero-field-letter { background: linear-gradient(160deg, #fbf6ea 0%, var(--ivory-soft) 100%); }
@@ -702,4 +817,58 @@ footer::after {
   .hero-gold-chip::after,
   .story::before { animation: none !important; }
   .dust-field { display: none; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Responsive hardening — fix horizontal overflow + tiny text.
+   Loaded last so these rules win the cascade across every section.
+   ───────────────────────────────────────────────────────────── */
+
+/* Hard guard: nothing may ever exceed the viewport width. */
+html, body { max-width: 100%; overflow-x: hidden; }
+
+/* Product cards: collapse to one column on phones and keep media inside. */
+@media (max-width: 640px) {
+  .product-row,
+  .fresh-product-grid,
+  .fresh-category-grid { grid-template-columns: minmax(0, 1fr); }
+}
+.product-card,
+.fresh-product-card,
+.fresh-category-card,
+.home-category-card { min-width: 0; }
+.product-card-media,
+.fresh-product-media { width: 100%; max-width: 100%; }
+.product-card-media img,
+.fresh-product-media img,
+.wellness-product-card img {
+  max-width: 100%;
+  height: auto;
+}
+/* Wellness product image is rendered at intrinsic 1600px; force it to fit. */
+.wellness-product-card { overflow: hidden; }
+.wellness-product-card img { width: 100%; }
+
+/* Story palms can poke past the right edge — clip them to the section. */
+.story { overflow: hidden; }
+.story-palm-right { right: -10px; max-width: 38vw; }
+
+/* Keep decorative corner palms from causing overflow on small screens. */
+.nutrition-decor,
+.desert-skyline { max-width: 100%; overflow: hidden; }
+
+/* Tiny legacy labels: lift the floor to a readable 12px minimum. */
+@media (max-width: 768px) {
+  .product-card-badge,
+  .product-card-category,
+  .shad-badge,
+  .fresh-product-copy span,
+  .home-category-content strong,
+  .home-category-content > p,
+  .faq-topic-nav a,
+  .info-kicker,
+  .official-hero-eyebrow,
+  .moment-photo-label,
+  .story-editorial-notes > p,
+  .story-editorial-notes li > span { font-size: 12px !important; }
 }

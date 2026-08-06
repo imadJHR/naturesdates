@@ -1,0 +1,128 @@
+
+=== WIDTH 360 ===
+overflowX=1248px docW=1608 winW=360
+OVERFLOW OFFENDERS: [
+ {
+  "tag": "svg",
+  "cls": "story-palm story-palm-right",
+  "right": 366,
+  "w": 110
+ },
+ {
+  "tag": "img",
+  "cls": "",
+  "right": 1608,
+  "w": 1600
+ },
+ {
+  "tag": "a",
+  "cls": "product-card-media",
+  "right": 608,
+  "w": 600
+ },
+ {
+  "tag": "a",
+  "cls": "fresh-product-media",
+  "right": 528,
+  "w": 520
+ }
+]
+
+=== WIDTH 375 ===
+overflowX=1233px docW=1608 winW=375
+OVERFLOW OFFENDERS: [
+ {
+  "tag": "svg",
+  "cls": "story-palm story-palm-right",
+  "right": 381,
+  "w": 110
+ },
+ {
+  "tag": "img",
+  "cls": "",
+  "right": 1608,
+  "w": 1600
+ },
+ {
+  "tag": "a",
+  "cls": "product-card-media",
+  "right": 608,
+  "w": 600
+ },
+ {
+  "tag": "a",
+  "cls": "fresh-product-media",
+  "right": 528,
+  "w": 520
+ }
+]
+
+=== WIDTH 768 ===
+overflowX=840px docW=1608 winW=768
+OVERFLOW OFFENDERS: [
+ {
+  "tag": "svg",
+  "cls": "story-palm story-palm-right",
+  "right": 774,
+  "w": 110
+ },
+ {
+  "tag": "img",
+  "cls": "",
+  "right": 1608,
+  "w": 1600
+ }
+]
+
+=== WIDTH 1024 ===
+overflowX=584px docW=1608 winW=1024
+OVERFLOW OFFENDERS: [
+ {
+  "tag": "svg",
+  "cls": "story-palm story-palm-right",
+  "right": 1030,
+  "w": 143
+ },
+ {
+  "tag": "img",
+  "cls": "",
+  "right": 1608,
+  "w": 1600
+ }
+]
+
+=== WIDTH 1280 ===
+overflowX=328px docW=1608 winW=1280
+OVERFLOW OFFENDERS: [
+ {
+  "tag": "svg",
+  "cls": "story-palm story-palm-right",
+  "right": 1286,
+  "w": 179
+ },
+ {
+  "tag": "img",
+  "cls": "",
+  "right": 1608,
+  "w": 1600
+ }
+]
+
+=== WIDTH 1440 ===
+overflowX=168px docW=1608 winW=1440
+OVERFLOW OFFENDERS: [
+ {
+  "tag": "svg",
+  "cls": "story-palm story-palm-right",
+  "right": 1446,
+  "w": 200
+ },
+ {
+  "tag": "img",
+  "cls": "",
+  "right": 1608,
+  "w": 1600
+ }
+]
+
+ALL SHOTS DONE

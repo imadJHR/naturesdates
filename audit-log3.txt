@@ -1,0 +1,323 @@
+
+=== WIDTH 360 ===
+overflowX=0px docW=360 winW=360
+OVERFLOW OFFENDERS: [
+ {
+  "tag": "svg",
+  "cls": "story-palm story-palm-right",
+  "right": 370,
+  "w": 110
+ },
+ {
+  "tag": "svg",
+  "cls": "nutrition-palm nutrition-palm-right",
+  "right": 368,
+  "w": 96
+ }
+]
+TINY FONTS(<12px): [
+ {
+  "tag": "p",
+  "fs": 11,
+  "cls": "official-hero-eyebrow",
+  "txt": "Premium Medjool datesMedjool G"
+ },
+ {
+  "tag": "span",
+  "fs": 11,
+  "cls": "",
+  "txt": "Premium Medjool dates"
+ },
+ {
+  "tag": "span",
+  "fs": 10,
+  "cls": "",
+  "txt": "Soft"
+ },
+ {
+  "tag": "p",
+  "fs": 11,
+  "cls": "",
+  "txt": "Why Medjool?"
+ },
+ {
+  "tag": "li",
+  "fs": 10,
+  "cls": "",
+  "txt": "Whole or pitted"
+ },
+ {
+  "tag": "span",
+  "fs": 9,
+  "cls": "moment-photo-label",
+  "txt": "A moment made yours"
+ }
+]
+
+=== WIDTH 375 ===
+overflowX=0px docW=375 winW=375
+OVERFLOW OFFENDERS: [
+ {
+  "tag": "svg",
+  "cls": "story-palm story-palm-right",
+  "right": 385,
+  "w": 110
+ },
+ {
+  "tag": "svg",
+  "cls": "nutrition-palm nutrition-palm-right",
+  "right": 383,
+  "w": 96
+ }
+]
+TINY FONTS(<12px): [
+ {
+  "tag": "p",
+  "fs": 11,
+  "cls": "official-hero-eyebrow",
+  "txt": "Premium Medjool datesMedjool G"
+ },
+ {
+  "tag": "span",
+  "fs": 11,
+  "cls": "",
+  "txt": "Premium Medjool dates"
+ },
+ {
+  "tag": "span",
+  "fs": 10,
+  "cls": "",
+  "txt": "Soft"
+ },
+ {
+  "tag": "p",
+  "fs": 11,
+  "cls": "",
+  "txt": "Why Medjool?"
+ },
+ {
+  "tag": "li",
+  "fs": 10,
+  "cls": "",
+  "txt": "Whole or pitted"
+ },
+ {
+  "tag": "span",
+  "fs": 9,
+  "cls": "moment-photo-label",
+  "txt": "A moment made yours"
+ }
+]
+
+=== WIDTH 768 ===
+overflowX=0px docW=768 winW=768
+OVERFLOW OFFENDERS: [
+ {
+  "tag": "svg",
+  "cls": "story-palm story-palm-right",
+  "right": 778,
+  "w": 110
+ },
+ {
+  "tag": "svg",
+  "cls": "nutrition-palm nutrition-palm-right",
+  "right": 776,
+  "w": 96
+ }
+]
+TINY FONTS(<12px): [
+ {
+  "tag": "span",
+  "fs": 11,
+  "cls": "",
+  "txt": "Golden-hour Medjools"
+ },
+ {
+  "tag": "span",
+  "fs": 10,
+  "cls": "",
+  "txt": "Soft"
+ },
+ {
+  "tag": "p",
+  "fs": 11,
+  "cls": "",
+  "txt": "Why Medjool?"
+ },
+ {
+  "tag": "li",
+  "fs": 10,
+  "cls": "",
+  "txt": "Whole or pitted"
+ },
+ {
+  "tag": "span",
+  "fs": 9,
+  "cls": "moment-photo-label",
+  "txt": "A moment made yours"
+ }
+]
+
+=== WIDTH 1024 ===
+overflowX=0px docW=1024 winW=1024
+OVERFLOW OFFENDERS: [
+ {
+  "tag": "svg",
+  "cls": "story-palm story-palm-right",
+  "right": 1034,
+  "w": 143
+ },
+ {
+  "tag": "svg",
+  "cls": "nutrition-palm nutrition-palm-right",
+  "right": 1032,
+  "w": 123
+ }
+]
+TINY FONTS(<12px): [
+ {
+  "tag": "span",
+  "fs": 11,
+  "cls": "",
+  "txt": "Golden-hour Medjools"
+ },
+ {
+  "tag": "span",
+  "fs": 10,
+  "cls": "",
+  "txt": "Soft"
+ },
+ {
+  "tag": "p",
+  "fs": 11,
+  "cls": "",
+  "txt": "Why Medjool?"
+ },
+ {
+  "tag": "li",
+  "fs": 10,
+  "cls": "",
+  "txt": "Whole or pitted"
+ },
+ {
+  "tag": "strong",
+  "fs": 11,
+  "cls": "",
+  "txt": "Explore category"
+ },
+ {
+  "tag": "p",
+  "fs": 11,
+  "cls": "product-card-category",
+  "txt": "Fresh Dates"
+ },
+ {
+  "tag": "span",
+  "fs": 11,
+  "cls": "product-card-badge",
+  "txt": "New"
+ },
+ {
+  "tag": "span",
+  "fs": 11,
+  "cls": "shad-badge shad-badge-default fresh-product-badge",
+  "txt": "New"
+ },
+ {
+  "tag": "span",
+  "fs": 9,
+  "cls": "moment-photo-label",
+  "txt": "A moment made yours"
+ }
+]
+
+=== WIDTH 1280 ===
+overflowX=0px docW=1280 winW=1280
+OVERFLOW OFFENDERS: [
+ {
+  "tag": "svg",
+  "cls": "story-palm story-palm-right",
+  "right": 1290,
+  "w": 179
+ },
+ {
+  "tag": "svg",
+  "cls": "nutrition-palm nutrition-palm-right",
+  "right": 1288,
+  "w": 154
+ }
+]
+TINY FONTS(<12px): [
+ {
+  "tag": "span",
+  "fs": 11.52,
+  "cls": "",
+  "txt": "Golden-hour Medjools"
+ },
+ {
+  "tag": "span",
+  "fs": 10.24,
+  "cls": "",
+  "txt": "Soft"
+ },
+ {
+  "tag": "p",
+  "fs": 11,
+  "cls": "",
+  "txt": "Why Medjool?"
+ },
+ {
+  "tag": "span",
+  "fs": 11,
+  "cls": "",
+  "txt": "01"
+ },
+ {
+  "tag": "p",
+  "fs": 11.52,
+  "cls": "",
+  "txt": "The Medjool original"
+ },
+ {
+  "tag": "li",
+  "fs": 10.88,
+  "cls": "",
+  "txt": "Whole or pitted"
+ },
+ {
+  "tag": "strong",
+  "fs": 11.52,
+  "cls": "",
+  "txt": "Explore category"
+ },
+ {
+  "tag": "p",
+  "fs": 11,
+  "cls": "product-card-category",
+  "txt": "Fresh Dates"
+ },
+ {
+  "tag": "span",
+  "fs": 11,
+  "cls": "product-card-badge",
+  "txt": "New"
+ },
+ {
+  "tag": "span",
+  "fs": 11,
+  "cls": "shad-badge shad-badge-default fresh-product-badge",
+  "txt": "New"
+ },
+ {
+  "tag": "span",
+  "fs": 9,
+  "cls": "moment-photo-label",
+  "txt": "A moment made yours"
+ },
+ {
+  "tag": "li",
+  "fs": 10,
+  "cls": "",
+  "txt": "Smoothie-ready"
+ }
+]

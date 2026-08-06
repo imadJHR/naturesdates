@@ -12,7 +12,7 @@ type Cert = {
   width: number;
   height: number;
   /** visual treatment hook for dark-mode contrast */
-  kind: "halal" | "usda" | "fssc";
+  kind: "halal" | "usda" | "fssc" | "kosher" | "brcgs";
 };
 
 const CERTS: Cert[] = [
@@ -39,6 +39,22 @@ const CERTS: Cert[] = [
     width: 131,
     height: 25,
     kind: "fssc",
+  },
+  {
+    src: "/certifications/koshercheck.png",
+    alt: "Kosher Check certified",
+    title: "Kosher Check Certified",
+    width: 220,
+    height: 95,
+    kind: "kosher",
+  },
+  {
+    src: "/certifications/brcgs.png",
+    alt: "BRCGS Food Safety certified",
+    title: "BRCGS Food Safety Certified",
+    width: 546,
+    height: 410,
+    kind: "brcgs",
   },
 ];
 

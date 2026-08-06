@@ -7,6 +7,7 @@ import { WholesaleQuoteButton } from "./cart-actions";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 import { RevealSection } from "./reveal";
+import { SectionPalms } from "./artifacts/SectionPalms";
 
 const featuredCategorySlug = "mini-medjools";
 
@@ -17,6 +18,7 @@ export function NewProductsSection() {
 
   return (
     <RevealSection id="new-products" className="new-products-section">
+      <SectionPalms />
       <div className="section-inner">
         <div className="new-products-heading">
           <div>

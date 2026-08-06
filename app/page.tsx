@@ -14,6 +14,7 @@ import { SunshineMoment } from "./components/sunshine-moment";
 import { Reveal, RevealSection } from "./components/reveal";
 import { DuneDivider, DustField } from "./components/desert-decor";
 import { DatePalm } from "./components/artifacts/DatePalm";
+import { SectionPalms } from "./components/artifacts/SectionPalms";
 import { NutritionDecor } from "./components/artifacts/NutritionDecor";
 import { productCategories, products as catalogProducts } from "./data/products";
 
@@ -63,6 +64,7 @@ function Story() {
 function Products() {
   return (
     <RevealSection id="products" className="products section-light">
+      <SectionPalms />
       <div className="organic-shape teal" aria-hidden="true" />
       <div className="section-inner">
         <div className="section-title">
@@ -90,6 +92,7 @@ function CategoryExplore() {
 
   return <RevealSection className="home-categories" id="categories">
     <NutritionDecor />
+    <SectionPalms />
     <div className="section-inner">
       <div className="home-category-heading">
       <div><p className="script small tan">Choose your way</p><h2>One fruit. Three everyday rhythms.</h2></div>
@@ -114,7 +117,18 @@ function CategoryExplore() {
 }
 
 function FaqPreview() {
-  return <RevealSection className="home-faq"><div className="section-inner two-col"><div><p className="script small">Good to know</p><h2>Questions before your first bite?</h2><p>Learn about whole versus pitted dates, storage, organic labels, allergens, nutrition information and wholesale inquiries.</p><Link className="btn red" href="/faq">Read the FAQ <ArrowRight size={18} /></Link></div><div className="faq-list"><details><summary>Whole or pitted?</summary><p>Whole dates retain the hard pit. Pitted dates simplify snack and recipe preparation, though every fruit should still be checked before use.</p></details><details><summary>How should dates be stored?</summary><p>Follow the current package directions, reseal after opening and protect the fruit from excess heat and moisture.</p></details><details><summary>Where are ingredients and allergens listed?</summary><p>The current package is the definitive source for ingredients, allergens, nutrition and certification marks.</p></details></div></div></RevealSection>;
+  return (
+    <RevealSection className="home-faq">
+      <div className="faq-palms" aria-hidden="true">
+        <DatePalm className="faq-palm faq-palm-left" />
+        <DatePalm className="faq-palm faq-palm-right" />
+      </div>
+      <div className="section-inner two-col">
+        <div><p className="script small">Good to know</p><h2>Questions before your first bite?</h2><p>Learn about whole versus pitted dates, storage, organic labels, allergens, nutrition information and wholesale inquiries.</p><Link className="btn red" href="/faq">Read the FAQ <ArrowRight size={18} /></Link></div>
+        <div className="faq-list"><details><summary>Whole or pitted?</summary><p>Whole dates retain the hard pit. Pitted dates simplify snack and recipe preparation, though every fruit should still be checked before use.</p></details><details><summary>How should dates be stored?</summary><p>Follow the current package directions, reseal after opening and protect the fruit from excess heat and moisture.</p></details><details><summary>Where are ingredients and allergens listed?</summary><p>The current package is the definitive source for ingredients, allergens, nutrition and certification marks.</p></details></div>
+      </div>
+    </RevealSection>
+  );
 }
 
 function Recipes() {

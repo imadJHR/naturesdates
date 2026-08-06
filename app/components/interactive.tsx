@@ -18,6 +18,7 @@ import { Reveal, RevealSection } from "./reveal";
 import { DesertSkyline, DustField } from "./desert-decor";
 import { HeroSkyline } from "./artifacts/HeroSkyline";
 import { NutritionDecor } from "./artifacts/NutritionDecor";
+import { SectionPalms } from "./artifacts/SectionPalms";
 
 type NavigationItem = {
   href: string;
@@ -334,7 +335,7 @@ export function OfficialHero() {
           <div ref={photoImageRef} className="hero-field-photo-image">
             <Image src="/images/home/date-palm-golden-hour.webp" alt="A bowl of premium Medjool dates in a sunlit date palm grove" fill priority quality={88} sizes="(max-width: 800px) 94vw, 94vw" />
           </div>
-          <motion.figcaption {...heroItem} transition={{ duration: 0.6, delay: 0.48, ease: [0.16, 1, 0.3, 1] }}><span>Golden-hour Medjools</span><strong>Naturally rich. Beautifully simple.</strong></motion.figcaption>
+          <motion.figcaption {...heroItem} transition={{ duration: 0.6, delay: 0.48, ease: [0.16, 1, 0.3, 1] }}><span>Golden-hour Medjools</span> <strong>Naturally rich. Beautifully simple.</strong></motion.figcaption>
           <div className="hero-field-stamp" aria-hidden="true"><span>Soft</span><strong>♥</strong><span>caramel-like</span></div>
         </figure>
       </div>
@@ -344,11 +345,32 @@ export function OfficialHero() {
         <HeroSkyline />
       </div>
 
-      <div className="official-hero-marquee" aria-hidden="true">
-        <span>Whole fruit</span><i>✦</i><span>Caramel-like taste</span><i>✦</i><span>Recipe ready</span><i>✦</i>
-        <span>Whole fruit</span><i>✦</i><span>Caramel-like taste</span><i>✦</i><span>Recipe ready</span>
-      </div>
+      <HeroMarquee />
     </section>
+  );
+}
+
+/** Modern looping ticker shown at the base of the hero. */
+function HeroMarquee() {
+  const items = ["Whole fruit", "Caramel-like taste", "Recipe ready"];
+  const Row = ({ ariaHidden }: { ariaHidden?: boolean }) => (
+    <div className="hero-marquee-track" aria-hidden={ariaHidden} role={ariaHidden ? undefined : "list"}>
+      {items.map((label, i) => (
+        <span className="hero-marquee-item" key={i} role="listitem">
+          <span className="hero-marquee-dot" />
+          {label}
+          <i className="hero-marquee-star">✦</i>
+        </span>
+      ))}
+    </div>
+  );
+  return (
+    <div className="official-hero-marquee" role="marquee" aria-label="Whole fruit, caramel-like taste, recipe ready">
+      <div className="hero-marquee-inner">
+        <Row />
+        <Row ariaHidden />
+      </div>
+    </div>
   );
 }
 
@@ -363,6 +385,7 @@ export function GoodnessShowcase() {
   return (
     <RevealSection id="wellness" className="wellness wellness-redesign section-cream" aria-labelledby="goodness-title">
       <NutritionDecor />
+      <SectionPalms />
       <div className="section-inner wellness-redesign-inner">
         <Reveal className="wellness-redesign-copy">
           <p className="goodness-kicker">Nutrition Desk</p>

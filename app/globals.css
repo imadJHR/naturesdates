@@ -216,6 +216,19 @@ input, textarea, select, label, .form-label, .badge, .shad-badge,
 /* FSSC 22000 wordmark: fixed greens/greys. Keep brand colors in light. */
 .cert-badge--fssc img { width: auto; }
 
+/* BRCGS: official green Food Safety Certified emblem on transparent.
+   On dark sections (hero/footer) give it a solid cream chip so the
+   green stays legible and framed. */
+.cert-badge--brcgs img { width: auto; }
+.hero-certifications .cert-badge--brcgs,
+.footer-certifications .cert-badge--brcgs {
+  padding: 7px 12px;
+  background: #fcfaf7;
+  border-radius: 10px;
+}
+/* Kosher Check: official combination logo (K mark + wordmark), transparent. */
+.cert-badge--kosher img { width: auto; }
+
 /* Subtle premium hover: slight scale + soft shadow (no flashy motion) */
 .cert-badge:hover,
 .cert-badge:focus-visible {
