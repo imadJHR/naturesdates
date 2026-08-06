@@ -766,7 +766,7 @@ footer::after {
 .category-showcase-copy .category-kicker { color: var(--gold-soft); }
 .category-guide { background: var(--date-red); }
 .category-guide-actions a { background: var(--burgundy); }
-.category-guide-steps article { background: rgba(251, 246, 234, .78); }
+.category-guide-steps article { background: rgba(252, 250, 247, .92); border: 1px solid rgba(212, 160, 60, .35); }
 .category-explore { background: var(--ivory); }
 .category-product-grid .catalog-card { background: #fbf6ea; }
 .info-page { background: var(--ivory); }
