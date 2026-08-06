@@ -11,6 +11,7 @@ import {
 import { SiteFooter } from "./components/site-footer";
 import { NewProductsSection } from "./components/new-products-section";
 import { SunshineMoment } from "./components/sunshine-moment";
+import { CertificationsMarquee } from "./components/certifications-marquee";
 import { Reveal, RevealSection } from "./components/reveal";
 import { DuneDivider, DustField } from "./components/desert-decor";
 import { DatePalm } from "./components/artifacts/DatePalm";
@@ -162,6 +163,7 @@ export default function Page() {
         <div className="desert-seam"><SunshineMoment /><DuneDivider tone="ivory" /></div>
         <div className="desert-seam"><Recipes /><DuneDivider tone="ivory" /></div>
         <div className="desert-seam"><FaqPreview /><DuneDivider tone="green" /></div>
+        <CertificationsMarquee />
         <SiteFooter />
       </main>
     </>

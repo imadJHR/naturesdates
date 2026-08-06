@@ -2824,3 +2824,89 @@ footer { background-color: #2b4233; }
   .category-guide-actions a { justify-content: center; }
   .category-guide-steps article { grid-template-columns: 44px 1fr; padding: 18px; }
 }
+
+/* ── Nos certifications — looping logo marquee ─────────────────── */
+.certifications-marquee {
+  position: relative;
+  padding: clamp(54px, 7vw, 84px) 0 clamp(46px, 6vw, 70px);
+  background: linear-gradient(180deg, #faf4e8 0%, #f3e7cf 100%);
+  overflow: hidden;
+}
+.certifications-marquee::before,
+.certifications-marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(48px, 12vw, 180px);
+  z-index: 3;
+  pointer-events: none;
+}
+.certifications-marquee::before {
+  left: 0;
+  background: linear-gradient(90deg, #faf4e8 0%, rgba(250, 244, 232, 0) 100%);
+}
+.certifications-marquee::after {
+  right: 0;
+  background: linear-gradient(270deg, #f3e7cf 0%, rgba(243, 231, 207, 0) 100%);
+}
+.certifications-marquee-inner {
+  width: min(1240px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.certifications-marquee-head {
+  text-align: center;
+  margin-bottom: 34px;
+}
+.certifications-marquee-head .script.small {
+  color: var(--gold);
+  font-size: clamp(15px, 1.6vw, 19px);
+  margin: 0 0 6px;
+}
+.certifications-marquee-head h2 {
+  margin: 0;
+  color: #2b4233;
+  font-size: clamp(34px, 4.4vw, 56px);
+  letter-spacing: -.03em;
+}
+.cert-marquee {
+  position: relative;
+  overflow: hidden;
+}
+.cert-marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: clamp(26px, 4vw, 64px);
+  padding: 8px 0;
+  animation: cert-marquee-scroll 26s linear infinite;
+  will-change: transform;
+}
+.cert-marquee-track.is-paused {
+  animation: none;
+}
+.cert-marquee-track .cert-badge {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: clamp(64px, 7vw, 92px);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+.cert-marquee-track .cert-badge img {
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: contain;
+  filter: none;
+}
+@keyframes cert-marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cert-marquee-track { animation: none; flex-wrap: wrap; justify-content: center; }
+}
