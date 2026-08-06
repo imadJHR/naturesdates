@@ -570,23 +570,23 @@ body {
 .sunshine-moment {
   color: var(--ivory);
   background:
-    radial-gradient(62% 55% at 84% 10%, rgba(212, 160, 60, .3), transparent 55%),
-    radial-gradient(70% 60% at 10% 92%, rgba(232, 220, 190, .12), transparent 55%),
-    linear-gradient(150deg, var(--palm-green) 0%, var(--palm-green-deep) 100%);
+    radial-gradient(62% 55% at 84% 10%, rgba(212, 160, 60, .22), transparent 55%),
+    radial-gradient(70% 60% at 10% 92%, rgba(232, 220, 190, .1), transparent 55%),
+    linear-gradient(150deg, #3c5a43 0%, #2b4233 100%);
 }
-.sunshine-moment::before { border-color: rgba(212, 160, 60, .24); }
-.sunshine-moment::after { background: rgba(74, 12, 15, .3); }
+.sunshine-moment::before { border-color: rgba(243, 233, 207, .22); }
+.sunshine-moment::after { background: rgba(43, 66, 51, .3); }
 .sunshine-moment-heading .script { color: var(--gold-soft); }
 .sunshine-moment-heading h2 { color: var(--ivory); }
-.sunshine-moment-heading > p { border-left-color: var(--gold); color: rgba(250, 244, 232, .78); }
-.moment-tabs-list { border-color: rgba(212, 160, 60, .28); background: rgba(250, 244, 232, .09); }
-.moment-panel { border-color: rgba(212, 160, 60, .32); background: var(--ivory); }
-.moment-copy { border-color: rgba(212, 160, 60, .22); background: rgba(251, 246, 234, .97); }
-.moment-visual { background: var(--burgundy); }
-.moment-visual::after { background: linear-gradient(90deg, transparent 48%, rgba(74, 12, 15, .4)); }
-.moment-photo-label { border-color: rgba(212, 160, 60, .4); background: rgba(74, 12, 15, .4); }
-.moment-copy h3 { color: #6e1618; }
-.moment-copy > p:not(.moment-eyebrow) { color: rgba(43, 26, 18, .76); }
+.sunshine-moment-heading > p { border-left-color: var(--gold); color: rgba(243, 233, 207, .82); }
+.moment-tabs-list { border-color: rgba(243, 233, 207, .2); background: rgba(243, 233, 207, .08); }
+.moment-panel { border-color: rgba(243, 233, 207, .22); background: #f3e7cf; }
+.moment-copy { border-color: rgba(43, 66, 51, .14); background: rgba(251, 246, 234, .97); }
+.moment-visual { background: #2b4233; }
+.moment-visual::after { background: linear-gradient(90deg, transparent 48%, rgba(43, 66, 51, .4)); }
+.moment-photo-label { border-color: rgba(243, 233, 207, .4); background: rgba(43, 66, 51, .42); }
+.moment-copy h3 { color: #2b4233; }
+.moment-copy > p:not(.moment-eyebrow) { color: rgba(43, 26, 18, .8); }
 
 /* ── Recipes, FAQ ───────────────────────────────────────────── */
 .recipes { background: linear-gradient(180deg, var(--ivory) 0%, var(--sand-soft) 100%); }
