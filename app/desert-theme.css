@@ -97,7 +97,7 @@ body {
 .btn.green,
 .email-link,
 .product-card-cart,
-.catalog-add-cart { background: linear-gradient(135deg, #37795a, var(--palm-green)); }
+.catalog-add-cart { background: linear-gradient(135deg, #a70310, #8e1b1b); }
 .btn:hover { box-shadow: 0 20px 45px rgba(122, 21, 23, .3); }
 .shad-button-default { box-shadow: 0 14px 30px rgba(142, 27, 27, .22); }
 .shad-button-outline { border-color: rgba(43, 26, 18, .22); background: rgba(251, 246, 234, .6); }
