@@ -213,6 +213,7 @@ section { position: relative; scroll-margin-top: 110px; }
 .shad-badge-default { background: var(--red); color: white; }
 .shad-badge-secondary { background: rgba(142, 27, 27, .16); color: var(--date-red); }
 .shad-badge-outline { border: 1px solid rgba(31, 20, 4, .2); background: rgba(252, 250, 247, .46); color: var(--brown); }
+.product-detail-copy .shad-badge-outline { border-color: rgba(142, 27, 27, .45); background: rgba(142, 27, 27, .08); color: var(--date-red); }
 .shad-card { --card-spacing: 24px; overflow: hidden; border: 1px solid rgba(31, 20, 4, .11); border-radius: 32px; background: rgba(252, 250, 247, .8); box-shadow: 0 20px 55px rgba(31, 20, 4, .09); }
 .shad-card-header { display: grid; gap: 11px; padding: var(--card-spacing) var(--card-spacing) 0; }
 .shad-card-title { margin: 0; color: var(--brown); font-size: clamp(23px, 2.5vw, 32px); line-height: 1.05; letter-spacing: -.035em; }
@@ -329,14 +330,14 @@ section { position: relative; scroll-margin-top: 110px; }
 .product-detail-media img { width: 82%; height: 500px; object-fit: contain; filter: drop-shadow(0 30px 32px rgba(138, 5, 12, .22)); }
 .product-detail-copy { display: grid; justify-items: start; }
 .product-back-link { margin-bottom: 30px; display: inline-flex; align-items: center; gap: 7px; color: rgba(31, 20, 4, .66); font-weight: 900; }
-.product-detail-copy h1 { margin: 20px 0 20px; color: var(--brown); font-size: clamp(48px, 6vw, 82px); line-height: .88; letter-spacing: -.055em; }
+.product-detail-copy h1 { margin: 20px 0 20px; color: var(--date-red); font-size: clamp(48px, 6vw, 82px); line-height: .88; letter-spacing: -.055em; }
 .product-detail-lead { margin: 0; color: rgba(31, 20, 4, .76); font-size: clamp(17px, 2vw, 20px); line-height: 1.7; }
 .product-highlights { width: 100%; margin: 28px 0 0; padding: 24px 0; display: grid; gap: 13px; border-top: 1px solid rgba(31, 20, 4, .12); border-bottom: 1px solid rgba(31, 20, 4, .12); list-style: none; }
 .product-highlights li { display: flex; align-items: center; gap: 10px; font-weight: 900; }
 .product-highlights svg { color: var(--date-red); }
 .product-detail-actions { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; }
 .product-notes { padding: 0 0 76px; background: #fcfaf7; }
-.product-notes .shad-card { background: var(--brown); color: white; }
+.product-notes .shad-card { background: #8e1b1b; color: white; }
 .product-notes .shad-card-title { color: white; }
 .product-notes p { margin: 0; max-width: 850px; color: rgba(252, 250, 247, .74); font-size: 17px; line-height: 1.7; }
 .related-products { padding: clamp(70px, 8vw, 110px) 0; background: var(--cream); }
