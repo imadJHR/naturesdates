@@ -25,6 +25,7 @@ Thumbs.db
 
 # verification artifacts (screenshots, puppeteer scripts, audits)
 *.png
+!public/certifications/*.png
 seam-audit.json
 scripts/cap-*.js
 scripts/diag-*.js
