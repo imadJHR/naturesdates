@@ -21,7 +21,7 @@
 .info-highlights { position: relative; z-index: 4; margin-top: -36px; }
 .info-highlight-grid { display: grid; gap: 10px; }
 .info-highlight-grid > div { min-height: 94px; display: flex; align-items: center; gap: 14px; padding: 18px; border: 1px solid rgba(31, 20, 4, .1); border-radius: 24px; background: rgba(252, 250, 247, .92); box-shadow: 0 18px 42px rgba(31, 20, 4, .1); }
-.info-highlight-grid span { width: 42px; height: 42px; flex: 0 0 42px; display: grid; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--info-accent) 16%, white); color: var(--info-deep); font-size: 12px; font-weight: 1000; }
+.info-highlight-grid span { width: 42px; height: 42px; flex: 0 0 42px; display: grid; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--info-accent) 24%, white); color: var(--info-deep); font-size: 12px; font-weight: 1000; }
 .info-highlight-grid strong { font-size: 16px; line-height: 1.2; }
 .info-content-section { padding: 82px 0 96px; }
 .info-section-heading { max-width: 760px; margin-bottom: 38px; }
@@ -60,7 +60,8 @@
 .story-source-list span { display: grid; gap: 4px; }
 .story-source-list small { color: #f5e3bb; font-size: 9px; font-weight: 1000; letter-spacing: .1em; text-transform: uppercase; }
 .story-source-list strong { font-size: 14px; line-height: 1.35; }
-.local-tool-section { padding: 86px 0; background: var(--brown); color: white; }
+.local-tool-section { padding: 86px 0; background: #a70310; color: white; }
+.local-tool-section .local-builder-heading h2 { color: #ffffff; }
 .local-builder-heading { max-width: 760px; margin-bottom: 38px; }
 .local-builder-heading h2, .contact-form-shell h2 { color: white; }
 .local-builder-heading > p:not(.info-kicker), .contact-form-shell > div > p:not(.info-kicker) { color: rgba(252, 250, 247, .72); font-size: 16px; line-height: 1.7; }
@@ -68,16 +69,17 @@
 .builder-controls { display: grid; gap: 14px; }
 .builder-group { margin: 0; padding: 20px; border: 1px solid rgba(252, 250, 247, .16); border-radius: 24px; background: rgba(252, 250, 247, .06); }
 .builder-group legend { padding: 0 7px; color: white; font-weight: 1000; }
-.builder-group legend span { margin-right: 9px; color: var(--sun); font-size: 11px; letter-spacing: .12em; }
+.builder-group legend span { margin-right: 9px; color: #f0d9a8; font-size: 11px; letter-spacing: .12em; }
 .builder-options { display: grid; gap: 8px; margin-top: 10px; }
-.builder-option { min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(252, 250, 247, .16); border-radius: 16px; padding: 10px 14px; background: rgba(252, 250, 247, .07); color: white; font-weight: 900; }
-.builder-option.is-selected { border-color: var(--sun); background: var(--sun); color: var(--brown); }
+.local-tool-section .info-kicker { color: #f0d9a8; }
+.builder-option { min-height: 48px; display: flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid rgba(252, 250, 247, .28); border-radius: 16px; padding: 10px 14px; background: rgba(252, 250, 247, .12); color: white; font-weight: 900; }
+.builder-option.is-selected { border-color: var(--sun); background: var(--sun); color: #a70310; }
 .builder-result { align-self: start; padding: 26px; border-radius: 28px; background: #fcfaf7; color: var(--brown); box-shadow: 0 26px 60px rgba(31, 20, 4, .2); }
 .builder-result > p { margin: 0 0 10px; color: var(--red); font-size: 11px; font-weight: 1000; letter-spacing: .14em; text-transform: uppercase; }
 .builder-result h3 { margin: 0; font-size: clamp(26px, 7vw, 42px); line-height: 1; letter-spacing: -.04em; }
 .builder-result ol { margin: 24px 0; padding-left: 22px; }
 .builder-result li { margin: 8px 0; line-height: 1.55; }
-.builder-reset { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 999px; padding: 10px 16px; background: var(--green); color: white; font-weight: 1000; }
+.builder-reset { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 999px; padding: 10px 16px; background: #a70310; color: white; font-weight: 1000; }
 .contact-section { padding: clamp(64px, 8vw, 110px) 0; background: linear-gradient(160deg, #a70310 0%, #a70310 100%); color: white; }
 .contact-form-shell { display: grid; gap: 40px; align-items: start; }
 .contact-form-intro { display: grid; gap: 20px; }
