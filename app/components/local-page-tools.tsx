@@ -104,11 +104,11 @@ export function LocalContactForm() {
           <div className="contact-route-list">
             <article className="contact-route-card">
               <span className="contact-route-icon"><PackageSearch size={21} /></span>
-              <div><strong>Product support</strong><span>Include the product, package code, purchase location and what happened.</span></div>
+              <div className="contact-route-text"><strong>Product support</strong><span>Include the product, package code, purchase location and what happened.</span></div>
             </article>
             <article className="contact-route-card">
               <span className="contact-route-icon"><Building2 size={21} /></span>
-              <div><strong>Wholesale &amp; retail</strong><span>Include your company, region, estimated quantity and preferred format.</span></div>
+              <div className="contact-route-text"><strong>Wholesale &amp; retail</strong><span>Include your company, region, estimated quantity and preferred format.</span></div>
             </article>
           </div>
           <p className="contact-privacy-note"><strong>A quick privacy note:</strong> Do not include payment details, passwords, medical records or other sensitive personal information.</p>
