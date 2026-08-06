@@ -57,17 +57,17 @@ body {
 .section-light { background: var(--sand-soft); }
 .section-tan { background: var(--ivory); color: var(--date-red); }
 
-/* ── Announcement bar + header (deep wood-red, gold accents) ── */
+/* ── Announcement bar + header (deep olive, gold accents) ── */
 .announcement-bar {
-  background: linear-gradient(90deg, #6e1618, var(--date-red) 50%, #6e1618);
+  background: linear-gradient(90deg, #243a2c, #2b4233 50%, #243a2c);
   color: #f3e0b8;
 }
 .announcement-bar a { color: #f6e7c8; }
 
 .site-header {
-  background: linear-gradient(180deg, var(--burgundy) 0%, #6e1618 100%);
+  background: linear-gradient(180deg, #2b4233 0%, #243a2c 100%);
   border-bottom: 1px solid rgba(212, 160, 60, .24);
-  box-shadow: 0 14px 40px rgba(43, 26, 18, .28);
+  box-shadow: 0 14px 40px rgba(20, 30, 22, .28);
 }
 .site-header::before {
   content: "";
@@ -80,7 +80,7 @@ body {
   opacity: .5;
   mix-blend-mode: overlay;
 }
-.logo { background: var(--burgundy); box-shadow: 0 18px 45px rgba(74, 12, 15, .4); }
+.logo { background: #2b4233; box-shadow: 0 18px 45px rgba(20, 30, 22, .4); }
 .desktop-nav-link:hover,
 .desktop-nav-link.is-active { color: var(--gold-soft); }
 .desktop-nav-link.is-active::after { background: var(--gold); }
@@ -109,8 +109,9 @@ body {
 .hero.official-hero {
   color: var(--ivory);
   background:
-    radial-gradient(95% 75% at 80% 8%, rgba(212, 160, 60, .3), transparent 48%),
-    linear-gradient(122deg, var(--burgundy-deep) 0%, #6e1618 46%, var(--date-red) 100%);
+    radial-gradient(95% 75% at 80% 8%, rgba(212, 160, 60, .28), transparent 48%),
+    radial-gradient(120% 90% at 12% 100%, rgba(43, 66, 51, .55), transparent 55%),
+    linear-gradient(122deg, #2b4233 0%, #34503c 48%, #3c5a43 100%);
 }
 .hero.official-hero::before {
   content: "";
@@ -133,8 +134,8 @@ body {
 /* Kasbah skyline — tintable layered Moroccan-arch silhouettes.
    Base rules first so usage classes below can safely override position/height. */
 .desert-skyline {
-  --skyline-back: rgba(92, 14, 18, .55);
-  --skyline-front: #3f0d10;
+  --skyline-back: rgba(31, 51, 38, .6);
+  --skyline-front: #1f3326;
   position: relative;
   width: 100%;
   height: 100%;
@@ -186,7 +187,7 @@ body {
 }
 .hero-field-letter::before,
 .hero-field-letter::after { background: rgba(212, 160, 60, .62); }
-.hero-field-letter .official-hero-eyebrow { border-bottom-color: rgba(212, 160, 60, .4); color: var(--date-red); }
+.hero-field-letter .official-hero-eyebrow { border-bottom-color: rgba(212, 160, 60, .4); color: #d4a03c; }
 .hero-gold-chip {
   display: inline-flex;
   align-items: center;
@@ -218,24 +219,24 @@ body {
   85%, 100% { transform: translateX(100%); }
 }
 .hero-field-letter h1 span { color: #b97b1f; }
-.hero-field-letter h1 strong { color: var(--date-red); }
+.hero-field-letter h1 strong { color: #b97b1f; }
 .hero-field-letter .official-hero-lead { color: rgba(43, 26, 18, .8); }
 .hero-person-note { background: #efe0c6; border-left-color: var(--gold); }
 .hero-person-note img { border-color: #fff; }
-.hero-person-note blockquote p { color: var(--burgundy); }
-.hero-person-note cite { color: var(--date-red); }
+.hero-person-note blockquote p { color: #2b4233; }
+.hero-person-note cite { color: #b97b1f; }
 .hero-field-letter .btn.hero-primary {
   background: linear-gradient(135deg, var(--gold-soft), var(--gold) 55%, #b8862f);
   color: var(--burgundy-deep);
   box-shadow: 0 14px 32px rgba(184, 134, 47, .42);
 }
 .hero-field-letter .btn.hero-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 42px rgba(184, 134, 47, .5); }
-.hero-field-letter .hero-story-link { color: var(--date-red); }
+.hero-field-letter .hero-story-link { color: #d4a03c; }
 .hero-letter-signoff { color: #a9711b; }
-.hero-field-photo-image { background: var(--burgundy); box-shadow: 0 35px 95px rgba(43, 26, 18, .38); }
+.hero-field-photo-image { background: #2b4233; box-shadow: 0 35px 95px rgba(20, 30, 22, .38); }
 .hero-field-photo-image img { filter: saturate(1.06) contrast(1.05) sepia(.16); }
 .hero-field-photo-image::after {
-  background: linear-gradient(180deg, transparent 48%, rgba(74, 12, 15, .66) 100%);
+  background: linear-gradient(180deg, transparent 48%, rgba(20, 30, 22, .66) 100%);
 }
 .hero-field-stamp {
   border-color: rgba(212, 160, 60, .95);
@@ -698,8 +699,8 @@ body {
 footer {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, var(--burgundy) 0%, var(--burgundy-deep) 100%);
-  color: var(--ivory);
+  background: radial-gradient(circle at 10% 0%, rgba(212, 160, 60, .18), transparent 30%), linear-gradient(180deg, #2b4233 0%, #243a2c 100%);
+  color: #fcfaf7;
 }
 /* Subtle sand-grain texture on the burgundy footer (organic, not
    geometric) — same treatment as the content sections, but tuned for a

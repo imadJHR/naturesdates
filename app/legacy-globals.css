@@ -86,8 +86,8 @@ footer :where(a, button):focus-visible { outline-color: var(--red); box-shadow: 
 @keyframes menu-in { from { opacity: 0; transform: translateX(30px); } }
 
 section { position: relative; scroll-margin-top: 110px; }
-.section-orange { background: var(--orange); }
-.section-brown { background: var(--brown); color: var(--cream); }
+.section-orange { background: var(--sand-soft); }
+.section-brown { background: #2b4233; color: var(--cream); }
 .section-cream { background: var(--cream); }
 .section-light { background: #e6b56a; }
 .section-tan { background: #fcfaf7; color: #a70310; }
@@ -1304,7 +1304,7 @@ body {
 .sunshine-moment { background: #a70310; }
 .recipes { background-color: #fcfaf7; background-image: none; }
 .recipe-media { border-radius: 52px 14px 52px 14px; border-color: rgba(252, 250, 247, .5); }
-footer { background-color: #a70310; background-image: radial-gradient(circle at 10% 0%, rgba(200, 132, 43, .2), transparent 30%), linear-gradient(180deg, #a70310 0%, #a70310 100%); color: #fcfaf7; }
+footer { background-color: #2b4233; background-image: radial-gradient(circle at 10% 0%, rgba(212, 160, 60, .18), transparent 30%), linear-gradient(180deg, #2b4233 0%, #243a2c 100%); color: #fcfaf7; }
 .footer-cta,
 .footer-contact-card,
 .footer-columns > div { background: rgba(252, 250, 247, .08); border-color: rgba(252, 250, 247, .12); box-shadow: none; }
@@ -1418,7 +1418,7 @@ body {
 .fresh-product-media { background: radial-gradient(circle at 48% 52%, color-mix(in srgb, var(--product-accent, #a70310) 22%, #fcfaf7), transparent 58%), #e6b56a; }
 .sunshine-moment { background: #a70310; }
 .recipes { background-color: #fcfaf7; background-image: none; }
-footer { background-color: #a70310; background-image: radial-gradient(circle at 10% 0%, rgba(200, 132, 43, .2), transparent 30%), linear-gradient(180deg, #a70310 0%, #a70310 100%); color: #fcfaf7; }
+footer { background-color: #2b4233; background-image: radial-gradient(circle at 10% 0%, rgba(212, 160, 60, .18), transparent 30%), linear-gradient(180deg, #2b4233 0%, #243a2c 100%); color: #fcfaf7; }
 .footer-cta,
 .footer-contact-card,
 .footer-columns > div { background: rgba(252, 250, 247, .1); border-color: rgba(252, 250, 247, .16); }
@@ -1476,7 +1476,7 @@ body { background-color: #fcfaf7; color: #a70310; }
 .products,
 .new-products-section { background-color: #fcfaf7; }
 .recipes { background-color: #fcfaf7; }
-footer { background-color: #a70310; }
+footer { background-color: #2b4233; }
 .catalog-hero,
 .cart-hero { background: radial-gradient(circle at 82% 20%, rgba(200, 132, 43, .5), transparent 27%), #a70310; }
 .product-card h3,
@@ -1991,7 +1991,7 @@ footer { background-color: #a70310; }
 .home-category-card:not(.home-category-fresh-dates) .home-category-content > span { display: none; }
 .home-category-card:not(.home-category-fresh-dates) .home-category-content ul { margin-top: 12px; }
 .home-category-card:not(.home-category-fresh-dates) .home-category-content strong { margin-top: 14px; }
-.home-faq { background: var(--brown); color: var(--cream); }
+.home-faq { background: #2b4233; color: var(--cream); }
 .home-faq .faq-list details { background: #fcfaf7; color: var(--brown); }
 .product-info-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .product-info-grid ul { margin: 0; padding-left: 20px; }

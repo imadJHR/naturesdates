@@ -160,8 +160,8 @@ export default function Page() {
         <div className="desert-seam"><Products /><DuneDivider tone="ivory" /></div>
         <div className="desert-seam"><NewProductsSection /><DuneDivider tone="green" /></div>
         <div className="desert-seam"><SunshineMoment /><DuneDivider tone="ivory" /></div>
-        <div className="desert-seam"><Recipes /><DuneDivider tone="brown" /></div>
-        <div className="desert-seam"><FaqPreview /><DuneDivider tone="burgundy" /></div>
+        <div className="desert-seam"><Recipes /><DuneDivider tone="ivory" /></div>
+        <div className="desert-seam"><FaqPreview /><DuneDivider tone="green" /></div>
         <SiteFooter />
       </main>
     </>
