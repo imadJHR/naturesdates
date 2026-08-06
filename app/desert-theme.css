@@ -636,7 +636,7 @@ body {
   overflow: hidden;
   background:
     radial-gradient(70% 55% at 90% 0%, rgba(212, 160, 60, .12), transparent 52%),
-    linear-gradient(180deg, var(--warm-brown) 0%, #221309 100%);
+    linear-gradient(180deg, #a70310 0%, #8e1b1b 100%);
   color: var(--ivory);
 }
 /* Date palms flanking the FAQ, tinted gold like the hero/Story sections. */
