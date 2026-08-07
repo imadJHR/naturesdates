@@ -14,7 +14,6 @@ export function DatePalm(props: SVGProps<SVGSVGElement>) {
 
   const maskStyle: CSSProperties = {
     display: "inline-block",
-    width: "1em",
     aspectRatio: "220 / 310",
     backgroundColor: "currentColor",
     WebkitMaskImage: "url(/images/palm-decor.png)",
