@@ -521,7 +521,7 @@ footer { position: relative; overflow: hidden; padding: clamp(72px, 9vw, 120px) 
     .footer-contact-card { min-height: 320px; padding: 24px; }
     .footer-columns { grid-template-columns: 1fr; gap: 1px; }
     .footer-columns > div { min-height: auto; padding: 20px 18px; gap: 8px; }
-  .footer-wordmark { white-space: normal; font-size: clamp(40px, 14vw, 84px); line-height: .82; letter-spacing: -.05em; overflow-wrap: break-word; margin-top: 46px; }
+  .footer-wordmark { white-space: normal; font-size: clamp(34px, 12vw, 72px); line-height: .82; letter-spacing: -.05em; overflow-wrap: break-word; margin-top: 38px; }
   .footer-bottom { flex-direction: column; }
     .cart-shell { width: min(100% - 24px, 540px); }
     .cart-line { grid-template-columns: 82px minmax(0, 1fr); gap: 12px; padding: 12px; border-radius: 24px; }

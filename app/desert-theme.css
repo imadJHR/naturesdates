@@ -687,9 +687,14 @@ body {
 .section-palm-right { right: -14px; transform: scaleX(-1); }
 .section-inner { position: relative; z-index: 2; }
 @media (max-width: 800px) {
-  .section-palm { width: clamp(86px, 24vw, 150px); }
-  .section-palm-left { left: -22px; }
-  .section-palm-right { right: -20px; }
+  .section-palm { width: clamp(120px, 34vw, 175px); }
+  .section-palm-left { left: -4px; }
+  .section-palm-right { right: -2px; }
+}
+@media (max-width: 760px) {
+  .footer-palms .section-palm { width: clamp(92px, 28vw, 140px); bottom: 56px; }
+  .footer-palms .section-palm-left { left: 2px; }
+  .footer-palms .section-palm-right { right: 2px; }
 }
 .home-faq h2 { color: var(--ivory); }
 .home-faq .faq-list details { background: var(--ivory); color: var(--warm-brown); }

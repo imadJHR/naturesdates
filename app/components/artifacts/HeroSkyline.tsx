@@ -41,7 +41,7 @@ export function HeroSkyline({
           position: "absolute",
           left: 0,
           bottom: 0,
-          width: "clamp(92px, 12vw, 185px)",
+          width: "clamp(120px, 26vw, 185px)",
           color: "var(--skyline-front)",
         }}
       />
@@ -51,7 +51,7 @@ export function HeroSkyline({
           position: "absolute",
           right: 0,
           bottom: 0,
-          width: "clamp(112px, 14vw, 215px)",
+          width: "clamp(140px, 30vw, 215px)",
           color: "var(--skyline-front)",
           transform: "scaleX(-1)",
         }}
