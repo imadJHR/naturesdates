@@ -6,6 +6,7 @@ import { SmoothScroll } from "./components/smooth-scroll";
 import { CustomCursor } from "./components/custom-cursor";
 import { ScrollToTop } from "./components/scroll-to-top";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { LoadingScreen } from "./components/loading-screen";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -107,6 +108,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <SmoothScroll />
           <CustomCursor />
           <ScrollToTop />
+          <LoadingScreen />
           {children}
         </body>
     </html>
