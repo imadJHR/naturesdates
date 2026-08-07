@@ -272,6 +272,26 @@ export function OfficialHero() {
   const animate = useRevealEnabled();
   const sectionRef = useRef<HTMLElement>(null);
   const photoImageRef = useRef<HTMLDivElement>(null);
+  const [heroInView, setHeroInView] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(
+      typeof window !== "undefined" &&
+        window.matchMedia("(max-width: 760px)").matches,
+    );
+  }, []);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || !isMobile) return;
+    const io = new IntersectionObserver(
+      ([entry]) => setHeroInView(entry.isIntersecting),
+      { threshold: 0.15 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [isMobile]);
 
   useLayoutEffect(() => {
     if (reduceMotion) return;
@@ -340,9 +360,9 @@ export function OfficialHero() {
         </figure>
       </div>
 
-      <div className="hero-desert-scene" aria-hidden="true">
+      <div className={`hero-desert-scene${heroInView && isMobile ? " hero-palms-fixed" : ""}`} aria-hidden="true">
         <DustField count={22} />
-        <HeroSkyline />
+        <HeroSkyline viewportFixed={heroInView && isMobile} />
       </div>
 
       <HeroMarquee />

@@ -11,16 +11,38 @@ import { DatePalm } from "./DatePalm";
  * The central Moorish gateway portal was removed at the user's request (it read
  * as a dark archway over the hero copy). The footer skyline and the Story-section
  * palms are intentionally untouched.
+ *
+ * `viewportFixed` (used on mobile where the hero is taller than the viewport):
+ * pins the palms to the bottom of the screen so they are always visible, and the
+ * hero toggles this off once the hero scrolls out of view.
  */
 export function HeroSkyline({
   className = "",
   style,
+  viewportFixed = false,
 }: {
   className?: string;
   style?: CSSProperties;
+  viewportFixed?: boolean;
 }) {
+  const skylineStyle: CSSProperties = viewportFixed
+    ? {
+        position: "fixed",
+        left: 0,
+        right: 0,
+        bottom: 0,
+        height: "42vh",
+        zIndex: 6,
+        pointerEvents: "none",
+      }
+    : {};
+
   return (
-    <div className={`desert-skyline hero-skyline ${className}`} aria-hidden="true" style={style}>
+    <div
+      className={`desert-skyline hero-skyline${viewportFixed ? " hero-skyline-fixed" : ""} ${className}`}
+      aria-hidden="true"
+      style={{ ...style, ...skylineStyle }}
+    >
       {/* Low dune base — fades upward to blend into the hero gradient */}
       <svg
         className="hero-dune"
@@ -40,9 +62,9 @@ export function HeroSkyline({
         style={{
           position: "absolute",
           left: 0,
-          bottom: 0,
-          width: "clamp(120px, 26vw, 185px)",
-          color: "var(--skyline-front)",
+          bottom: viewportFixed ? "10px" : 0,
+          width: viewportFixed ? "22vw" : "clamp(120px, 26vw, 185px)",
+          color: viewportFixed ? "var(--gold-deep)" : "var(--skyline-front)",
         }}
       />
       <DatePalm
@@ -50,9 +72,9 @@ export function HeroSkyline({
         style={{
           position: "absolute",
           right: 0,
-          bottom: 0,
-          width: "clamp(140px, 30vw, 215px)",
-          color: "var(--skyline-front)",
+          bottom: viewportFixed ? "10px" : 0,
+          width: viewportFixed ? "26vw" : "clamp(140px, 30vw, 215px)",
+          color: viewportFixed ? "var(--gold-deep)" : "var(--skyline-front)",
           transform: "scaleX(-1)",
         }}
       />

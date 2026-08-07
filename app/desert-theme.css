@@ -244,6 +244,27 @@ body {
 }
 .hero-field-stamp strong { color: var(--gold-soft); }
 .hero-field-photo figcaption { color: #fff; }
+
+/* Mobile: keep hero palms behind content (so they never cover the
+   certification badges). When the hero is taller than the viewport, the palms
+   are pinned to the bottom of the screen via .hero-skyline-fixed (set by JS). */
+@media (max-width: 760px) {
+  .hero-desert-scene { z-index: 0; }
+  .hero-field-letter { position: relative; z-index: 2; }
+  .hero-skyline { bottom: clamp(46px, 9vw, 80px); }
+  .hero-palm { z-index: 0; }
+  .hero-skyline-fixed {
+    bottom: 0;
+    z-index: 6;
+  }
+  .hero-skyline-fixed .hero-palm {
+    bottom: 0;
+    z-index: 6;
+  }
+  .hero-palms-fixed {
+    z-index: 6;
+  }
+}
 /* Modern hero ticker — gold-to-burgundy band with a seamless looping scroll. */
 .official-hero-marquee {
   position: relative;
