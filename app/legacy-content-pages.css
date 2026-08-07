@@ -239,11 +239,11 @@
 .contact-form-intro > p:not(.info-kicker, .contact-privacy-note) { margin: 22px 0 0; color: rgba(252, 250, 247, .72); font-size: 16px; line-height: 1.7; }
 .contact-email-link { display: inline-flex; align-items: center; gap: 9px; margin-top: 25px; border-bottom: 1px solid rgba(252, 250, 247, .36); padding-bottom: 7px; color: white; font-weight: 1000; }
 .contact-route-list { display: grid; gap: 11px; width: 100%; margin-top: 30px; }
-.contact-route-list article { display: grid; grid-template-columns: 28px 1fr; gap: 12px; border: 1px solid rgba(252, 250, 247, .13); border-radius: 16px; padding: 16px; background: rgba(252, 250, 247, .06); }
-.contact-route-list article > svg { color: #c8842b; }
+.contact-route-list article { display: flex; align-items: flex-start; gap: 16px; border: 1px solid rgba(252, 250, 247, .13); border-radius: 16px; padding: 16px; background: rgba(252, 250, 247, .06); }
+.contact-route-list article > svg { flex: 0 0 40px; width: 40px; height: 40px; padding: 7px; border-radius: 12px; background: #e6b56a; color: #a70310; }
 .contact-route-list strong { display: block; color: white; font-size: 13px; }
 .contact-route-list span { display: block; margin-top: 4px; color: rgba(252, 250, 247, .64); font-size: 12px; line-height: 1.55; }
-.contact-privacy-note { margin: 22px 0 0; border-left: 3px solid #c8842b; padding-left: 15px; color: rgba(252, 250, 247, .66); font-size: 12px; line-height: 1.65; }
+.contact-privacy-note { margin: 22px 0 0; border-left: 3px solid #e6b56a; padding-left: 15px; color: rgba(252, 250, 247, .66); font-size: 12px; line-height: 1.65; }
 .contact-privacy-note strong { color: white; }
 .info-page-contact-us .local-contact-form { gap: 17px; border-radius: 20px 42px 20px 20px; padding: clamp(25px, 4vw, 42px); box-shadow: 0 30px 70px rgba(31, 20, 4, .25); }
 .contact-form-heading { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 16px; border-bottom: 1px solid #e6b56a; padding-bottom: 18px; }
