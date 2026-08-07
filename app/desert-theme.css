@@ -664,7 +664,7 @@ body {
 }
 /* Footer palms: gold on the dark (mobile) footer, muted burgundy on the cream (desktop) footer. */
 .footer-palms { z-index: 0; }
-.footer-palms .section-palm { color: rgba(167, 3, 16, .4); opacity: 1; }
+.footer-palms .section-palm { color: var(--gold-deep); opacity: .7; }
 .footer-inner { position: relative; z-index: 2; }
 @media (max-width: 760px) {
   .footer-palms .section-palm { color: var(--gold-deep); opacity: .7; }
