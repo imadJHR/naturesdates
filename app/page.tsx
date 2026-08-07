@@ -23,8 +23,8 @@ function Story() {
   return (
     <RevealSection id="story" className="story section-brown">
       <div className="story-palms" aria-hidden="true">
-        <DatePalm className="story-palm story-palm-left" />
-        <DatePalm className="story-palm story-palm-right" />
+        <DatePalm className="story-palm story-palm-left" style={{ width: "clamp(150px, 18vw, 280px)" }} />
+        <DatePalm className="story-palm story-palm-right" style={{ width: "clamp(150px, 18vw, 280px)" }} />
       </div>
       <DustField count={12} className="dust-subtle" />
       <div className="section-inner story-editorial">
