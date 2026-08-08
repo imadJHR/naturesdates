@@ -35,6 +35,63 @@
 html.has-custom-cursor,
 html.has-custom-cursor * { cursor: none !important; }
 
+/* Homepage responsive hardening: keep the editorial layout readable at tablet
+   widths instead of squeezing desktop columns into a narrow viewport. */
+@media (max-width: 1180px) {
+  .site-header { grid-template-columns: auto 1fr auto; gap: 14px; padding-inline: 18px; }
+  .desktop-nav { display: none !important; }
+  .mobile-menu-btn { display: inline-flex !important; justify-self: end; }
+  .header-phone, .site-header > .cart-status, .site-header > .wholesale-status { display: none !important; }
+  .logo { width: 76px; height: 76px; }
+  .logo img { width: 76px !important; height: 76px !important; }
+  .two-col { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .reverse { direction: ltr; }
+  .goodness-stage { min-height: auto; }
+  .goodness-benefits { position: relative; inset: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
+  .goodness-benefit { position: relative; inset: auto !important; }
+  .goodness-label { position: static; opacity: 1; transform: none; width: auto; max-width: none; pointer-events: auto; }
+  .goodness-icon { width: 64px; height: 64px; flex-basis: 64px; }
+  .goodness-bowl { position: relative; top: auto; left: auto; display: block; width: min(560px, 90vw); transform: none; margin: 0 auto; }
+  .fresh-category-grid { grid-template-columns: 1fr; }
+  .fresh-category-feature { min-height: 0; }
+  .new-products-heading { align-items: flex-start; flex-direction: column; }
+  .home-category-grid { grid-template-columns: 1fr !important; }
+  .home-category-card { min-height: 430px !important; }
+  .product-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .announcement-bar { min-height: 38px; padding: 8px 14px; font-size: 11px; gap: 8px; }
+  .announcement-bar span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .announcement-bar a { flex: 0 0 auto; }
+  .site-header { min-height: 76px; padding: 8px 14px; }
+  .section-inner { width: min(100% - 28px, 560px); padding-block: 68px; }
+  .hero { min-height: auto; padding-block: 58px 90px; }
+  .hero h1 { font-size: clamp(46px, 14vw, 76px); line-height: .88; }
+  .hero-copy { width: min(100%, 560px); }
+  .hero-actions .btn { width: 100%; }
+  .product-row { grid-template-columns: 1fr; gap: 18px; }
+  .product-card { border-radius: 28px; }
+  .product-card-media { min-height: 220px; }
+  .product-card-copy { padding-inline: 20px; }
+  .product-card-actions { padding-inline: 20px; }
+  .goodness-benefits { grid-template-columns: 1fr; }
+  .goodness-benefit { align-items: center; }
+  .goodness-label { font-size: 14px; }
+  .home-category-card { min-height: 380px !important; border-radius: 28px !important; }
+  .fresh-product-grid { grid-template-columns: 1fr !important; }
+  .moment-tabs-list { width: 100%; overflow-x: auto; justify-content: flex-start; }
+  .moment-tab-trigger { min-width: 110px; min-height: 46px; font-size: 13px; }
+  .moment-panel { grid-template-columns: 1fr !important; }
+  .moment-visual { min-height: 300px !important; }
+  .recipe-media { aspect-ratio: 4 / 3; }
+  .certifications-marquee-head h2 { font-size: clamp(34px, 10vw, 54px); }
+  .cert-marquee { overflow: hidden; }
+  .footer-wordmark { font-size: clamp(34px, 12vw, 72px) !important; }
+  .story-palm-right, .nutrition-palm-right, .faq-palm-right, .section-palm-right { right: 2px !important; }
+  .story-palm-left, .nutrition-palm-left, .faq-palm-left, .section-palm-left { left: 2px !important; }
+}
+
 /* ─────────────────────────────────────────────────────────────
    Natures Dates — Tailwind v4 design tokens
    Sahara × Medjool Gold palette extracted from the box packaging:

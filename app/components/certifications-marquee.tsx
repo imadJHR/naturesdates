@@ -34,7 +34,7 @@ export function CertificationsMarquee() {
       <div className="certifications-marquee-inner">
         <div className="certifications-marquee-head">
           <p className="script small">Trust, certified</p>
-          <h2 id="certifications-marquee-title">Nos certifications</h2>
+          <h2 id="certifications-marquee-title">Our certifications</h2>
         </div>
 
         <div className="cert-marquee" role="region" aria-label="Certifications and food safety standards">
