@@ -1,7 +1,5 @@
 "use client";
 
-import { useReducedMotion } from "framer-motion";
-
 type Cert = {
   src: string;
   alt: string;
@@ -25,7 +23,6 @@ const CERTS: Cert[] = [
  * so the -50% translate creates a perfect loop. Honors prefers-reduced-motion.
  */
 export function CertificationsMarquee() {
-  const reduceMotion = useReducedMotion();
   // Two copies of the list for a seamless loop.
   const loop = [...CERTS, ...CERTS];
 
@@ -38,9 +35,7 @@ export function CertificationsMarquee() {
         </div>
 
         <div className="cert-marquee" role="region" aria-label="Certifications and food safety standards">
-          <div
-            className={`cert-marquee-track${reduceMotion ? " is-paused" : ""}`}
-          >
+          <div className="cert-marquee-track">
             {loop.map((cert, i) => (
               <span
                 key={`${cert.src}-${i}`}

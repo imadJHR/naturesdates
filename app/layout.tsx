@@ -2,25 +2,24 @@ import type { Metadata, Viewport } from "next";
 import { Manrope, Cormorant_Garamond, Pacifico } from "next/font/google";
 import "lenis/dist/lenis.css";
 import "./globals.css";
+import "./design-polish.css";
 import { SmoothScroll } from "./components/smooth-scroll";
-import { CustomCursor } from "./components/custom-cursor";
 import { ScrollToTop } from "./components/scroll-to-top";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
-import { LoadingScreen } from "./components/loading-screen";
 
 const manrope = Manrope({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-sans",
+  variable: "--font-manrope",
   display: "swap",
 });
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["600", "700"],
-  variable: "--font-display",
+  variable: "--font-cormorant",
   display: "swap",
 });
-const pacifico = Pacifico({ subsets: ["latin"], weight: "400", variable: "--font-script", display: "swap" });
+const pacifico = Pacifico({ subsets: ["latin"], weight: "400", variable: "--font-pacifico", display: "swap" });
 const siteUrl = new URL(SITE_URL);
 
 export const viewport: Viewport = {
@@ -106,9 +105,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body className={`${manrope.variable} ${cormorant.variable} ${pacifico.variable}`}>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
           <SmoothScroll />
-          <CustomCursor />
           <ScrollToTop />
-          <LoadingScreen />
           {children}
         </body>
     </html>

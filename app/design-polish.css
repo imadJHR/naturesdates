@@ -1,0 +1,365 @@
+/* Final cross-site design pass. Keep this file last in the cascade. */
+
+:root {
+  --font-display-stack: var(--font-cormorant), Georgia, serif;
+  --font-body-stack: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  --font-display-stack: var(--font-cormorant), Georgia, serif;
+  --font-body-stack: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-cormorant), Georgia, serif;
+  --font-script: var(--font-pacifico), cursive;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-cormorant), Georgia, serif;
+}
+
+.script,
+.loading-script {
+  font-family: var(--font-pacifico), cursive;
+}
+
+.desktop-nav-link,
+.mobile-nav-link,
+.mobile-nav-parent > button,
+.btn,
+.shad-button,
+.shad-button-outline,
+.trade,
+.email-link,
+.header-phone,
+.cart-status,
+.info-primary-link,
+.info-secondary-link,
+.product-card-category,
+.product-card-actions,
+.home-category-content strong,
+.moment-tab-trigger,
+.newsletter-form,
+.footer-columns a {
+  font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Number markers need their own row so they never sit on top of headings. */
+.wellness-benefit-card {
+  position: relative;
+  padding-top: 72px;
+}
+
+.wellness-benefit-number {
+  top: 20px;
+  left: 22px;
+}
+
+.wellness-benefit-card h3 {
+  margin-top: 0;
+  line-height: 1.02;
+}
+
+/* Keep the hero landscape decorative: it must never cover the letter or photo. */
+.hero.official-hero .hero-desert-scene,
+.hero.official-hero .hero-palms-fixed {
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero.official-hero .official-hero-shell {
+  z-index: 2;
+}
+
+.hero.official-hero .hero-skyline {
+  height: clamp(120px, 16vw, 210px);
+  opacity: .68;
+}
+
+/* Replace generic circles with Moroccan arch and diamond motifs. */
+body .hero-field-stamp {
+  border-radius: 52px 52px 12px 12px;
+  transform: none;
+}
+
+body .hero-marquee-dot,
+body .wellness-redesign .goodness-kicker::before {
+  border-radius: 2px;
+  transform: rotate(45deg);
+  box-shadow: none;
+}
+
+body .wellness-benefit-number,
+body .info-highlight-grid span,
+body .recipe-method-card li > span,
+body .story-editorial-main figcaption > span {
+  border-radius: 50% 50% 7px 7px;
+}
+
+body .wellness-score-card::after {
+  right: 18px;
+  top: 18px;
+  width: 54px;
+  height: 70px;
+  aspect-ratio: auto;
+  border-width: 1px;
+  border-radius: 28px 28px 7px 7px;
+  transform: none;
+}
+
+body .sunshine-moment {
+  background:
+    linear-gradient(145deg, rgba(167, 3, 16, .98), rgba(110, 22, 24, .98)),
+    url("/desert/moroccan-pattern.svg") center / 180px 180px repeat;
+  background-blend-mode: normal, soft-light;
+}
+
+body .sunshine-moment::before,
+body .sunshine-moment::after {
+  display: none;
+}
+
+body .moment-stamp {
+  border-radius: 42px 42px 9px 9px;
+  transform: none;
+}
+
+body .catalog-hero,
+body .category-showcase,
+body .recipe-detail-hero {
+  background-image:
+    linear-gradient(125deg, rgba(74, 12, 15, .98), rgba(142, 27, 27, .96)),
+    url("/desert/moroccan-pattern.svg");
+  background-position: center, center;
+  background-size: auto, 190px 190px;
+  background-repeat: no-repeat, repeat;
+  background-blend-mode: normal, soft-light;
+}
+
+body .catalog-hero::after,
+body .category-showcase::before,
+body .recipe-detail-hero::after {
+  display: none;
+}
+
+@media (min-width: 801px) {
+  .hero.official-hero .hero-palm {
+    width: clamp(96px, 10vw, 150px) !important;
+  }
+
+  .hero.official-hero .hero-palm-right {
+    width: clamp(108px, 11vw, 164px) !important;
+  }
+}
+
+/* Product filtering stays fully visible instead of clipping the last tab. */
+.shad-tabs-list {
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  .announcement-bar {
+    font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .site-header {
+    min-height: 68px;
+    height: 68px;
+    padding-left: 92px;
+  }
+
+  .logo,
+  .logo img {
+    width: 68px !important;
+    height: 68px !important;
+  }
+
+  .logo {
+    border-radius: 0;
+  }
+
+  .section-inner {
+    padding-block: 60px;
+  }
+
+  .product-card,
+  .fresh-product-card,
+  .catalog-card,
+  .info-content-card,
+  .home-category-card,
+  .moment-panel,
+  .footer-cta,
+  .footer-contact-card {
+    border-radius: 18px !important;
+  }
+
+  /* Eight stacked cards made the home page almost 19,000px tall. */
+  .products .product-row {
+    display: grid;
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: min(82vw, 320px);
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 8px 2px 22px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    scrollbar-color: var(--date-red) rgba(142, 27, 27, .12);
+    overscroll-behavior-inline: contain;
+  }
+
+  .products .product-card {
+    height: 100%;
+    scroll-snap-align: start;
+  }
+
+  .products .product-row::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  .products .product-row::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: var(--date-red);
+  }
+
+  .products .product-row::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background: rgba(142, 27, 27, .12);
+  }
+
+  .shad-tabs-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    height: auto;
+    gap: 6px;
+    overflow: visible;
+    padding: 6px;
+    border-radius: 12px;
+  }
+
+  .shad-tabs-trigger {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 8px 10px;
+    border-radius: 8px;
+    white-space: normal;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  .wellness-benefit-card {
+    padding-top: 68px;
+  }
+
+  /* Compact the footer while keeping every link and contact route available. */
+  footer {
+    padding-top: 52px;
+  }
+
+  .footer-inner {
+    width: min(100% - 28px, 560px);
+  }
+
+  .footer-top {
+    gap: 14px;
+  }
+
+  .footer-cta,
+  .footer-contact-card {
+    padding: 26px 24px;
+  }
+
+  .footer-contact-card img {
+    width: 88px;
+    height: 88px;
+  }
+
+  .footer-newsletter {
+    gap: 18px;
+    margin: 24px 0;
+    padding: 24px 0;
+  }
+
+  .footer-newsletter h3 {
+    font-size: 26px;
+    line-height: 1.05;
+  }
+
+  .footer-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border-radius: 14px;
+  }
+
+  .footer-columns > div {
+    min-width: 0;
+    padding: 20px 18px;
+  }
+
+  .footer-columns > div:nth-child(2) {
+    order: 3;
+    grid-column: 1 / -1;
+  }
+
+  .footer-columns a {
+    overflow-wrap: anywhere;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .footer-wordmark {
+    margin-top: 34px;
+    font-size: clamp(38px, 14vw, 56px) !important;
+    letter-spacing: .08em;
+  }
+
+  .footer-certifications {
+    --cert-h: 34px;
+    gap: 14px;
+    margin-top: 22px;
+  }
+
+  .footer-certifications .cert-badge--fssc {
+    max-width: 155px;
+  }
+
+  .footer-bottom {
+    gap: 8px;
+    padding-block: 22px 28px;
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+}
+
+@media (max-width: 800px) {
+  .hero.official-hero .hero-skyline-fixed {
+    position: absolute !important;
+    z-index: 1 !important;
+    bottom: 54px !important;
+    height: clamp(110px, 28vw, 170px) !important;
+  }
+
+  .hero.official-hero .hero-skyline-fixed .hero-palm {
+    z-index: 1 !important;
+    bottom: 0 !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cert-marquee-track {
+    animation: none !important;
+    transform: none !important;
+  }
+}

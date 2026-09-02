@@ -121,9 +121,9 @@ html.has-custom-cursor * { cursor: none !important; }
   --color-brand-cream-2: #F4EAD4;
   --color-brand-soft-tan: #F3E7D2;
 
-  --font-sans: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-script: var(--font-script), cursive;
-  --font-display: var(--font-display), Georgia, serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-script: var(--font-pacifico), cursive;
+  --font-display: var(--font-cormorant), Georgia, serif;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -135,8 +135,8 @@ html.has-custom-cursor * { cursor: none !important; }
    ───────────────────────────────────────────────────────────── */
 
 :root {
-  --font-display-stack: var(--font-display), Georgia, "Times New Roman", serif;
-  --font-body-stack: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display-stack: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-body-stack: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Headings -> Cormorant Garamond */
