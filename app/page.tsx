@@ -13,20 +13,13 @@ import { NewProductsSection } from "./components/new-products-section";
 import { SunshineMoment } from "./components/sunshine-moment";
 import { CertificationsMarquee } from "./components/certifications-marquee";
 import { Reveal, RevealSection } from "./components/reveal";
-import { DuneDivider, DustField } from "./components/desert-decor";
-import { DatePalm } from "./components/artifacts/DatePalm";
 import { SectionPalms } from "./components/artifacts/SectionPalms";
-import { NutritionDecor } from "./components/artifacts/NutritionDecor";
 import { productCategories, products as catalogProducts } from "./data/products";
 
 function Story() {
   return (
     <RevealSection id="story" className="story section-brown">
-      <div className="story-palms" aria-hidden="true">
-        <DatePalm className="story-palm story-palm-left" style={{ width: "clamp(150px, 18vw, 280px)" }} />
-        <DatePalm className="story-palm story-palm-right" style={{ width: "clamp(150px, 18vw, 280px)" }} />
-      </div>
-      <DustField count={12} className="dust-subtle" />
+      <SectionPalms className="home-palms home-palms-story" opacity={0.2} />
       <div className="section-inner story-editorial">
         <Reveal className="story-editorial-heading">
           <div><p className="script small">Naturally generous</p><h2>One fruit.<br />A whole day of possibilities.</h2></div>
@@ -65,19 +58,122 @@ function Story() {
 function Products() {
   return (
     <RevealSection id="products" className="products section-light">
-      <SectionPalms />
-      <div className="organic-shape teal" aria-hidden="true" />
+      <SectionPalms className="home-palms home-palms-products" opacity={0.18} />
       <div className="section-inner">
-        <div className="section-title">
-          <p className="script small tan">Find your favorite</p>
-          <h2>Medjool dates for every kind of moment.</h2>
-          <p className="section-intro">Choose classic whole fruit, recipe-ready pitted dates, organic selections or portable Mini Medjools. Always verify ingredients and product details on the current package.</p>
+        <div className="products-heading">
+          <div>
+            <p className="products-kicker">The Medjool collection</p>
+            <h2>Six delicious ways to make the moment yours.</h2>
+          </div>
+          <div className="products-heading-copy">
+            <p>Whole, pitted, organic or made mini. Discover the format and flavor that fits your day.</p>
+            <Link className="products-heading-link" href="/products">
+              Explore the full collection <ArrowRight size={17} />
+            </Link>
+          </div>
         </div>
-        <div className="product-row">
-          {catalogProducts.map((product) => <ProductCard key={product.slug} product={product} />)}
+        <div className="product-collection-grid">
+          {catalogProducts.map((product, index) => (
+            <ProductCard
+              key={product.slug}
+              product={product}
+              variant={index < 2 ? "featured" : "compact"}
+            />
+          ))}
         </div>
-        <div className="products-footer-cta">
-          <Link className="btn red" href="/products">See all product details <ArrowRight size={18} /></Link>
+      </div>
+    </RevealSection>
+  );
+}
+
+const bulkItems = [
+  {
+    size: "1 kg x 6",
+    title: "Whole Medjool Dates",
+    image: "/natures-dates-logo.webp",
+    specs: [
+      ["Unit dimensions (cm)", "21.82 (L) x 15.95 (W) x 5.49 (H)"],
+      ["Case gross weight", "7.34 kg"],
+      ["UPC", "0 97923-00125 2"],
+      ["TI x HI", "14 x 11"],
+      ["Pallet quantity", "154"],
+      ["GTIN", "10097923001259"],
+    ],
+  },
+  {
+    size: "2 kg x 6",
+    title: "Whole Medjool Dates",
+    image: "/natures-dates-logo.webp",
+    specs: [
+      ["Unit dimensions (cm)", "26.50 (L) x 25.08 (W) x 7.77 (H)"],
+      ["Case gross weight", "13.3 kg"],
+      ["UPC", "0 97923-00116 0"],
+      ["TI x HI", "8 x 8"],
+      ["Pallet quantity", "64"],
+      ["GTIN", "10097923001167"],
+    ],
+  },
+  {
+    size: "5 kg",
+    title: "Whole Medjool Dates",
+    image: "/natures-dates-logo.webp",
+    specs: [
+      ["Unit dimensions (cm)", "39.52 (L) x 29.36 (W) x 9.52 (H)"],
+      ["Case gross weight", "5.556 kg"],
+      ["UPC", "0 97923-54335 6"],
+      ["TI x HI", "10 x 23"],
+      ["Pallet quantity", "230"],
+      ["GTIN", "00097923000309"],
+    ],
+  },
+];
+
+function BulkExport() {
+  return (
+    <RevealSection id="bulk-export" className="bulk-export">
+      <div className="bulk-export-ribbon" aria-hidden="true" />
+      <div className="section-inner bulk-export-inner">
+        <div className="bulk-export-brand">
+          <Image
+            src="/natures-dates-logo.webp"
+            alt="Natures Dates"
+            width={230}
+            height={130}
+            sizes="(max-width: 700px) 150px, 230px"
+          />
+          <p className="script small">Raised on Sunshine</p>
+        </div>
+        <div className="bulk-export-content">
+          <div className="bulk-export-heading">
+            <div>
+              <p className="script small tan">Wholesale ready</p>
+              <h2>Export bulk items</h2>
+              <p>Jumbo, large and premium grade formats for distributors, retailers and foodservice buyers.</p>
+            </div>
+            <Link className="btn red" href="/contact-us">
+              Request bulk pricing <ArrowRight size={18} />
+            </Link>
+          </div>
+          <div className="bulk-export-list">
+            {bulkItems.map((item) => (
+              <article className="bulk-export-item" key={item.size}>
+                <div className="bulk-export-pack">
+                  <Image src={item.image} alt={item.title} width={360} height={260} sizes="(max-width: 760px) 54vw, 260px" />
+                </div>
+                <div className="bulk-export-specs">
+                  <h3><strong>{item.size}</strong> {item.title}</h3>
+                  <dl>
+                    {item.specs.map(([label, value]) => (
+                      <div key={label}>
+                        <dt>{label}</dt>
+                        <dd>{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </RevealSection>
@@ -92,8 +188,6 @@ function CategoryExplore() {
   ];
 
   return <RevealSection className="home-categories" id="categories">
-    <NutritionDecor />
-    <SectionPalms />
     <div className="section-inner">
       <div className="home-category-heading">
       <div><p className="script small tan">Choose your way</p><h2>One fruit. Three everyday rhythms.</h2></div>
@@ -120,10 +214,7 @@ function CategoryExplore() {
 function FaqPreview() {
   return (
     <RevealSection className="home-faq">
-      <div className="faq-palms" aria-hidden="true">
-        <DatePalm className="faq-palm faq-palm-left" />
-        <DatePalm className="faq-palm faq-palm-right" />
-      </div>
+      <SectionPalms className="home-palms home-palms-faq" opacity={0.16} />
       <div className="section-inner two-col">
         <div><p className="script small">Good to know</p><h2>Questions before your first bite?</h2><p>Learn about whole versus pitted dates, storage, organic labels, allergens, nutrition information and wholesale inquiries.</p><Link className="btn red" href="/faq">Read the FAQ <ArrowRight size={18} /></Link></div>
         <div className="faq-list"><details><summary>Whole or pitted?</summary><p>Whole dates retain the hard pit. Pitted dates simplify snack and recipe preparation, though every fruit should still be checked before use.</p></details><details><summary>How should dates be stored?</summary><p>Follow the current package directions, reseal after opening and protect the fruit from excess heat and moisture.</p></details><details><summary>Where are ingredients and allergens listed?</summary><p>The current package is the definitive source for ingredients, allergens, nutrition and certification marks.</p></details></div>
@@ -152,17 +243,18 @@ export default function Page() {
   return (
     <>
       <a className="skip-link" href="#story">Skip to content</a>
-      <main>
+      <main className="home-page">
         <Header />
         <OfficialHero />
-        <div className="desert-seam"><Story /><DuneDivider tone="sand" /></div>
-        <div className="desert-seam"><GoodnessShowcase /><DuneDivider tone="ivory" /></div>
-        <div className="desert-seam"><CategoryExplore /><DuneDivider tone="sand" /></div>
-        <div className="desert-seam"><Products /><DuneDivider tone="ivory" /></div>
-        <div className="desert-seam"><NewProductsSection /><DuneDivider tone="burgundy" /></div>
-        <div className="desert-seam"><SunshineMoment /><DuneDivider tone="ivory" /></div>
-        <div className="desert-seam"><Recipes /><DuneDivider tone="ivory" /></div>
-        <div className="desert-seam"><FaqPreview /><DuneDivider tone="burgundy" /></div>
+        <Story />
+        <GoodnessShowcase />
+        <CategoryExplore />
+        <Products />
+        <BulkExport />
+        <NewProductsSection />
+        <SunshineMoment />
+        <Recipes />
+        <FaqPreview />
         <CertificationsMarquee />
         <SiteFooter />
       </main>

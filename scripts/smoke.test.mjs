@@ -98,7 +98,7 @@ test("the home page exposes real destinations and no placeholder email", async (
   assert.doesNotMatch(html, formerOfficialLink);
   assert.doesNotMatch(html, /hello@example\.com/);
   assert.match(html, /href="\/privacy"/);
-  assert.match(html, /Meet what(?:'|&#x27;)s new/i);
+  assert.match(html, /Two new ways to snack brighter/i);
   assert.match(html, /href="\/products\/organic-pitted-medjool-dates"/);
   assert.match(html, /Wholesale/i);
   assert.doesNotMatch(html, /Add to cart/i);

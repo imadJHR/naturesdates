@@ -455,3 +455,248 @@ input, textarea, select, label, .form-label, .badge, .shad-badge,
 @media (prefers-reduced-motion: reduce) {
   .loading-bar-fill { transition: none; }
 }
+
+/* Bulk export spec sheet */
+.bulk-export {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, #f8ecd9 0%, #fcf4e8 100%);
+  color: #5a2b1b;
+}
+
+.bulk-export::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 .36 0 0 0 0 .22 0 0 0 0 .1 0 0 0 .34 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: .08;
+  mix-blend-mode: multiply;
+}
+
+.bulk-export-ribbon {
+  position: absolute;
+  inset: 0 0 auto;
+  height: clamp(58px, 7vw, 94px);
+  background:
+    radial-gradient(90px 52px at 4% 0, #5a2b1b 0 54%, transparent 55%),
+    radial-gradient(120px 62px at 20% 0, #c10230 0 56%, transparent 57%),
+    radial-gradient(120px 64px at 42% 0, #7b3f27 0 57%, transparent 58%),
+    radial-gradient(118px 64px at 63% 0, #b86f44 0 58%, transparent 59%),
+    radial-gradient(126px 64px at 88% 0, #c10230 0 56%, transparent 57%),
+    radial-gradient(90px 52px at 100% 0, #5a2b1b 0 54%, transparent 55%),
+    linear-gradient(#f6a400 0 30px, transparent 30px);
+}
+
+.bulk-export-inner {
+  display: grid;
+  grid-template-columns: minmax(150px, .28fr) minmax(0, 1fr);
+  gap: clamp(30px, 5vw, 72px);
+  align-items: start;
+  padding-top: clamp(110px, 11vw, 150px);
+}
+
+.bulk-export-brand {
+  position: sticky;
+  top: 104px;
+  display: grid;
+  justify-items: start;
+  gap: 2px;
+}
+
+.bulk-export-brand img {
+  width: min(100%, 220px);
+  height: auto;
+  object-fit: contain;
+}
+
+.bulk-export-brand .script {
+  margin: -4px 0 0 32px;
+  color: #d69a1f;
+  font-size: clamp(24px, 3vw, 42px);
+  line-height: 1.05;
+}
+
+.bulk-export-content {
+  min-width: 0;
+}
+
+.bulk-export-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: clamp(28px, 4vw, 46px);
+}
+
+.bulk-export-heading .script {
+  margin-bottom: 10px;
+  color: #d69a1f;
+  font-size: clamp(22px, 2.3vw, 34px);
+  line-height: 1.05;
+}
+
+.bulk-export-heading h2 {
+  margin: 0;
+  color: #5a2b1b;
+  font-family: var(--font-body-stack);
+  font-size: clamp(34px, 5.2vw, 68px);
+  font-weight: 1000;
+  line-height: .9;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.bulk-export-heading p:not(.script) {
+  max-width: 620px;
+  margin: 10px 0 0;
+  color: rgba(90, 43, 27, .72);
+  font-size: clamp(14px, 1.4vw, 18px);
+  font-weight: 700;
+  line-height: 1.55;
+  text-transform: uppercase;
+}
+
+.bulk-export-list {
+  display: grid;
+  gap: clamp(30px, 4vw, 46px);
+}
+
+.bulk-export-item {
+  display: grid;
+  grid-template-columns: minmax(180px, .34fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+}
+
+.bulk-export-pack {
+  display: grid;
+  place-items: center;
+  min-height: 188px;
+}
+
+.bulk-export-pack img {
+  width: min(100%, 260px);
+  height: 188px;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 18px rgba(90, 43, 27, .18));
+}
+
+.bulk-export-specs h3 {
+  margin: 0 0 14px;
+  color: #5a2b1b;
+  font-family: var(--font-body-stack);
+  font-size: clamp(21px, 2.6vw, 32px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.bulk-export-specs h3 strong {
+  font-weight: 1000;
+}
+
+.bulk-export-specs dl {
+  margin: 0;
+  display: grid;
+}
+
+.bulk-export-specs dl > div {
+  display: grid;
+  grid-template-columns: minmax(150px, .42fr) minmax(0, 1fr);
+  gap: 16px;
+  border-top: 1px solid rgba(90, 43, 27, .34);
+  padding: 5px 0;
+}
+
+.bulk-export-specs dl > div:last-child {
+  border-bottom: 1px solid rgba(90, 43, 27, .34);
+}
+
+.bulk-export-specs dt,
+.bulk-export-specs dd {
+  margin: 0;
+  color: #5a2b1b;
+  font-size: clamp(11px, 1.08vw, 14px);
+  line-height: 1.2;
+}
+
+.bulk-export-specs dt {
+  font-weight: 1000;
+  text-transform: uppercase;
+}
+
+.bulk-export-specs dd {
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .bulk-export-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .bulk-export-brand {
+    position: relative;
+    top: auto;
+    justify-items: center;
+  }
+
+  .bulk-export-brand img {
+    width: 170px;
+  }
+
+  .bulk-export-brand .script {
+    margin-left: 0;
+    font-size: 34px;
+  }
+
+  .bulk-export-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+  .bulk-export-inner {
+    width: min(100% - 28px, 560px);
+    padding-top: 104px;
+  }
+
+  .bulk-export-heading .btn {
+    width: 100%;
+  }
+
+  .bulk-export-heading .script {
+    font-size: 25px;
+  }
+
+  .bulk-export-item {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    align-items: start;
+    border-top: 1px solid rgba(90, 43, 27, .2);
+    padding-top: 24px;
+  }
+
+  .bulk-export-list {
+    gap: 26px;
+  }
+
+  .bulk-export-pack {
+    min-height: 150px;
+    justify-items: start;
+  }
+
+  .bulk-export-pack img {
+    width: min(74vw, 230px);
+    height: 150px;
+  }
+
+  .bulk-export-specs dl > div {
+    grid-template-columns: minmax(112px, .42fr) minmax(0, 1fr);
+    gap: 10px;
+  }
+}

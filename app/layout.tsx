@@ -3,8 +3,10 @@ import { Manrope, Cormorant_Garamond, Pacifico } from "next/font/google";
 import "lenis/dist/lenis.css";
 import "./globals.css";
 import "./design-polish.css";
+import "./home-redesign.css";
 import { SmoothScroll } from "./components/smooth-scroll";
 import { ScrollToTop } from "./components/scroll-to-top";
+import { LoadingScreen } from "./components/loading-screen";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const manrope = Manrope({
@@ -104,6 +106,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <head />
       <body className={`${manrope.variable} ${cormorant.variable} ${pacifico.variable}`}>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+          <LoadingScreen />
           <SmoothScroll />
           <ScrollToTop />
           {children}

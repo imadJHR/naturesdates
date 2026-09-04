@@ -15,8 +15,6 @@ import { siteConfig } from "@/app/data/site-config";
 import { WholesaleQuoteButton, WholesaleStatus } from "./cart-actions";
 import { Certifications } from "./certifications";
 import { Reveal, RevealSection } from "./reveal";
-import { DesertSkyline, DustField } from "./desert-decor";
-import { HeroSkyline } from "./artifacts/HeroSkyline";
 import { NutritionDecor } from "./artifacts/NutritionDecor";
 import { SectionPalms } from "./artifacts/SectionPalms";
 
@@ -272,26 +270,6 @@ export function OfficialHero() {
   const animate = useRevealEnabled();
   const sectionRef = useRef<HTMLElement>(null);
   const photoImageRef = useRef<HTMLDivElement>(null);
-  const [heroInView, setHeroInView] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    setIsMobile(
-      typeof window !== "undefined" &&
-        window.matchMedia("(max-width: 760px)").matches,
-    );
-  }, []);
-
-  useEffect(() => {
-    const el = sectionRef.current;
-    if (!el || !isMobile) return;
-    const io = new IntersectionObserver(
-      ([entry]) => setHeroInView(entry.isIntersecting),
-      { threshold: 0.15 },
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [isMobile]);
 
   useLayoutEffect(() => {
     if (reduceMotion) return;
@@ -360,22 +338,18 @@ export function OfficialHero() {
         </figure>
       </div>
 
-      <div className={`hero-desert-scene${heroInView && isMobile ? " hero-palms-fixed" : ""}`} aria-hidden="true">
-        <DustField count={22} />
-        <HeroSkyline viewportFixed={heroInView && isMobile} />
-      </div>
-
       <HeroMarquee />
     </section>
   );
 }
 
 /** Modern looping ticker shown at the base of the hero. */
-function HeroMarquee() {
-  const items = ["Whole fruit", "Caramel-like taste", "Recipe ready"];
-  const Row = ({ ariaHidden }: { ariaHidden?: boolean }) => (
+const HERO_MARQUEE_ITEMS = ["Whole fruit", "Caramel-like taste", "Recipe ready"];
+
+function HeroMarqueeRow({ ariaHidden }: { ariaHidden?: boolean }) {
+  return (
     <div className="hero-marquee-track" aria-hidden={ariaHidden} role={ariaHidden ? undefined : "list"}>
-      {items.map((label, i) => (
+      {HERO_MARQUEE_ITEMS.map((label, i) => (
         <span className="hero-marquee-item" key={i} role="listitem">
           <span className="hero-marquee-dot" />
           {label}
@@ -384,11 +358,14 @@ function HeroMarquee() {
       ))}
     </div>
   );
+}
+
+function HeroMarquee() {
   return (
     <div className="official-hero-marquee" role="marquee" aria-label="Whole fruit, caramel-like taste, recipe ready">
       <div className="hero-marquee-inner">
-        <Row />
-        <Row ariaHidden />
+        <HeroMarqueeRow />
+        <HeroMarqueeRow ariaHidden />
       </div>
     </div>
   );
@@ -454,13 +431,19 @@ export function GoodnessShowcase() {
   );
 }
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({
+  product,
+  variant = "featured",
+}: {
+  product: Product;
+  variant?: "featured" | "compact";
+}) {
   const animate = useRevealEnabled();
   const category = productCategories.find((item) => item.slug === product.category);
 
   return (
     <motion.article
-      className="product-card"
+      className={`product-card product-card-${variant}`}
       style={{ "--product-accent": product.accent } as CSSProperties}
       whileHover={animate ? { y: -16, scale: 1.03 } : undefined}
       transition={{ type: "spring", stiffness: 120, damping: 14 }}
