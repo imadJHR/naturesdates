@@ -806,7 +806,7 @@
 
 /* Certifications and footer */
 .home-page .certifications-marquee {
-  padding: 52px 24px;
+  padding: clamp(54px, 6vw, 78px) 24px;
   background: var(--home-ivory);
 }
 
@@ -818,9 +818,9 @@
 .home-page .certifications-marquee-inner {
   width: min(1200px, 100%);
   display: grid;
-  grid-template-columns: 240px minmax(0, 1fr);
+  grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
   align-items: center;
-  gap: 42px;
+  gap: clamp(36px, 5vw, 72px);
 }
 
 .home-page .certifications-marquee-head {
@@ -829,23 +829,89 @@
 }
 
 .home-page .certifications-marquee-head .script.small {
-  font-size: 20px;
+  margin-bottom: 8px;
+  font-size: clamp(20px, 2vw, 25px);
 }
 
 .home-page .certifications-marquee-head h2 {
+  margin: 0;
   color: var(--home-red);
-  font-size: 32px;
-  line-height: 1;
+  font-size: clamp(34px, 3vw, 44px);
+  line-height: .94;
+}
+
+.home-page .cert-marquee {
+  width: 100%;
+  overflow: visible;
 }
 
 .home-page .cert-marquee-track {
   width: 100%;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: center;
+  gap: clamp(18px, 2.4vw, 34px);
+  padding: 0;
+  transform: none;
   animation: none;
 }
 
-.home-page .cert-marquee-track .cert-badge:nth-child(n + 6) {
-  display: none;
+.home-page .cert-marquee-track .cert-badge {
+  width: 100%;
+  min-width: 0;
+  height: 84px;
+  padding: 6px;
+}
+
+.home-page .cert-marquee-track .cert-badge img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 72px;
+}
+
+.home-page .cert-marquee-track .cert-badge--fssc img {
+  max-width: 220px;
+  max-height: 54px;
+}
+
+.home-page .cert-marquee-track .cert-badge--kosher img {
+  max-width: 170px;
+  max-height: 68px;
+}
+
+.home-page .cert-marquee-track .cert-badge--brcgs img {
+  max-width: 92px;
+  max-height: 68px;
+}
+
+@media (max-width: 900px) {
+  .home-page .certifications-marquee-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .home-page .certifications-marquee-head {
+    text-align: center;
+  }
+
+  .home-page .cert-marquee {
+    width: min(680px, 100%);
+    margin-inline: auto;
+  }
+
+  .home-page .cert-marquee-track {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .home-page .cert-marquee-track .cert-badge {
+    grid-column: span 2;
+  }
+
+  .home-page .cert-marquee-track .cert-badge:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
 }
 
 .home-page footer {
@@ -1205,12 +1271,21 @@
 
   .home-page .cert-marquee-track {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
   }
 
   .home-page .cert-marquee-track .cert-badge {
+    grid-column: auto;
     min-width: 0;
+  }
+
+  .home-page .cert-marquee-track .cert-badge:nth-child(4) {
+    grid-column: auto;
+  }
+
+  .home-page .cert-marquee-track .cert-badge:last-child {
+    grid-column: 1 / -1;
   }
 
   .home-page footer {

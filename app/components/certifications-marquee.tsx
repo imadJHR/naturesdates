@@ -17,15 +17,7 @@ const CERTS: Cert[] = [
   { src: "/certifications/brcgs.png", alt: "BRCGS Food Safety certified", title: "BRCGS Food Safety Certified", width: 546, height: 410, kind: "brcgs" },
 ];
 
-/**
- * "Nos certifications" — a full-width band that loops the five official
- * certification logos in an infinite, seamless marquee. The list is duplicated
- * so the -50% translate creates a perfect loop. Honors prefers-reduced-motion.
- */
 export function CertificationsMarquee() {
-  // Two copies of the list for a seamless loop.
-  const loop = [...CERTS, ...CERTS];
-
   return (
     <section className="certifications-marquee section-tan" aria-labelledby="certifications-marquee-title">
       <div className="certifications-marquee-inner">
@@ -35,19 +27,18 @@ export function CertificationsMarquee() {
         </div>
 
         <div className="cert-marquee" role="region" aria-label="Certifications and food safety standards">
-          <div className="cert-marquee-track">
-            {loop.map((cert, i) => (
+          <div className="cert-marquee-track" role="list">
+            {CERTS.map((cert) => (
               <span
-                key={`${cert.src}-${i}`}
+                key={cert.src}
                 className={`cert-badge cert-badge--${cert.kind}`}
                 role="listitem"
                 title={cert.title}
-                aria-hidden={i >= CERTS.length ? "true" : undefined}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={cert.src}
-                  alt={i < CERTS.length ? cert.alt : ""}
+                  alt={cert.alt}
                   width={cert.width}
                   height={cert.height}
                   loading="lazy"
