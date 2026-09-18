@@ -1,4 +1,4 @@
-/* Cohesive homepage system: restrained food editorial, scoped to the homepage. */
+/* Homepage layout and responsive component foundations. */
 .home-page {
   --home-red: #8e1b1b;
   --home-red-dark: #661315;
@@ -85,11 +85,11 @@
 }
 
 .home-page .home-palms-products .section-palm-right {
-  display: none;
+  display: none !important;
 }
 
 .home-page .home-palms-faq .section-palm-left {
-  display: none;
+  display: none !important;
 }
 
 .home-page .home-palms-faq .section-palm-right {
@@ -1356,4 +1356,289 @@
   .home-page .cert-marquee-track {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+}
+
+/* Shared visual rhythm across the homepage. */
+.home-page .script,
+.home-page .script.small {
+  text-shadow: none;
+  transform: none;
+}
+
+.home-page :is(.story-editorial-heading, .home-category-heading, .products-heading,
+  .new-products-heading, .sunshine-moment-heading, .story-text, .home-faq,
+  .bulk-export-heading) h2,
+.home-page .wellness-redesign .goodness-headline {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.05;
+  text-transform: none;
+  text-shadow: none;
+}
+
+.home-page :is(.btn, .shad-button, .shad-button-outline) {
+  box-shadow: none;
+  font-size: 13px;
+  line-height: 1.4;
+  text-transform: none;
+}
+
+.home-page .section-inner {
+  padding-block: 88px;
+}
+
+.home-page .announcement-bar {
+  background: var(--home-red-dark);
+  font-weight: 500;
+}
+
+.home-page .site-header {
+  background: var(--home-red);
+  color: var(--home-ivory);
+  box-shadow: none;
+  border-bottom: 1px solid rgba(250,244,232,.18);
+}
+
+.home-page .site-header::before { display: none; }
+.home-page .desktop-dropdown-trigger { color: var(--home-ivory); }
+.home-page .desktop-nav-link.is-active { color: #f0cf80; }
+.home-page .desktop-nav-link { font-weight: 600; }
+.home-page .site-header :is(.cart-status, .header-phone) {
+  background: transparent;
+  color: var(--home-ivory);
+  border: 1px solid rgba(250,244,232,.35);
+  box-shadow: none;
+}
+
+/* The photograph is the hero surface; copy sits directly over it. */
+.home-page .hero.official-hero {
+  display: block;
+  color: white;
+  background: var(--home-red-dark);
+}
+.home-page .hero.official-hero::before { display: none; }
+.home-page .official-hero-shell {
+  width: 100%;
+  min-height: 590px;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0;
+}
+.home-page .hero-field-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border: 0;
+  border-radius: 0;
+  z-index: 0;
+}
+.home-page .hero-field-photo-image { border-radius: 0; }
+.home-page .hero-field-photo-image img {
+  object-position: 65% 58%;
+  filter: none;
+}
+.home-page .hero-field-photo-image::after {
+  background: linear-gradient(90deg, rgba(70,9,12,.86), rgba(70,9,12,.54) 39%, transparent 72%);
+}
+.home-page .hero-field-photo figcaption { display: none; }
+.home-page .hero-field-letter {
+  position: relative;
+  width: min(1200px, calc(100% - 64px));
+  min-height: 590px;
+  margin: 0 auto;
+  padding: 64px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+  order: 0;
+}
+.home-page .hero-field-letter .official-hero-eyebrow {
+  display: block;
+  margin-bottom: 28px;
+  padding: 0;
+  border: 0;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 13px;
+}
+.home-page .hero-field-letter .official-hero-eyebrow span { color: #fff; }
+.home-page .hero-gold-chip { display: none; }
+.home-page .hero-field-letter h1 { max-width: 620px; }
+.home-page .hero-field-letter h1 span {
+  color: #f0cf80;
+  font-size: 28px;
+  margin-bottom: 18px;
+}
+.home-page .hero-field-letter h1 strong {
+  max-width: 620px;
+  font-size: 88px;
+  font-weight: 600;
+  line-height: .98;
+  color: white;
+  text-transform: none;
+}
+.home-page .hero-field-letter .official-hero-lead {
+  max-width: 430px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #fff;
+}
+.home-page .hero-field-letter .official-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+}
+.home-page .hero-field-letter .btn.hero-primary {
+  background: #fff;
+  color: var(--home-red);
+}
+.home-page .hero-field-letter .hero-story-link {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  color: white;
+  font-size: 14px;
+}
+.home-page :is(.hero-letter-signoff, .hero-certifications) { display: none; }
+.home-page .official-hero-marquee {
+  width: 100%;
+  background: var(--home-red-dark);
+  padding-block: 12px;
+  border: 0;
+}
+
+.home-page .story { background: var(--home-red); color: var(--home-ivory); }
+.home-page .story-editorial-heading h2 { color: var(--home-ivory); }
+.home-page .story-editorial-heading .script { color: #e6b56a; }
+.home-page .story-editorial-intro p { color: rgba(250,244,232,.8); }
+.home-page .story-editorial-grid { grid-template-rows: minmax(330px, auto) 250px; }
+.home-page .story-editorial-notes { padding: 28px; }
+.home-page .story-editorial-mini figcaption {
+  background: transparent;
+  text-shadow: 0 1px 4px #000;
+}
+.home-page .wellness-redesign { background: var(--home-ivory); }
+.home-page .wellness-benefit-card {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(43,26,18,.16);
+  border-radius: 0;
+}
+.home-page .home-categories { background: var(--home-sand); }
+.home-page .products { background: var(--home-ivory); }
+.home-page .products::before { display: none; }
+.home-page .product-card { background: #fff; }
+.home-page .bulk-export { background: #fffaf0; }
+.home-page .bulk-export-ribbon { display: none; }
+.home-page .bulk-export-heading p:not(.script) {
+  text-transform: none;
+  font-size: 15px;
+  font-weight: 400;
+}
+.home-page .bulk-export-heading .btn { flex-shrink: 0; }
+.home-page .bulk-export-pack img { mix-blend-mode: multiply; }
+.home-page .new-products-section { background: var(--home-sand); }
+.home-page .new-products-intro h3 {
+  font-size: 38px;
+  line-height: 1.1;
+  overflow-wrap: normal;
+}
+.home-page .new-products-intro { padding: 32px 24px; }
+.home-page .new-product-quote { background: var(--home-red); }
+.home-page .story-editorial-mini { box-shadow: none; }
+.home-page .home-faq { background: var(--home-red); }
+.home-page .home-faq .script.small { color: #f0cf80; }
+.home-page footer { background: var(--home-red-dark); }
+.home-page :is(.footer-cta, .footer-contact-card, .footer-columns, .footer-columns > div) {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0 !important;
+}
+.home-page :is(.footer-cta, .footer-contact-card) { border: 0; padding-inline: 0; }
+
+/* Keep botanical silhouettes in the gutters, behind all section content.
+   Important overrides neutralize the old global offsets and inline display. */
+.home-page :is(.story, .products, .home-faq, footer) { isolation: isolate; }
+.home-page .section-palms { pointer-events: none; }
+.home-page .home-palms .section-palm,
+.home-page footer .footer-palms .section-palm {
+  width: 150px;
+  height: auto;
+  bottom: -24px;
+  opacity: .12 !important;
+  color: var(--home-gold);
+  filter: none;
+}
+.home-page .home-palms .section-palm-left,
+.home-page footer .footer-palms .section-palm-left {
+  left: -65px !important;
+  transform: rotate(8deg);
+}
+.home-page .home-palms .section-palm-right,
+.home-page footer .footer-palms .section-palm-right {
+  right: -65px !important;
+  transform: scaleX(-1) rotate(8deg);
+}
+.home-page .home-palms-story .section-palm-left { display: none !important; }
+.home-page .home-palms-faq .section-palm,
+.home-page footer .footer-palms .section-palm { color: #dfc17e; }
+.home-page footer .footer-palms .section-palm { bottom: 0; }
+
+@media (max-width: 1040px) {
+  .home-page .hero-field-letter { width: calc(100% - 64px); }
+  .home-page .story-editorial-grid { grid-template-rows: auto; }
+  .home-page .story-editorial-notes { min-height: 340px; }
+}
+
+@media (max-width: 760px) {
+  .home-page :is(.story-editorial-heading, .home-category-heading, .products-heading,
+    .new-products-heading, .sunshine-moment-heading, .story-text, .home-faq,
+    .bulk-export-heading) h2,
+  .home-page .wellness-redesign .goodness-headline {
+    font-size: 38px;
+    line-height: 1.08;
+  }
+  .home-page .script.small { font-size: 22px; line-height: 1.3; }
+  .home-page .official-hero-shell { min-height: 590px; }
+  .home-page .hero-field-letter {
+    width: calc(100% - 40px);
+    min-height: 590px;
+    padding: 44px 0;
+    justify-content: flex-end;
+  }
+  .home-page .hero-field-photo { min-height: 0; }
+  .home-page .hero-field-photo-image img { object-position: 67% 50%; }
+  .home-page .hero-field-photo-image::after {
+    background: linear-gradient(0deg, rgba(70,9,12,.94), rgba(70,9,12,.55) 55%, rgba(70,9,12,.08));
+  }
+  .home-page .hero-field-letter h1 strong { font-size: 60px; max-width: 340px; }
+  .home-page .hero-field-letter h1 span { font-size: 24px; }
+  .home-page .hero-field-letter .official-hero-eyebrow { margin-bottom: 20px; }
+  .home-page .hero-field-letter .official-hero-actions > * { width: auto; }
+  .home-page .hero-field-letter .official-hero-actions { gap: 16px; }
+  .home-page .hero-field-letter .official-hero-lead { font-size: 15px; }
+  .home-page .story-editorial-grid { grid-template-rows: 300px auto 170px; }
+  .home-page .home-palms .section-palm,
+  .home-page footer .footer-palms .section-palm {
+    width: 95px;
+    bottom: -20px;
+    opacity: .09 !important;
+  }
+  .home-page .home-palms .section-palm-left,
+  .home-page footer .footer-palms .section-palm-left { left: -48px !important; }
+  .home-page .home-palms .section-palm-right,
+  .home-page footer .footer-palms .section-palm-right { right: -48px !important; }
+}
+
+@media (max-width: 360px) {
+  .home-page .hero-field-letter h1 strong { font-size: 52px; }
+  .home-page .hero-field-letter .official-hero-actions { gap: 12px; }
+  .home-page .hero-field-letter .btn { padding-inline: 16px; }
 }

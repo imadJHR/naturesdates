@@ -312,7 +312,7 @@ export function OfficialHero() {
       <div className="official-hero-shell">
         <article className="hero-field-letter">
           <motion.p className="official-hero-eyebrow" {...heroItem} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}><span>Premium Medjool dates</span><em className="hero-gold-chip">Medjool Gold</em></motion.p>
-          <motion.h1 id="hero-title" {...heroItem} transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}><span>Raised by hand.</span><strong>Ripened by sunshine.</strong></motion.h1>
+          <motion.h1 id="hero-title" {...heroItem} transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}><span>Raised by sunshine</span><strong>Natures Dates</strong></motion.h1>
           <motion.p className="official-hero-lead" {...heroItem} transition={{ duration: 0.6, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}>Soft, caramel-like and naturally sweet, Medjool dates make everyday snacking and recipe time feel a little more generous.</motion.p>
           <motion.div className="hero-person-note" {...heroItem} transition={{ duration: 0.6, delay: 0.24, ease: [0.16, 1, 0.3, 1] }}>
             <Image src="/images/ingredients/date-harvest.webp" alt="Fresh dates at harvest" width={96} height={96} />

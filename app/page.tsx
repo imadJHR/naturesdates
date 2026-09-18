@@ -90,7 +90,8 @@ const bulkItems = [
   {
     size: "1 kg x 6",
     title: "Whole Medjool Dates",
-    image: "/natures-dates-logo.webp",
+    image: "/images/bulk/individual-1kg.png",
+    packWeight: "1 kg",
     specs: [
       ["Unit dimensions (cm)", "21.82 (L) x 15.95 (W) x 5.49 (H)"],
       ["Case gross weight", "7.34 kg"],
@@ -103,7 +104,8 @@ const bulkItems = [
   {
     size: "2 kg x 6",
     title: "Whole Medjool Dates",
-    image: "/natures-dates-logo.webp",
+    image: "/images/bulk/individual-2kg.png",
+    packWeight: "2 kg",
     specs: [
       ["Unit dimensions (cm)", "26.50 (L) x 25.08 (W) x 7.77 (H)"],
       ["Case gross weight", "13.3 kg"],
@@ -116,7 +118,8 @@ const bulkItems = [
   {
     size: "5 kg",
     title: "Whole Medjool Dates",
-    image: "/natures-dates-logo.webp",
+    image: "/images/bulk/individual-5kg.png",
+    packWeight: "5 kg",
     specs: [
       ["Unit dimensions (cm)", "39.52 (L) x 29.36 (W) x 9.52 (H)"],
       ["Case gross weight", "5.556 kg"],
@@ -158,7 +161,14 @@ function BulkExport() {
             {bulkItems.map((item) => (
               <article className="bulk-export-item" key={item.size}>
                 <div className="bulk-export-pack">
-                  <Image src={item.image} alt={item.title} width={360} height={260} sizes="(max-width: 760px) 54vw, 260px" />
+                  <Image
+                    src={item.image}
+                    alt={`${item.packWeight} ${item.title} individual window box`}
+                    width={360}
+                    height={260}
+                    sizes="(max-width: 760px) 74vw, 300px"
+                    loading="eager"
+                  />
                 </div>
                 <div className="bulk-export-specs">
                   <h3><strong>{item.size}</strong> {item.title}</h3>
