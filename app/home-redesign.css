@@ -1543,7 +1543,32 @@
   font-weight: 400;
 }
 .home-page .bulk-export-heading .btn { flex-shrink: 0; }
-.home-page .bulk-export-pack img { mix-blend-mode: multiply; }
+.home-page .bulk-export-pack {
+  width: min(100%, 300px);
+  justify-self: center;
+  min-width: 0;
+  height: 224px;
+  min-height: 0;
+  justify-items: center;
+}
+.home-page .bulk-export-pack img {
+  width: 100%;
+  height: auto;
+  max-height: 224px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+.home-page .bulk-export-specs {
+  min-width: 0;
+}
+.home-page .bulk-export-specs dd {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 640px) {
+  .home-page .bulk-export-item {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
 .home-page .new-products-section { background: var(--home-sand); }
 .home-page .new-products-intro h3 {
   font-size: 38px;
