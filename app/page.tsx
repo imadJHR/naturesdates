@@ -12,6 +12,7 @@ import { SiteFooter } from "./components/site-footer";
 import { NewProductsSection } from "./components/new-products-section";
 import { SunshineMoment } from "./components/sunshine-moment";
 import { CertificationsMarquee } from "./components/certifications-marquee";
+import { BulkExportSwiper } from "./components/bulk-export-swiper";
 import { Reveal, RevealSection } from "./components/reveal";
 import { SectionPalms } from "./components/artifacts/SectionPalms";
 import { productCategories, products as catalogProducts } from "./data/products";
@@ -96,16 +97,18 @@ const pendingBulkSpecs = [
 ].map((label) => [label, "Available on request"]);
 
 const bulkItems = [
-  // Generated packshots based on the supplied brand artwork; logistics still await verification.
+  // Retail clamshell packshots supplied by the client; logistics still await verification.
   ...[
-    { size: "150 G", packWeight: "150 g", imageWidth: 110, image: "/images/bulk/individual-150g.webp", imageHeight: 532, packaging: "window box" },
-    { size: "300 G", packWeight: "300 g", imageWidth: 135, image: "/images/bulk/individual-300g.webp", imageHeight: 520, packaging: "window box" },
-    { size: "500 G", packWeight: "500 g", imageWidth: 160, image: "/images/bulk/individual-500g.webp", imageHeight: 520, packaging: "window box" },
-    { size: "600 G Plastic", packWeight: "600 g", imageWidth: 175, image: "/images/bulk/individual-600g-plastic.webp", imageHeight: 532, packaging: "clear plastic container" },
+    { size: "125 G", packWeight: "125 g", imageWidth: 105, image: "/images/bulk/retail-125g.webp", imageHeight: 540 },
+    { size: "250 G", packWeight: "250 g", imageWidth: 125, image: "/images/bulk/retail-250g.webp", imageHeight: 480 },
+    { size: "300 G", packWeight: "300 g", imageWidth: 145, image: "/images/bulk/retail-300g.webp", imageHeight: 480 },
+    { size: "500 G", packWeight: "500 g", imageWidth: 165, image: "/images/bulk/retail-500g.webp", imageHeight: 480 },
+    { size: "750 G", packWeight: "750 g", imageWidth: 185, image: "/images/bulk/retail-750g.webp", imageHeight: 480 },
   ].map((format) => ({
     ...format,
     title: "",
     sourceWidth: 720,
+    packaging: "clear plastic clamshell",
     specs: pendingBulkSpecs,
   })),
   {
@@ -164,7 +167,7 @@ const bulkItems = [
   },
 ];
 
-function BulkExport() {
+export function BulkExport() {
   return (
     <RevealSection id="bulk-export" className="bulk-export">
       <div className="bulk-export-ribbon" aria-hidden="true" />
@@ -293,7 +296,7 @@ export default function Page() {
         <GoodnessShowcase />
         <CategoryExplore />
         <Products />
-        <BulkExport />
+        <BulkExportSwiper />
         <NewProductsSection />
         <SunshineMoment />
         <Recipes />
